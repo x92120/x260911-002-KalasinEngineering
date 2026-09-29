@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Automation Architecture - Ingredion Kalasin Plant (Project SPRINT)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .slide { display: none; }
+    .slide.active { display: block; }
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .pulse-indicator { animation: pulse-slow 2s infinite; }
+  </style>
+</head>
+<body class="bg-[#0f172a] text-slate-100 font-sans antialiased min-h-screen p-4 flex flex-col justify-between select-none">
+
+  <!-- Top Navigation Header -->
+  <header class="bg-[#1e293b] border border-slate-700 rounded-xl px-5 py-3 shadow-md flex items-center justify-between mb-4">
+    <div class="flex items-center gap-3">
+      <span class="w-8 h-8 rounded bg-cyan-600 font-black text-white flex items-center justify-center text-sm shadow">IGD</span>
+      <div>
+        <h1 class="text-sm font-bold text-white tracking-wide">INGREDION (THAILAND) CO., LTD. — KALASIN PLANT</h1>
+        <p class="text-xs text-cyan-400 font-medium">Project SPRINT: 18,000 TPA Spray Dryer | Automation Architecture Slide Deck</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 text-xs">
+      <span class="text-slate-400">Slide <span id="currentSlideNum" class="font-bold text-white">1</span> of 5</span>
+      <button onclick="prevSlide()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 font-bold transition">◀ Prev</button>
+      <button onclick="nextSlide()" class="px-3 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-bold shadow transition">Next ▶</button>
+    </div>
+  </header>
+
+  <!-- Slide Canvas Container -->
+  <main class="flex-1 flex items-center justify-center">
+
+    <!-- ================= SLIDE 1: Title Slide ================= -->
+    <div id="slide-1" class="slide active w-full max-w-6xl bg-[#1e293b] border border-slate-700 rounded-2xl p-8 lg:p-12 shadow-2xl">
+      <div class="inline-block px-3 py-1 rounded-md bg-cyan-950/80 border border-cyan-700 text-cyan-300 font-mono text-xs font-semibold uppercase tracking-wider mb-4">
+        CONTROL SYSTEM ARCHITECTURE SPECIFICATION
+      </div>
+      <h2 class="text-3xl lg:text-5xl font-black tracking-tight text-white mb-3">
+        Project SPRINT 18K TPA Spray Dryer Plant
+      </h2>
+      <p class="text-lg text-slate-300 mb-8 max-w-3xl">
+        High-Availability Automation & Distributed Control Architecture designed for continuous starch processing, jet cooking, spray drying, and packaging.
+      </p>
+
+      <!-- Key Architecture Badges -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div class="bg-slate-900/80 border border-cyan-500/40 rounded-xl p-4">
+          <div class="text-2xl font-black text-cyan-400">2 Servers</div>
+          <div class="text-xs font-semibold text-white mt-1">Fault-Tolerant Redundant Pair</div>
+          <div class="text-[11px] text-slate-400 mt-1">FactoryTalk View SE Server A & B (Dell R550)</div>
+        </div>
+        <div class="bg-slate-900/80 border border-purple-500/40 rounded-xl p-4">
+          <div class="text-2xl font-black text-purple-400">1 EWS</div>
+          <div class="text-xs font-semibold text-white mt-1">Engineering Workstation</div>
+          <div class="text-[11px] text-slate-400 mt-1">Studio 5000 & FT View Studio Dev</div>
+        </div>
+        <div class="bg-slate-900/80 border border-blue-500/40 rounded-xl p-4">
+          <div class="text-2xl font-black text-blue-400">3 OWS</div>
+          <div class="text-xs font-semibold text-white mt-1">Operator Client Stations</div>
+          <div class="text-[11px] text-slate-400 mt-1">Dual Displays (Slurry, Dryer & Utilities)</div>
+        </div>
+        <div class="bg-slate-900/80 border border-emerald-500/40 rounded-xl p-4">
+          <div class="text-2xl font-black text-emerald-400">PLC Redundant</div>
+          <div class="text-xs font-semibold text-white mt-1">ControlLogix 5580 Pair</div>
+          <div class="text-[11px] text-slate-400 mt-1">1756-L83E + 1756-RM2 Optical Cross-Sync</div>
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-slate-700 flex flex-wrap items-center justify-between text-xs text-slate-400">
+        <div>Client: <strong>Ingredion (Thailand) Co., Ltd.</strong> | Location: <strong>Kalasin Plant</strong></div>
+        <div>Consultant: <strong>AEC Industrial Engineering</strong> | Standard: <strong>P&ID Rev 3.5 Aligned</strong></div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 2: Core Visual Architecture Diagram ================= -->
+    <div id="slide-2" class="slide w-full max-w-6xl bg-[#1e293b] border border-slate-700 rounded-2xl p-6 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-700 mb-3">
+        <div>
+          <h2 class="text-lg font-bold text-white uppercase tracking-wider">Multi-Tier Automation Network Diagram</h2>
+          <p class="text-xs text-slate-400">Seamless integration from Server Room & MCR down to distributed field Remote I/O</p>
+        </div>
+        <span class="px-2.5 py-1 text-xs rounded bg-cyan-900/50 text-cyan-300 border border-cyan-700 font-mono">Zero Single Point of Failure</span>
+      </div>
+
+      <!-- Architecture Tiers Stack -->
+      <div class="space-y-2.5 text-xs">
+
+        <!-- Level 3: Server Tier -->
+        <div class="bg-slate-900/90 border border-cyan-500/60 rounded-xl p-3">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-cyan-400 uppercase tracking-wider text-[11px]">Level 3 : Server Room & Data Center (Redundant Cluster)</span>
+            <span class="text-[10px] text-slate-400">Dell PowerEdge R550 Rackmount (Dual Xeon Silver, 64GB, RAID-10 SSD)</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <!-- Server A -->
+            <div class="bg-slate-800/90 border border-emerald-500 rounded-lg p-2.5">
+              <div class="font-bold text-emerald-400 flex items-center justify-between">
+                <span>🖥️ SCADA SERVER A (PRIMARY)</span>
+                <span class="text-[9px] bg-emerald-950 text-emerald-300 px-1.5 py-0.5 rounded">ACTIVE</span>
+              </div>
+              <div class="text-slate-300 text-[11px] mt-1">FactoryTalk View SE Server A</div>
+              <div class="text-slate-400 text-[10px]">FT Historian ME | FT Directory Server</div>
+            </div>
+            <!-- Sync Link -->
+            <div class="bg-slate-800/50 border border-dashed border-cyan-500 rounded-lg p-2 flex flex-col items-center justify-center text-center">
+              <div class="text-cyan-300 font-bold text-[11px]">⇄ HEARTBEAT SYNC LINK</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">Dual 10GbE Bonded NICs | Instant Data Mirroring</div>
+              <div class="text-[9px] text-emerald-400 mt-0.5">Failover Response: &lt; 1.0 Second</div>
+            </div>
+            <!-- Server B -->
+            <div class="bg-slate-800/90 border border-amber-500 rounded-lg p-2.5">
+              <div class="font-bold text-amber-400 flex items-center justify-between">
+                <span>🖥️ SCADA SERVER B (STANDBY)</span>
+                <span class="text-[9px] bg-amber-950 text-amber-300 px-1.5 py-0.5 rounded">HOT STANDBY</span>
+              </div>
+              <div class="text-slate-300 text-[11px] mt-1">FactoryTalk View SE Server B</div>
+              <div class="text-slate-400 text-[10px]">Continuous Session Replica | Auto Failover</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Level 2: Control Room Client Tier -->
+        <div class="bg-slate-900/90 border border-blue-500/60 rounded-xl p-3">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-blue-400 uppercase tracking-wider text-[11px]">Level 2 : Main Control Room (MCR) Workstations</span>
+            <span class="text-[10px] text-slate-400">1 EWS + 3 OWS with Dual 27" 4K Displays + 2x 50" Wall Overview Screens</span>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+            <div class="bg-slate-800/90 border border-purple-500 rounded-lg p-2">
+              <div class="font-bold text-purple-300">💻 1x EWS (ENGINEERING)</div>
+              <div class="text-[10px] text-slate-300 mt-1">• Studio 5000 Logix (v33+)</div>
+              <div class="text-[10px] text-slate-300">• FT View Studio Enterprise</div>
+              <div class="text-[9px] text-slate-400 mt-1">Logic Dev & Stratix Diagnostics</div>
+            </div>
+            <div class="bg-slate-800/90 border border-blue-400 rounded-lg p-2">
+              <div class="font-bold text-blue-300">🖥️ OWS-01 (OPERATOR 1)</div>
+              <div class="text-[10px] text-slate-300 mt-1">• Area 202: Slurry Prep TS-20201</div>
+              <div class="text-[10px] text-slate-300">• Area 402: pH & Jet Cooker</div>
+              <div class="text-[9px] text-slate-400 mt-1">Dual 27" Screens | FT View Client</div>
+            </div>
+            <div class="bg-slate-800/90 border border-blue-400 rounded-lg p-2">
+              <div class="font-bold text-blue-300">🖥️ OWS-02 (OPERATOR 2)</div>
+              <div class="text-[10px] text-slate-300 mt-1">• Area 602: Spray Dryer Tower</div>
+              <div class="text-[10px] text-slate-300">• HP Pump, BMS Burner, Baghouse</div>
+              <div class="text-[9px] text-slate-400 mt-1">Dual 27" Screens | FT View Client</div>
+            </div>
+            <div class="bg-slate-800/90 border border-blue-400 rounded-lg p-2">
+              <div class="font-bold text-blue-300">🖥️ OWS-03 (OPERATOR 3)</div>
+              <div class="text-[10px] text-slate-300 mt-1">• Area 613: Silo & Packing</div>
+              <div class="text-[10px] text-slate-300">• Area 922/913/930: Utilities</div>
+              <div class="text-[9px] text-slate-400 mt-1">Dual 27" Screens | FT View Client</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Industrial Ethernet Backbone Ring -->
+        <div class="bg-cyan-950/80 border border-cyan-600 rounded-lg py-1.5 px-4 text-center font-mono text-[11px] text-cyan-300 flex items-center justify-between">
+          <span>⚡ PLANT ETHERNET BACKBONE RING</span>
+          <span>Stratix 5700 / 5400 Managed Gigabit Switches (Dual Fiber Optical Ring)</span>
+          <span>Sub-3ms Ring Recovery</span>
+        </div>
+
+        <!-- Level 1 & Level 0 Split -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <!-- Controller Level 1 -->
+          <div class="bg-slate-900/90 border border-emerald-500/60 rounded-xl p-3">
+            <div class="font-bold text-emerald-400 uppercase tracking-wider text-[11px] mb-1.5">🎛️ Redundant Controller Chassis (PLC-01A & B)</div>
+            <ul class="text-[10px] text-slate-300 space-y-1">
+              <li>• <strong>Dual 1756-A4 Racks:</strong> Main PLC Cabinet in PLC Room</li>
+              <li>• <strong>Dual 1756-L83E CPU:</strong> GuardLogix 5580 (10 MB User Memory, 1 GHz Engine)</li>
+              <li>• <strong>1756-RM2 Module:</strong> Optical Cross-Sync | Bumpless Switchover &lt; 20 ms</li>
+              <li>• <strong>1756-EN2TR:</strong> Dual-Port EtherNet/IP Bridge for DLR Topology</li>
+              <li>• <strong>1756-PA75 (x2):</strong> Redundant Power Supply Bundles</li>
+            </ul>
+          </div>
+
+          <!-- Distributed Remote I/O Level 0 -->
+          <div class="bg-slate-900/90 border border-amber-500/60 rounded-xl p-3">
+            <div class="font-bold text-amber-400 uppercase tracking-wider text-[11px] mb-1.5">📡 Distributed Field Remote I/O (DLR Ring)</div>
+            <ul class="text-[10px] text-slate-300 space-y-1">
+              <li>• <strong>RIO-200 (Slurry Prep):</strong> 1794-AENTR Flex I/O w/ HART (DI/DO/AI/AO)</li>
+              <li>• <strong>RIO-400 (Conditioning & Jet Cooker):</strong> 1794-AENTR Flex I/O w/ HART</li>
+              <li>• <strong>RIO-600 (Spray Dryer Tower):</strong> 1794-AENTR Flex I/O w/ HART</li>
+              <li>• <strong>RIO-MCC:</strong> Intelligent Motor Starters & PowerFlex 755/525 VFDs</li>
+              <li>• <strong>Skid Links:</strong> BMS Burner, IEP Explosion Suppression, Getabec Boiler</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 3: Hardware BOM & Specs Table ================= -->
+    <div id="slide-3" class="slide w-full max-w-6xl bg-[#1e293b] border border-slate-700 rounded-2xl p-6 lg:p-8 shadow-2xl">
+      <h2 class="text-xl font-bold text-white uppercase tracking-wider mb-1">Hardware & Software Specifications (BOM)</h2>
+      <p class="text-xs text-slate-400 mb-4">Complete bill of materials supporting 2 Redundant Servers, 1 EWS, and 3 OWS</p>
+
+      <div class="overflow-x-auto text-xs">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-cyan-900/60 text-cyan-300 border-b border-slate-700 font-mono">
+              <th class="py-2.5 px-3">System Node</th>
+              <th class="py-2.5 px-3">Qty</th>
+              <th class="py-2.5 px-3">Hardware Specification</th>
+              <th class="py-2.5 px-3">Software & Operating System</th>
+              <th class="py-2.5 px-3">Redundancy Mechanism</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800 text-slate-300">
+            <tr class="hover:bg-slate-800/50">
+              <td class="py-2.5 px-3 font-bold text-white">SCADA Servers</td>
+              <td class="py-2.5 px-3 font-mono text-cyan-400">2 Units</td>
+              <td class="py-2.5 px-3">Dell PowerEdge R550 Rackmount (Dual Intel Xeon Silver, 64GB RAM, 4x 960GB SSD RAID-10, Dual 800W PSU)</td>
+              <td class="py-2.5 px-3">Windows Server 2022 Datacenter<br>FactoryTalk View SE Server v13<br>FactoryTalk Historian ME / FTD</td>
+              <td class="py-2.5 px-3 font-semibold text-emerald-400">Primary / Standby Pair<br>Auto-Failover (&lt; 1 sec)</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50">
+              <td class="py-2.5 px-3 font-bold text-white">Engineering Workstation (EWS)</td>
+              <td class="py-2.5 px-3 font-mono text-purple-400">1 Unit</td>
+              <td class="py-2.5 px-3">Dell Precision 3660 Workstation (Core i7, 32GB RAM, 1TB NVMe SSD, Dual 27" 4K IPS Displays)</td>
+              <td class="py-2.5 px-3">Windows 11 Pro for Workstations<br>Studio 5000 Logix Designer (v33+)<br>FactoryTalk View Studio Enterprise</td>
+              <td class="py-2.5 px-3 text-slate-400">Non-Redundant<br>Dedicated MCR Dev Desk</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50">
+              <td class="py-2.5 px-3 font-bold text-white">Operator Workstations (OWS)</td>
+              <td class="py-2.5 px-3 font-mono text-blue-400">3 Units</td>
+              <td class="py-2.5 px-3">Dell OptiPlex 7000 Series (Core i5, 16GB RAM, 512GB SSD, Dual 27" Industrial IPS Monitors per desk)</td>
+              <td class="py-2.5 px-3">Windows 11 Enterprise LTSC<br>FactoryTalk View SE Client v13<br>Locked Operator Shell Mode</td>
+              <td class="py-2.5 px-3 text-cyan-300">Distributed Across Areas<br>Auto-Reconnect to Srv B</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50">
+              <td class="py-2.5 px-3 font-bold text-white">Wall Overview Displays</td>
+              <td class="py-2.5 px-3 font-mono text-amber-400">2 Units</td>
+              <td class="py-2.5 px-3">50" 4K Industrial Commercial Displays (24/7 Rating, HDMI Matrix Switcher)</td>
+              <td class="py-2.5 px-3">Overview Mimic & Master Alarm Banner<br>Per Ingredion Kalasin Specification</td>
+              <td class="py-2.5 px-3 text-slate-400">MCR Wall Mounted</td>
+            </tr>
+            <tr class="hover:bg-slate-800/50">
+              <td class="py-2.5 px-3 font-bold text-white">ControlLogix PLC Racks</td>
+              <td class="py-2.5 px-3 font-mono text-emerald-400">2 Racks</td>
+              <td class="py-2.5 px-3">1756-A4 Chassis, 1756-L83E CPU, 1756-RM2 Redundancy, 1756-EN2TR DLR, 1756-PA75 PSU</td>
+              <td class="py-2.5 px-3">ControlLogix Firmware v33+<br>Embedded GuardLogix Safety Tasks</td>
+              <td class="py-2.5 px-3 font-semibold text-emerald-400">Bumpless Optical Sync<br>Switchover &lt; 20 ms</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 4: Workstation Allocation Matrix ================= -->
+    <div id="slide-4" class="slide w-full max-w-6xl bg-[#1e293b] border border-slate-700 rounded-2xl p-6 lg:p-8 shadow-2xl">
+      <h2 class="text-xl font-bold text-white uppercase tracking-wider mb-1">MCR Workstation Allocation & Screen Mapping</h2>
+      <p class="text-xs text-slate-400 mb-6">Functional duties and dual-display assignments for OWS-01, OWS-02, OWS-03, and EWS</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <!-- OWS 1 -->
+        <div class="bg-slate-900/90 border-2 border-blue-500 rounded-xl p-4 shadow-lg flex flex-col">
+          <div class="flex items-center justify-between border-b border-slate-700 pb-2 mb-3">
+            <span class="font-bold text-blue-400 text-sm">🖥️ OWS-01: PREP & COOKING</span>
+            <span class="text-[10px] bg-blue-950 text-blue-300 px-2 py-0.5 rounded">Dual 27" Display</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2 flex-1">
+            <p><strong>Primary Areas Covered:</strong></p>
+            <ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>Area 202: Re-Slurry Tanks TS-20201/02 & Agitators</li>
+              <li>Transfer Pump PC-20201/02 & Flow Control</li>
+              <li>Area 402: pH Adjustment TS-40201/02 Skids</li>
+              <li>Continuous Jet Cooker Steam Infeed & Pressure</li>
+              <li>Chemical Dosing Skids (Acid, Caustic, Enzymes)</li>
+            </ul>
+            <div class="bg-slate-800 p-2.5 rounded border border-slate-700 mt-3">
+              <span class="text-[11px] font-bold text-cyan-300">Screen Layout:</span>
+              <div class="text-[10px] text-slate-400 mt-1">Screen 1: Slurry Prep & pH Mimic<br>Screen 2: Jet Cooker Trends, Flow & Recipe</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OWS 2 -->
+        <div class="bg-slate-900/90 border-2 border-emerald-500 rounded-xl p-4 shadow-lg flex flex-col">
+          <div class="flex items-center justify-between border-b border-slate-700 pb-2 mb-3">
+            <span class="font-bold text-emerald-400 text-sm">🖥️ OWS-02: SPRAY DRYER & BMS</span>
+            <span class="text-[10px] bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded">Dual 27" Display</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2 flex-1">
+            <p><strong>Primary Areas Covered:</strong></p>
+            <ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>Area 602: Spray Drying Chamber CHAM-21</li>
+              <li>Dedert Triplex High-Pressure Pump PD-60202 (300 barg)</li>
+              <li>Direct Gas Air Heater FH-60210A & BMS Interlocks</li>
+              <li>Primary Cyclone CYCL-21 & Rotary Valves</li>
+              <li>Exhaust Fan BF-60240 & Baghouse DTEX-21</li>
+              <li>IEP Explosion Suppression & Deluge System</li>
+            </ul>
+            <div class="bg-slate-800 p-2.5 rounded border border-slate-700 mt-3">
+              <span class="text-[11px] font-bold text-emerald-300">Screen Layout:</span>
+              <div class="text-[10px] text-slate-400 mt-1">Screen 1: Spray Dryer Tower Mimic<br>Screen 2: High-Speed Trends & BMS Safety</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OWS 3 -->
+        <div class="bg-slate-900/90 border-2 border-amber-500 rounded-xl p-4 shadow-lg flex flex-col">
+          <div class="flex items-center justify-between border-b border-slate-700 pb-2 mb-3">
+            <span class="font-bold text-amber-400 text-sm">🖥️ OWS-03: PACKING & UTILITIES</span>
+            <span class="text-[10px] bg-amber-950 text-amber-300 px-2 py-0.5 rounded">Dual 27" Display</span>
+          </div>
+          <div class="text-xs text-slate-300 space-y-2 flex-1">
+            <p><strong>Primary Areas Covered:</strong></p>
+            <ul class="list-disc list-inside text-slate-400 space-y-1">
+              <li>Area 613: Starch Powder Silo TS-61301 & Sifter</li>
+              <li>Big-Bag Packaging ME-61306 & Palletizer</li>
+              <li>Area 922: SPRINT Steam Boiler (Getabec Package)</li>
+              <li>Area 913: LPG Bullet Tank & Vaporizer Station</li>
+              <li>Area 930: Water Treatment Plant Clarifier & Filters</li>
+              <li>Area 950: Plant Compressed Air System (6.8 barg)</li>
+            </ul>
+            <div class="bg-slate-800 p-2.5 rounded border border-slate-700 mt-3">
+              <span class="text-[11px] font-bold text-amber-300">Screen Layout:</span>
+              <div class="text-[10px] text-slate-400 mt-1">Screen 1: Silo & Big-Bag Packer<br>Screen 2: Steam Boiler & Plant Utilities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 5: Redundancy & High Availability ================= -->
+    <div id="slide-5" class="slide w-full max-w-6xl bg-[#1e293b] border border-slate-700 rounded-2xl p-6 lg:p-8 shadow-2xl">
+      <h2 class="text-xl font-bold text-white uppercase tracking-wider mb-1">High Availability & Redundancy Strategy</h2>
+      <p class="text-xs text-slate-400 mb-6">Comprehensive fault-tolerance across Servers, Controllers, Networks, and Field Power</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
+        <div class="bg-slate-900/90 border border-cyan-500/60 rounded-xl p-4">
+          <div class="font-bold text-cyan-400 text-sm mb-2 flex items-center gap-2">
+            <span>🖥️ SCADA Server Redundancy</span>
+            <span class="text-[10px] text-slate-400">(&lt; 1 sec Failover)</span>
+          </div>
+          <p class="text-slate-300 mb-2">FactoryTalk View SE Server redundancy maintains synchronized graphic cache, active alarms, and tag databases in real time across Server A and Server B.</p>
+          <ul class="list-disc list-inside text-slate-400 space-y-1">
+            <li>Automatic client redirection: OWS-01, OWS-02, OWS-03 seamlessly point to Secondary server without session restart.</li>
+            <li>Dual bonded NICs on each Dell PowerEdge R550 prevent network interface card dropouts.</li>
+            <li>RAID-10 disk array withstands multiple drive failures without downtime.</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/90 border border-emerald-500/60 rounded-xl p-4">
+          <div class="font-bold text-emerald-400 text-sm mb-2 flex items-center gap-2">
+            <span>🎛️ PLC Controller Redundancy</span>
+            <span class="text-[10px] text-slate-400">(&lt; 20 ms Bumpless)</span>
+          </div>
+          <p class="text-slate-300 mb-2">Dual ControlLogix 5580 chassis equipped with 1756-RM2 fiber-optic redundancy modules providing synchronized execution.</p>
+          <ul class="list-disc list-inside text-slate-400 space-y-1">
+            <li>Zero bump on transfer: Output states, PID algorithm states, and safety permissive logic maintained without glitch.</li>
+            <li>Dual 1756-PA75 redundant power supplies on isolated AC breaker circuits.</li>
+            <li>Online module insertion & removal under power (RIUP) enabled for continuous plant runtime.</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/90 border border-amber-500/60 rounded-xl p-4">
+          <div class="font-bold text-amber-400 text-sm mb-2 flex items-center gap-2">
+            <span>⚡ Network Ring & DLR Self-Healing</span>
+            <span class="text-[10px] text-slate-400">(&lt; 3 ms Recovery)</span>
+          </div>
+          <p class="text-slate-300 mb-2">Device Level Ring (DLR) provides sub-3ms packet recovery upon any physical cable or fiber optic severance.</p>
+          <ul class="list-disc list-inside text-slate-400 space-y-1">
+            <li>Stratix 5700/5400 managed industrial switches isolate corporate traffic from deterministic I/O multicast streams.</li>
+            <li>Full diagnostics available on EWS via FactoryTalk Network Manager.</li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900/90 border border-purple-500/60 rounded-xl p-4">
+          <div class="font-bold text-purple-400 text-sm mb-2 flex items-center gap-2">
+            <span>🔒 Cybersecurity & Version Governance</span>
+            <span class="text-[10px] text-slate-400">(IEC 62443 Aligned)</span>
+          </div>
+          <p class="text-slate-300 mb-2">FactoryTalk AssetCentre provides automated project archiving, operator audit logs, and scheduled backup snapshots.</p>
+          <ul class="list-disc list-inside text-slate-400 space-y-1">
+            <li>FactoryTalk Security integrated with Active Directory domain policy.</li>
+            <li>Stratix firewall restricts unauthorized USB and remote subnet access to critical PLC controllers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Presentation Footer -->
+  <footer class="mt-4 flex items-center justify-between text-xs text-slate-400 px-2">
+    <div>Use <strong>◀ Prev / Next ▶</strong> or Left/Right Arrow Keys to navigate slides</div>
+    <div>Ingredion Kalasin Plant | Project SPRINT (18K TPA Spray Dryer) | 2026 Deliverable</div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 5;
+
+    function showSlide(num) {
+      if (num < 1) num = 1;
+      if (num > totalSlides) num = totalSlides;
+      currentSlide = num;
+      for (let i = 1; i <= totalSlides; i++) {
+        const el = document.getElementById("slide-" + i);
+        if (el) {
+          if (i === currentSlide) el.classList.add("active");
+          else el.classList.remove("active");
+        }
+      }
+      document.getElementById("currentSlideNum").innerText = currentSlide;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) showSlide(currentSlide - 1);
+    }
+
+    // Keyboard Arrow Navigation
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+        nextSlide();
+      } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+        prevSlide();
+      }
+    });
+  </script>
+</body>
+</html>

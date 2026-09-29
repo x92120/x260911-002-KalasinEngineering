@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredion Kalasin — Redundant Cisco Core & Server Network Infrastructure</title>
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-blue: #0284c7;
+            --accent-teal: #0d9488;
+            --accent-green: #059669;
+            --accent-amber: #d97706;
+            --accent-pink: #db2777;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top App Bar */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title h1 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            background: #0284c7;
+            color: white;
+        }
+
+        .header-title p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn {
+            background: #ffffff;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        .btn-primary {
+            background: #0284c7;
+            border-color: #0369a1;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #0369a1;
+            color: #ffffff;
+        }
+
+        /* Main Workspace Area */
+        main {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            background: #e2e8f0;
+            cursor: grab;
+        }
+
+        main:active {
+            cursor: grabbing;
+        }
+
+        #viewport {
+            transform-origin: 0 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            will-change: transform;
+        }
+
+        #svgContainer {
+            width: 2600px;
+            height: 1750px;
+            background: #ffffff;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        #svgContainer svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* Floating Info HUD */
+        .hud-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-size: 12px;
+            z-index: 5;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            color: #334155;
+        }
+
+        .hud-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hud-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Zoom indicator */
+        .zoom-indicator {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-size: 12px;
+            color: #475569;
+            font-family: monospace;
+            font-weight: 700;
+            z-index: 5;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>
+                Ingredion Kalasin — Redundant Cisco &amp; Server Infrastructure
+                <span class="badge">DWG-260911-NET-02 (LIGHT STYLE)</span>
+            </h1>
+            <p>HSRP v2 Layer-3 High Availability • Server Dual-Homing &amp; Heartbeat • MCC 802.1Q Trunk • 10G Server Fiber</p>
+        </div>
+        <div class="toolbar">
+            <button class="btn" onclick="zoomIn()">➕ Zoom In</button>
+            <button class="btn" onclick="zoomOut()">➖ Zoom Out</button>
+            <button class="btn" onclick="fitToScreen()">🎯 Fit Screen</button>
+            <button class="btn" onclick="resetView()">🔄 100%</button>
+            <span style="border-left: 1px solid #cbd5e1; height: 20px; margin: 0 4px;"></span>
+            <a class="btn btn-primary" href="Redundant_Cisco_Core_and_Server_Network_Diagram.pdf" target="_blank">📄 View PDF</a>
+            <a class="btn" href="Redundant_Cisco_Core_and_Server_Network_Diagram.png" target="_blank">🖼️ View PNG</a>
+        </div>
+    </header>
+
+    <main id="mainContainer">
+        <div id="viewport">
+            <div id="svgContainer">
+                <object id="svgObj" type="image/svg+xml" data="Redundant_Cisco_Core_and_Server_Network_Diagram.svg" style="width: 2600px; height: 1750px; pointer-events: none;"></object>
+            </div>
+        </div>
+
+        <!-- Legend HUD -->
+        <div class="hud-panel">
+            <div class="hud-item">
+                <div class="hud-dot" style="background: #0284c7;"></div>
+                <span><strong>VLAN 10:</strong> SCADA Servers (HSRP .1)</span>
+            </div>
+            <div class="hud-item">
+                <div class="hud-dot" style="background: #0d9488;"></div>
+                <span><strong>VLAN 20:</strong> HMI Clients (HSRP .1)</span>
+            </div>
+            <div class="hud-item">
+                <div class="hud-dot" style="background: #059669;"></div>
+                <span><strong>VLAN 30:</strong> PLC Control (HSRP .1)</span>
+            </div>
+            <div class="hud-item">
+                <div class="hud-dot" style="background: #d97706;"></div>
+                <span><strong>VLAN 50:</strong> MCC Drives Trunk (HSRP .1)</span>
+            </div>
+            <div class="hud-item">
+                <div class="hud-dot" style="background: #db2777;"></div>
+                <span><strong>10G Fiber:</strong> Server Room</span>
+            </div>
+            <div class="hud-item">
+                <div class="hud-dot" style="background: #fef3c7; border: 2px dashed #d97706;"></div>
+                <span><strong>Heartbeat:</strong> 10.10.10.x/30 Direct</span>
+            </div>
+        </div>
+
+        <div class="zoom-indicator" id="zoomLevel">100%</div>
+    </main>
+
+    <script>
+        const viewport = document.getElementById('viewport');
+        const mainContainer = document.getElementById('mainContainer');
+        const zoomLevelEl = document.getElementById('zoomLevel');
+
+        let scale = 1;
+        let pointX = 0;
+        let pointY = 0;
+        let isPanning = false;
+        let startX = 0;
+        let startY = 0;
+
+        function setTransform() {
+            viewport.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
+            zoomLevelEl.textContent = `${Math.round(scale * 100)}%`;
+        }
+
+        function fitToScreen() {
+            const containerW = mainContainer.clientWidth;
+            const containerH = mainContainer.clientHeight;
+            const svgW = 2600;
+            const svgH = 1750;
+
+            const scaleX = (containerW - 60) / svgW;
+            const scaleY = (containerH - 60) / svgH;
+            scale = Math.min(scaleX, scaleY, 1.2);
+
+            pointX = (containerW - svgW * scale) / 2;
+            pointY = (containerH - svgH * scale) / 2;
+            setTransform();
+        }
+
+        function resetView() {
+            scale = 1;
+            pointX = 40;
+            pointY = 40;
+            setTransform();
+        }
+
+        function zoomIn() {
+            scale = Math.min(scale * 1.25, 4.0);
+            setTransform();
+        }
+
+        function zoomOut() {
+            scale = Math.max(scale / 1.25, 0.2);
+            setTransform();
+        }
+
+        mainContainer.addEventListener('mousedown', (e) => {
+            if (e.button !== 0) return;
+            isPanning = true;
+            startX = e.clientX - pointX;
+            startY = e.clientY - pointY;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isPanning) return;
+            pointX = e.clientX - startX;
+            pointY = e.clientY - startY;
+            setTransform();
+        });
+
+        window.addEventListener('mouseup', () => {
+            isPanning = false;
+        });
+
+        mainContainer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const xs = (e.clientX - pointX) / scale;
+            const ys = (e.clientY - pointY) / scale;
+            const delta = -e.deltaY;
+
+            if (delta > 0) {
+                scale = Math.min(scale * 1.15, 4.0);
+            } else {
+                scale = Math.max(scale / 1.15, 0.2);
+            }
+
+            pointX = e.clientX - xs * scale;
+            pointY = e.clientY - ys * scale;
+            setTransform();
+        }, { passive: false });
+
+        window.addEventListener('load', () => {
+            fitToScreen();
+        });
+        window.addEventListener('resize', () => {
+            fitToScreen();
+        });
+    </script>
+</body>
+</html>

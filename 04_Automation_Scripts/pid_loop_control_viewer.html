@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PID Loop Control Specification & Presentation Viewer | Ingredion Kalasin</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            slate: { 850: '#172033', 950: '#0a0f1d' }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(8px); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Top Navbar -->
+  <nav class="border-b border-slate-800 bg-slate-900/90 sticky top-0 z-50 backdrop-blur">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+          <i class="fa-solid fa-sliders text-xl"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-[10px] font-bold tracking-widest uppercase bg-sky-500/20 text-sky-400 px-2 py-0.5 rounded">Process Automation Deck</span>
+            <span class="text-xs text-slate-400">Rev 3.6 Master</span>
+          </div>
+          <h1 class="text-base font-bold text-white tracking-tight">PID Loop Control Specification & Presentation</h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="prevSlide()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          <i class="fa-solid fa-arrow-left mr-1"></i> Prev
+        </button>
+        <span id="slide-indicator" class="text-xs font-mono text-sky-400 font-bold px-3">Slide 1 / 8</span>
+        <button onclick="nextSlide()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow transition">
+          Next <i class="fa-solid fa-arrow-right ml-1"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Slide Thumbnails Bar -->
+  <div class="max-w-7xl mx-auto px-4 py-3 w-full">
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2">
+      <button onclick="goToSlide(1)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-sky-600/30 border-sky-500 text-white" id="tab-1">1. Cover</button>
+      <button onclick="goToSlide(2)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-2">2. Loop Map</button>
+      <button onclick="goToSlide(3)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-3">3. Jet Cooker</button>
+      <button onclick="goToSlide(4)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-4">4. Thermal / Heat</button>
+      <button onclick="goToSlide(5)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-5">5. Chamber & Draft</button>
+      <button onclick="goToSlide(6)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-6">6. Utility & LEV</button>
+      <button onclick="goToSlide(7)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-7">7. Master Matrix</button>
+      <button onclick="goToSlide(8)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-8">8. PIDE / HMI</button>
+    </div>
+  </div>
+
+  <!-- Main Slide Display Canvas -->
+  <main class="max-w-7xl mx-auto px-4 pb-8 w-full flex-1">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative min-h-[580px] flex flex-col justify-center">
+      <div id="slide-container" class="p-6 md:p-8">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom File & Summary Bar -->
+  <footer class="border-t border-slate-800 bg-slate-900/80 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center text-xs text-slate-400 gap-3">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-file-powerpoint text-rose-400 text-base"></i>
+        <span>Generated Deliverable:</span>
+        <span class="mono font-semibold text-slate-200">PID_Loop_Control_Specification_Kalasin.pptx</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-emerald-400 font-medium"><i class="fa-solid fa-circle-check mr-1"></i>16 PID Loops Identified</span>
+        <span>•</span>
+        <span class="text-sky-400 font-medium">5 Dedicated 4-20mA AO</span>
+        <span>•</span>
+        <span class="text-amber-400 font-medium">10 EtherNet/IP VFD Loops</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    const slidesContent = {
+      1: `
+        <div class="max-w-5xl mx-auto text-center space-y-6 py-8">
+          <div class="inline-flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+            Ingredion (Thailand) Co., Ltd. — Kalasin Plant
+          </div>
+          <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight">
+            Master Process PID Loop Control Specification
+          </h1>
+          <p class="text-lg md:text-xl text-slate-300 font-medium max-w-3xl mx-auto">
+            Project SPRINT: 18,000 TPA Spray Dryer Plant & Jet Cooker Reaction Facility
+          </p>
+          <p class="text-sm text-emerald-400 font-medium max-w-4xl mx-auto">
+            Complete Control Architecture: 16 PID Loops | 5 Hardwired 4–20 mA Analog Output Valves | 10 EtherNet/IP VFD Speed References | 1 Remote Utility AO | Allen-Bradley ControlLogix 5580 PIDE Platform
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-8 text-left">
+            <div class="p-4 rounded-xl bg-slate-800/80 border border-amber-500/40">
+              <div class="text-amber-400 font-bold text-xs uppercase tracking-wider">Thermal Reactions</div>
+              <div class="text-white font-bold text-base mt-1">5 Critical Loops</div>
+              <p class="text-xs text-slate-300 mt-2">Direct Jet Cooking (TCV-40222), Air Heating (UY-FH-60210B), Pre-Heater (TCV-60214), Steam Header (PCV-60201) & Camera Chiller (TCV-60202).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800/80 border border-sky-500/40">
+              <div class="text-sky-400 font-bold text-xs uppercase tracking-wider">Draft & Air Flow</div>
+              <div class="text-white font-bold text-base mt-1">4 Safety Loops</div>
+              <p class="text-xs text-slate-300 mt-2">Drying Chamber Draft Pressure (PIC-60220 / FANE-21 VFD), Main Air Supply (FIC-60210), Burner Combustion Ratio & Conveying Fan.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800/80 border border-teal-500/40">
+              <div class="text-teal-400 font-bold text-xs uppercase tracking-wider">Product Quality</div>
+              <div class="text-white font-bold text-base mt-1">4 Process Loops</div>
+              <p class="text-xs text-slate-300 mt-2">Chamber Outlet Temp / Moisture Cascade (TIC-60226 to PUPD-11 VFD), Jet Cooker Mass Flow (FIC-40203) & pH Conditioning (pHTC-40201/02).</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-800/80 border border-purple-500/40">
+              <div class="text-purple-400 font-bold text-xs uppercase tracking-wider">Hardware Platform</div>
+              <div class="text-white font-bold text-base mt-1">Rockwell 5580</div>
+              <p class="text-xs text-slate-300 mt-2">1756-OF8 HART AO module (C3S13), 20 PowerFlex VFDs over EtherNet/IP bus (C7S00), 1756-IF16 HART inputs & FT View SE Faceplates.</p>
+            </div>
+          </div>
+        </div>
+      `,
+      2: `
+        <div class="space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+            <div>
+              <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Plant Process Schematic</span>
+              <h2 class="text-xl font-bold text-white">PID Control Loop Allocation Across 4 Process Zones</h2>
+            </div>
+            <span class="text-xs mono px-2.5 py-1 rounded bg-slate-800 text-slate-300">16 PID Loops</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <!-- Zone 1 -->
+            <div class="bg-slate-850 rounded-xl p-3 border border-teal-500/40 space-y-2">
+              <div class="text-xs font-bold text-teal-400 uppercase border-b border-slate-700/50 pb-1">Zone 1 : Slurry Prep & Jet Cooker</div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">pHTC-40201 / 40202</div>
+                <div class="text-teal-300 font-medium text-[11px]">Slurry pH Conditioning</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: pHT-40201/02 | CV: PD-40204/05</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">LIC-40203</div>
+                <div class="text-teal-300 font-medium text-[11px]">Infeed Tank Level Buffer</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: LT-40203 | CV: Transfer Valves</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">FIC-40203</div>
+                <div class="text-teal-300 font-medium text-[11px]">Jet Cooker Mass Flow Rate</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: FT-40221 Coriolis | CV: PUCF-11 VFD</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-amber-500/50 text-xs bg-amber-500/5">
+                <div class="font-bold text-amber-400">TIC-40222 [CRITICAL]</div>
+                <div class="text-white font-medium text-[11px]">Jet Cooker Steam Temp Control</div>
+                <div class="text-slate-300 text-[10px] mt-1">PV: TT-40221/22 | CV: TCV-40222 (4-20mA C3S13,00)</div>
+              </div>
+            </div>
+
+            <!-- Zone 2 -->
+            <div class="bg-slate-850 rounded-xl p-3 border border-amber-500/40 space-y-2">
+              <div class="text-xs font-bold text-amber-400 uppercase border-b border-slate-700/50 pb-1">Zone 2 : Air Heating & Steam</div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">PIC-60201 [MASTER]</div>
+                <div class="text-amber-300 font-medium text-[11px]">Steam Header Pressure PRV</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: PT-60201 | CV: PCV-60201 (4-20mA C3S13,03)</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">TIC-60214</div>
+                <div class="text-amber-300 font-medium text-[11px]">Air Pre-Heater Temp (HXCH)</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: TT-60214 | CV: TCV-60214 (4-20mA C3S13,02)</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-rose-500/50 text-xs bg-rose-500/5">
+                <div class="font-bold text-rose-400">TIC-60210 [THERMAL]</div>
+                <div class="text-white font-medium text-[11px]">Dryer Inlet Air Heating Temp</div>
+                <div class="text-slate-300 text-[10px] mt-1">PV: TT-60210/11 | CV: UY-FH-60210B (4-20mA C3S13,04)</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">FIC-60210 / 60211</div>
+                <div class="text-amber-300 font-medium text-[11px]">Main Supply & Comb. Air Flow</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: FT-60210/11 | CV: FANS-21 & FANC-21 VFDs</div>
+              </div>
+            </div>
+
+            <!-- Zone 3 -->
+            <div class="bg-slate-850 rounded-xl p-3 border border-rose-500/40 space-y-2">
+              <div class="text-xs font-bold text-rose-400 uppercase border-b border-slate-700/50 pb-1">Zone 3 : Chamber Draft & Quality</div>
+              <div class="bg-slate-800 p-2 rounded border border-rose-500/50 text-xs bg-rose-500/5">
+                <div class="font-bold text-rose-400">PIC-60220 [SAFETY]</div>
+                <div class="text-white font-medium text-[11px]">Chamber Draft Pressure (-1.2 mbar)</div>
+                <div class="text-slate-300 text-[10px] mt-1">PV: PT-60220 | CV: FANE-21 Exhaust Fan VFD</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">TIC-60226 / FIC-60205</div>
+                <div class="text-rose-300 font-medium text-[11px]">Outlet Temp / Moisture Cascade</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: TT-60226/40 | CV: PUPD-11 Slurry Pump VFD</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">TIC-60202</div>
+                <div class="text-rose-300 font-medium text-[11px]">Camera Air Chilled Water</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: TT-60202 | CV: TCV-60202 (4-20mA C3S13,01)</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">TIC-60215</div>
+                <div class="text-rose-300 font-medium text-[11px]">Glycol Heat Recovery Loop</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: TT-60215A/B | CV: PUCF-21 Glycol Pump VFD</div>
+              </div>
+            </div>
+
+            <!-- Zone 4 -->
+            <div class="bg-slate-850 rounded-xl p-3 border border-purple-500/40 space-y-2">
+              <div class="text-xs font-bold text-purple-400 uppercase border-b border-slate-700/50 pb-1">Zone 4 : Conveying & Utilities</div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">FIC-60201</div>
+                <div class="text-purple-300 font-medium text-[11px]">Powder Cooling Air Flow</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: FT-60201 | CV: FANS-31 Conveying Fan VFD</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">PIC-61302</div>
+                <div class="text-purple-300 font-medium text-[11px]">Silo & LEV Dust Extraction</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: PT-61302 | CV: BF-61302 LEV Fan VFD</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">LIC-61301</div>
+                <div class="text-purple-300 font-medium text-[11px]">Packing Silo Level Balance</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: LT-61301 | CV: Cyclone Rotary Valves</div>
+              </div>
+              <div class="bg-slate-800 p-2 rounded border border-slate-700 text-xs">
+                <div class="font-bold text-white">PIC-81001</div>
+                <div class="text-purple-300 font-medium text-[11px]">Boiler Steam Remote Setpoint</div>
+                <div class="text-slate-400 text-[10px] mt-1">PV: FT-60202 Demand | CV: RIO-200 AO to Boiler</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      3: `
+        <div class="space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+            <div>
+              <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Area 402 Deep-Dive</span>
+              <h2 class="text-xl font-bold text-white">Continuous Jet Cooker & Slurry Preparation Control Loops</h2>
+            </div>
+            <span class="text-xs mono px-2.5 py-1 rounded bg-slate-800 text-slate-300">P&ID: 325-01-402-PD-01 / PD-02</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-slate-850 rounded-xl p-4 border border-amber-500/40 space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-amber-400 text-sm">TIC-40222 : Jet Cooker Steam Cooking Temp</span>
+                <span class="text-[10px] bg-rose-500/20 text-rose-400 font-bold px-2 py-0.5 rounded">CRITICAL</span>
+              </div>
+              <div class="text-xs text-slate-300 space-y-1.5">
+                <p><strong class="text-white">Process Variable (PV):</strong> Duplex Pt100 RTDs TT-40221 & TT-40222 (0–150°C)</p>
+                <p><strong class="text-white">Setpoint (SP):</strong> 120.0 °C to 140.0 °C (Exact starch gelatinization target)</p>
+                <p><strong class="text-white">Control Variable (CV):</strong> Samson Type 3241 Globe Valve w/ Trovis 3730-1 Positioner</p>
+                <p><strong class="text-white">Hardware Channel:</strong> 4–20 mA AO @ Chassis C3 Slot 13 Channel 00 (TCV-40222_AO_1)</p>
+                <p><strong class="text-white">Fail-Safe State:</strong> Fail Closed (FC) via mechanical spring (Instant steam shutoff)</p>
+                <p><strong class="text-white">Philosophy:</strong> Fast-acting reverse-acting PID (100ms task). Deviation alarm (±2°C) automatically trips slurry feed pump to prevent unburst starch paste reaching dryer.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-teal-500/40 space-y-3">
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-teal-400 text-sm">FIC-40203 : Jet Cooker Slurry Mass Flow Control</span>
+                <span class="text-[10px] bg-teal-500/20 text-teal-400 font-bold px-2 py-0.5 rounded">STABILITY</span>
+              </div>
+              <div class="text-xs text-slate-300 space-y-1.5">
+                <p><strong class="text-white">Process Variable (PV):</strong> Coriolis Mass Flowmeter FT-40221 / FT-40222 (Mass flow & Density)</p>
+                <p><strong class="text-white">Setpoint (SP):</strong> 4.50 to 7.50 t/h (Calibrated for exact cooker residence time)</p>
+                <p><strong class="text-white">Control Variable (CV):</strong> Centrifugal Slurry Feed Pump PUCF-11 VFD Speed Reference</p>
+                <p><strong class="text-white">Hardware Channel:</strong> EtherNet/IP Industrial Bus link to MCC PowerFlex Drive (C7S00)</p>
+                <p><strong class="text-white">Fail-Safe State:</strong> Coast to Stop on drive fault or low flow switch trip (FS-40205)</p>
+                <p><strong class="text-white">Philosophy:</strong> Maintains uniform volumetric throughput independent of viscosity changes. Cascaded with downstream infeed buffer tank level (LT-40203).</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-slate-700 space-y-3">
+              <span class="font-bold text-white text-sm">pHTC-40201 / 40202 : pH Adjustment Conditioning Loops</span>
+              <div class="text-xs text-slate-300 space-y-1.5">
+                <p><strong class="text-white">Process Variable (PV):</strong> pHT-40201 (Tank 1) & pHT-40202 (Tank 2) — Mettler InPro 3250i</p>
+                <p><strong class="text-white">Setpoint (SP):</strong> 5.80 to 6.20 pH (Enzymatic reaction conditioning)</p>
+                <p><strong class="text-white">Control Variable (CV):</strong> Acid/Alkali Dosing Pumps PD-40204 & PD-40205 (Stroke/Speed)</p>
+                <p><strong class="text-white">Philosophy:</strong> Split-range non-linear PID scheduling around neutral pH to prevent chemical overshoot. Integrated auto-cleaning wash via SV-40201/02.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-slate-700 space-y-3">
+              <span class="font-bold text-white text-sm">LIC-40201 / 40202 / 40203 : Buffer Tank Level Regulation</span>
+              <div class="text-xs text-slate-300 space-y-1.5">
+                <p><strong class="text-white">Process Variable (PV):</strong> Hydrostatic / Radar Level Transmitters LT-40201..03 (0–100%)</p>
+                <p><strong class="text-white">Setpoint (SP):</strong> 65.0% Working Level (Provides 30-min hydraulic surge cushion)</p>
+                <p><strong class="text-white">Control Variable (CV):</strong> Slurry transfer automated valves XV-40201/02 & transfer pumps</p>
+                <p><strong class="text-white">Safety Interlocks:</strong> Low-level pump dry-run lockout; high-level audible plant alarm.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      4: `
+        <div class="space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+            <div>
+              <span class="text-xs font-bold text-amber-400 uppercase tracking-wider">Area 602 Deep-Dive</span>
+              <h2 class="text-xl font-bold text-white">Spray Dryer Air Heating & Steam Pressure Regulation Loops</h2>
+            </div>
+            <span class="text-xs mono px-2.5 py-1 rounded bg-slate-800 text-slate-300">P&ID: 325-01-602-PD-02 / PD-03 / PD-06</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-slate-850 rounded-xl p-4 border border-rose-500/40 space-y-2.5">
+              <div class="text-rose-400 font-bold text-xs uppercase">Master Thermal Energy</div>
+              <h3 class="font-bold text-white text-sm">TIC-60210 : Drying Air Inlet Temp</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">PV:</strong> TT-60210 / TT-60211 (Hot Air Duct DTHA-21, 0–300°C)</p>
+                <p><strong class="text-white">SP:</strong> 185.0 °C to 205.0 °C (Recipe target)</p>
+                <p><strong class="text-white">CV:</strong> UY-FH-60210B (BMS Burner Demand 0–100%)</p>
+                <p><strong class="text-white">I/O Channel:</strong> 4–20 mA AO (C3S13,04)</p>
+                <p><strong class="text-white">Skid:</strong> Direct-Fired Gas Air Heater AHTR-21</p>
+                <p><strong class="text-white">Fail State:</strong> 0% Demand / Burner Safety Shutdown</p>
+                <p><strong class="text-white">Tuning:</strong> Airflow feedforward compensation from FT-60210 pre-adjusts gas firing rate during volume fluctuations.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-amber-500/40 space-y-2.5">
+              <div class="text-amber-400 font-bold text-xs uppercase">Steam Condensate Recapture</div>
+              <h3 class="font-bold text-white text-sm">TIC-60214 : Air Pre-Heater Temp</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">PV:</strong> TT-60214 (Downstream HXCH-21, 0–150°C)</p>
+                <p><strong class="text-white">SP:</strong> 75.0 °C to 85.0 °C Pre-heat base</p>
+                <p><strong class="text-white">CV:</strong> TCV-60214 (Samson NPS 2" Cv 47)</p>
+                <p><strong class="text-white">I/O Channel:</strong> 4–20 mA AO (C3S13,02)</p>
+                <p><strong class="text-white">Exchanger:</strong> Shell & Tube Steam Pre-Heater HXCH-21</p>
+                <p><strong class="text-white">Fail State:</strong> Fail Closed (FC) via internal spring</p>
+                <p><strong class="text-white">Tuning:</strong> Recovers up to 28% of plant steam energy before air reaches gas burner, reducing LPG fuel costs.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-sky-500/40 space-y-2.5">
+              <div class="text-sky-400 font-bold text-xs uppercase">PRV Pressure Station</div>
+              <h3 class="font-bold text-white text-sm">PIC-60201 : Main Steam Header</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">PV:</strong> PT-60201 (0–25 bar(g) Cerabar PMP51B)</p>
+                <p><strong class="text-white">SP:</strong> 16.0 bar(g) Stable Supply Header</p>
+                <p><strong class="text-white">CV:</strong> PCV-60201 (Samson NPS 4" Cv 190)</p>
+                <p><strong class="text-white">I/O Channel:</strong> 4–20 mA AO (C3S13,03)</p>
+                <p><strong class="text-white">Valve:</strong> Class 300 Globe + Trovis 3730-1 Positioner</p>
+                <p><strong class="text-white">Fail State:</strong> Fail Closed (FC) / Tight Class IV shutoff</p>
+                <p><strong class="text-white">Tuning:</strong> High-speed 50ms task mitigates utility boiler surges (16–20 bar) into steady 16.0 bar supply.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      5: `
+        <div class="space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+            <div>
+              <span class="text-xs font-bold text-rose-400 uppercase tracking-wider">Area 602 Deep-Dive</span>
+              <h2 class="text-xl font-bold text-white">Chamber Draft Pressure, Product Moisture & Optical Inspection Loops</h2>
+            </div>
+            <span class="text-xs mono px-2.5 py-1 rounded bg-slate-800 text-slate-300">P&ID: 325-01-602-PD-04 / PD-05 / PD-07</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-slate-850 rounded-xl p-4 border border-rose-500/50 space-y-2.5 bg-rose-500/5">
+              <div class="text-rose-400 font-bold text-xs uppercase flex items-center gap-1">
+                <i class="fa-solid fa-triangle-exclamation"></i> Safety Critical Draft Loop
+              </div>
+              <h3 class="font-bold text-white text-sm">PIC-60220 : Chamber Draft Negative Press.</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">PV:</strong> PT-60220 (Draft Differential -10.0 to +10.0 mbar)</p>
+                <p><strong class="text-white">SP:</strong> -1.20 mbar (-120 Pa slight negative vacuum)</p>
+                <p><strong class="text-white">CV:</strong> BFY-60240 (FANE-21 Exhaust Fan VFD Speed)</p>
+                <p><strong class="text-white">Bus Link:</strong> EtherNet/IP Bus to MCC (C7S00)</p>
+                <p><strong class="text-white">Protection:</strong> PSL-60220 Low Draft & PSH-60220 High Draft</p>
+                <p><strong class="text-white">Why Critical:</strong> Prevents hot explosive starch dust from puffing out into the building while protecting chamber from negative collapse.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-emerald-500/40 space-y-2.5">
+              <div class="text-emerald-400 font-bold text-xs uppercase">Product Quality Cascade</div>
+              <h3 class="font-bold text-white text-sm">TIC-60226 : Outlet Temp / Moisture</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">PV:</strong> TT-60226 Chamber Discharge & TT-60240 Exhaust</p>
+                <p><strong class="text-white">SP:</strong> 88.0 °C to 92.0 °C (Yields 5.5–6.5% powder moisture)</p>
+                <p><strong class="text-white">CV:</strong> PCY-60205 (High-Pressure Slurry Pump PUPD-11 VFD)</p>
+                <p><strong class="text-white">Feedback:</strong> 16 Ultrasonic Flow Transmitters FT-60261FA..FR</p>
+                <p><strong class="text-white">Cascade Action:</strong> If exhaust temp rises (overdrying), slurry feed increases; if temp sags (wet product), feed cuts back.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-cyan-500/40 space-y-2.5">
+              <div class="text-cyan-400 font-bold text-xs uppercase">In-Chamber Optical Sensor</div>
+              <h3 class="font-bold text-white text-sm">TIC-60202 : Camera Air Chilled Water</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">PV:</strong> TT-60202 (Purge Air to High-Temp Camera ACAM-21)</p>
+                <p><strong class="text-white">SP:</strong> 22.0 °C to 25.0 °C Purge Temperature</p>
+                <p><strong class="text-white">CV:</strong> TCV-60202 / TV-60202 (Samson 3-Way Water Valve)</p>
+                <p><strong class="text-white">I/O Channel:</strong> 4–20 mA AO @ Chassis C3 Slot 13 Channel 01</p>
+                <p><strong class="text-white">Fail State:</strong> 100% Chilled water cooling on signal failure</p>
+                <p><strong class="text-white">Function:</strong> Protects internal optical inspection cameras from 200°C chamber radiant heat and prevents lens fogging.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      6: `
+        <div class="space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+            <div>
+              <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Area 602/613 & Utilities</span>
+              <h2 class="text-xl font-bold text-white">Heat Recovery, Pneumatic Conveying & Boiler Feedforward Loops</h2>
+            </div>
+            <span class="text-xs mono px-2.5 py-1 rounded bg-slate-800 text-slate-300">P&ID: 325-01-602-PD-08 / 613-PD-03 / 814-PD-01</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-slate-850 rounded-xl p-4 border border-teal-500/40 space-y-2">
+              <div class="text-teal-400 font-bold text-xs uppercase">Run-Around Glycol Energy Loop</div>
+              <h3 class="font-bold text-white text-sm">TIC-60215 : Glycol Heat Recovery Loop (PUCF-21)</h3>
+              <div class="text-xs text-slate-300 space-y-1 pt-1">
+                <p><strong class="text-white">PV:</strong> TT-60215A/B (Glycol Supply & Return Temp) + PT-60215</p>
+                <p><strong class="text-white">SP:</strong> 55.0 °C to 65.0 °C (Safely above exhaust acid condensation point)</p>
+                <p><strong class="text-white">CV:</strong> PCY-60215 (Heat Recovery Pump PUCF-21 VFD via EtherNet/IP)</p>
+                <p><strong class="text-white">Benefit:</strong> Captures up to 1.8 MW thermal energy from hot exhaust gas.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-sky-500/40 space-y-2">
+              <div class="text-sky-400 font-bold text-xs uppercase">Powder Chilling & Transport</div>
+              <h3 class="font-bold text-white text-sm">FIC-60201 : Pneumatic Conveying Air Velocity</h3>
+              <div class="text-xs text-slate-300 space-y-1 pt-1">
+                <p><strong class="text-white">PV:</strong> FT-60201 (Conveying Mass Flow) & PT-60203 (Duct Pressure)</p>
+                <p><strong class="text-white">SP:</strong> 18.0 to 22.0 m/s Saltation Velocity (No fallout / No clogging)</p>
+                <p><strong class="text-white">CV:</strong> BFY-60206 (Conveying Fan FANS-31 VFD via EtherNet/IP)</p>
+                <p><strong class="text-white">Benefit:</strong> Rapidly chills powder below starch glass transition temp (45°C).</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-amber-500/40 space-y-2">
+              <div class="text-amber-400 font-bold text-xs uppercase">ATEX Silo Dust Extraction</div>
+              <h3 class="font-bold text-white text-sm">PIC-61302 : Silo & LEV Dust Collection Vacuum</h3>
+              <div class="text-xs text-slate-300 space-y-1 pt-1">
+                <p><strong class="text-white">PV:</strong> PT-61302 (Vacuum Pressure) & DPT-61301/02 (Filter Differential)</p>
+                <p><strong class="text-white">SP:</strong> -15.0 mbar Negative Pressure at Packing Hoods</p>
+                <p><strong class="text-white">CV:</strong> BFY-61302 (LEV Blower Fan BF-61302 VFD via EtherNet/IP)</p>
+                <p><strong class="text-white">Benefit:</strong> Zero airborne starch dust in packaging hall; auto reverse air pulse cleaning.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-purple-500/40 space-y-2">
+              <div class="text-purple-400 font-bold text-xs uppercase">Utility Steam Feedforward</div>
+              <h3 class="font-bold text-white text-sm">PIC-81001 : Boiler Steam Demand Remote Sync</h3>
+              <div class="text-xs text-slate-300 space-y-1 pt-1">
+                <p><strong class="text-white">PV:</strong> FT-60202 Total Steam Flow & PT-60201 Header Pressure</p>
+                <p><strong class="text-white">SP:</strong> Dynamic Feedforward Boiler Firing Demand Tracking</p>
+                <p><strong class="text-white">CV:</strong> External Remote Setpoint (4–20 mA AO from RIO-200 Skid)</p>
+                <p><strong class="text-white">Benefit:</strong> Pre-fires boiler ahead of sudden spray dryer start-up, eliminating header collapse.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `,
+      7: `
+        <div class="space-y-3">
+          <div class="border-b border-slate-800 pb-2 flex justify-between items-center">
+            <div>
+              <span class="text-xs font-bold text-sky-400 uppercase tracking-wider">Engineering Schedule</span>
+              <h2 class="text-lg font-bold text-white">Master PID Control Loop Matrix (16 Loops)</h2>
+            </div>
+            <span class="text-[11px] mono text-slate-400">ControlLogix 5580 I/O Map</span>
+          </div>
+
+          <div class="overflow-x-auto rounded-xl border border-slate-800">
+            <table class="w-full text-[11px] text-left">
+              <thead class="bg-slate-800 text-sky-300 font-bold border-b border-slate-700">
+                <tr>
+                  <th class="p-2">Loop Tag</th>
+                  <th class="p-2">Process Service Description</th>
+                  <th class="p-2">P&ID</th>
+                  <th class="p-2">PV Sensor Tag</th>
+                  <th class="p-2">Nominal SP</th>
+                  <th class="p-2">Final Control Element</th>
+                  <th class="p-2">I/O Interface</th>
+                  <th class="p-2">Action</th>
+                  <th class="p-2">Fail State</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800 text-slate-300">
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-amber-400">TIC-40222</td><td class="p-2">Jet Cooker Direct Steam Cooking Temp</td><td class="p-2 mono">325-01-402-PD-02</td><td class="p-2">TT-40221 / TT-40222</td><td class="p-2">120–140 °C</td><td class="p-2">TCV-40222 (Samson 3241)</td><td class="p-2 mono">4-20mA (C3S13,00)</td><td class="p-2 text-center">Rev</td><td class="p-2 text-rose-400">Fail Closed</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-teal-400">FIC-40203</td><td class="p-2">Jet Cooker Slurry Mass Flow Control</td><td class="p-2 mono">325-01-402-PD-02</td><td class="p-2">FT-40221 / FT-40222</td><td class="p-2">4.5–7.5 t/h</td><td class="p-2">PUCF-11 Slurry Pump VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Rev</td><td class="p-2">Stop on Fail</td></tr>
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-teal-400">pHTC-40201</td><td class="p-2">pH Adjustment Tank 1 Conditioning</td><td class="p-2 mono">325-01-402-PD-01</td><td class="p-2">pHT-40201 (0–14 pH)</td><td class="p-2">5.8–6.2 pH</td><td class="p-2">PD-40204 Dosing Pump</td><td class="p-2 mono">Discrete/Speed</td><td class="p-2 text-center">Split</td><td class="p-2">Stop on Fail</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-teal-400">pHTC-40202</td><td class="p-2">pH Adjustment Tank 2 Conditioning</td><td class="p-2 mono">325-01-402-PD-01</td><td class="p-2">pHT-40202 (0–14 pH)</td><td class="p-2">5.8–6.2 pH</td><td class="p-2">PD-40205 Dosing Pump</td><td class="p-2 mono">Discrete/Speed</td><td class="p-2 text-center">Split</td><td class="p-2">Stop on Fail</td></tr>
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-sky-400">PIC-60201</td><td class="p-2">Dryer Main Steam Header Pressure</td><td class="p-2 mono">325-01-602-PD-02</td><td class="p-2">PT-60201 (0–25 bar)</td><td class="p-2">16.0 bar(g)</td><td class="p-2">PCV-60201 (Samson NPS 4")</td><td class="p-2 mono">4-20mA (C3S13,03)</td><td class="p-2 text-center">Rev</td><td class="p-2 text-rose-400">Fail Closed</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-amber-400">TIC-60214</td><td class="p-2">Air Pre-Heater Steam Exchanger Temp</td><td class="p-2 mono">325-01-602-PD-03</td><td class="p-2">TT-60214 (0–150°C)</td><td class="p-2">75–85 °C</td><td class="p-2">TCV-60214 (Samson NPS 2")</td><td class="p-2 mono">4-20mA (C3S13,02)</td><td class="p-2 text-center">Rev</td><td class="p-2 text-rose-400">Fail Closed</td></tr>
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-rose-400">TIC-60210</td><td class="p-2">Dryer Inlet Air Heating Temperature</td><td class="p-2 mono">325-01-602-PD-06</td><td class="p-2">TT-60210 / TT-60211</td><td class="p-2">185–205 °C</td><td class="p-2">UY-FH-60210B (BMS Demand)</td><td class="p-2 mono">4-20mA (C3S13,04)</td><td class="p-2 text-center">Rev</td><td class="p-2 text-rose-400">0% Demand</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-sky-400">FIC-60210</td><td class="p-2">Main Supply Air Flow Rate Control</td><td class="p-2 mono">325-01-602-PD-03</td><td class="p-2">FT-60210 / FT-60211</td><td class="p-2">32,000 Nm³/h</td><td class="p-2">FANS-21 Supply Fan VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Rev</td><td class="p-2">Coast / Stop</td></tr>
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-sky-400">FIC-60211</td><td class="p-2">Burner Combustion Air Flow / Ratio</td><td class="p-2 mono">325-01-602-PD-03</td><td class="p-2">PT-60216 / TT-60216</td><td class="p-2">Ratio to Gas</td><td class="p-2">FANC-21 Comb. Fan VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Rev</td><td class="p-2">Coast / Purge</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-rose-400">PIC-60220</td><td class="p-2">Dryer Chamber Draft Pressure (Safety)</td><td class="p-2 mono">325-01-602-PD-04</td><td class="p-2">PT-60220 (-10..+10 mbar)</td><td class="p-2">-1.20 mbar</td><td class="p-2">FANE-21 Exhaust Fan VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Direct</td><td class="p-2 text-emerald-400">Safe Ramp</td></tr>
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-emerald-400">TIC-60226</td><td class="p-2">Exhaust Temp / Moisture Cascade Loop</td><td class="p-2 mono">325-01-602-PD-04</td><td class="p-2">TT-60226 / TT-60240</td><td class="p-2">88–92 °C</td><td class="p-2">PUPD-11 Slurry Pump VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Direct</td><td class="p-2">Auto Cutback</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-cyan-400">TIC-60202</td><td class="p-2">Camera Purge Air Chilled Water Temp</td><td class="p-2 mono">325-01-602-PD-07</td><td class="p-2">TT-60202 (0–60°C)</td><td class="p-2">22–25 °C</td><td class="p-2">TCV-60202 (3-Way Valve)</td><td class="p-2 mono">4-20mA (C3S13,01)</td><td class="p-2 text-center">Direct</td><td class="p-2 text-emerald-400">Fail Port A</td></tr>
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-teal-400">TIC-60215</td><td class="p-2">Glycol Heat Recovery Circulation</td><td class="p-2 mono">325-01-602-PD-03</td><td class="p-2">TT-60215A / TT-60215B</td><td class="p-2">55–65 °C</td><td class="p-2">PUCF-21 Glycol Pump VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Rev</td><td class="p-2">Modulate</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-purple-400">FIC-60201</td><td class="p-2">Powder Cooling & Conveying Air Flow</td><td class="p-2 mono">325-01-602-PD-08</td><td class="p-2">FT-60201 / PT-60203</td><td class="p-2">18–22 m/s</td><td class="p-2">FANS-31 Conveying Fan VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Rev</td><td class="p-2">Coast / Stop</td></tr>
+                <tr class="bg-slate-900/60"><td class="p-2 font-bold text-amber-400">PIC-61302</td><td class="p-2">Packing Silo & LEV Extraction Vacuum</td><td class="p-2 mono">325-01-613-PD-03</td><td class="p-2">PT-61302 (-50..0 mbar)</td><td class="p-2">-15 mbar</td><td class="p-2">BF-61302 LEV Blower VFD</td><td class="p-2 mono">EtherNet/IP Bus</td><td class="p-2 text-center">Direct</td><td class="p-2">Modulate</td></tr>
+                <tr class="bg-slate-850/60"><td class="p-2 font-bold text-purple-400">PIC-81001</td><td class="p-2">Boiler Steam Demand Remote Sync</td><td class="p-2 mono">325-01-814-PD-01</td><td class="p-2">Total Steam (FT-60202)</td><td class="p-2">Feedforward</td><td class="p-2">Remote Setpoint to Boiler</td><td class="p-2 mono">4-20mA (RIO-200)</td><td class="p-2 text-center">Direct</td><td class="p-2">Demand Safe</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `,
+      8: `
+        <div class="space-y-4">
+          <div class="border-b border-slate-800 pb-3 flex justify-between items-center">
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Implementation Architecture</span>
+              <h2 class="text-xl font-bold text-white">Rockwell ControlLogix PIDE Standards & FactoryTalk View SE</h2>
+            </div>
+            <span class="text-xs mono px-2.5 py-1 rounded bg-slate-800 text-slate-300">Studio 5000 Logix Designer</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-slate-850 rounded-xl p-4 border border-sky-500/40 space-y-2.5">
+              <div class="text-sky-400 font-bold text-xs uppercase">PIDE Function Block Standards</div>
+              <h3 class="font-bold text-white text-sm">Enhanced PID Execution & Timing</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">Task Timing:</strong> Fast loops (PIC-60220, PIC-60201) @ 50ms; Flow/Speed loops @ 100ms; Thermal/pH loops @ 250ms.</p>
+                <p><strong class="text-white">Modes:</strong> Bumpless transfer between Hand (Manual CV), Auto (Local SP) and Cascade (Remote SP).</p>
+                <p><strong class="text-white">Anti-Windup:</strong> Clamped CV limits with rate-of-change clamping (%/s) prevents actuator mechanical hammering.</p>
+                <p><strong class="text-white">Derivative:</strong> Low-pass PV derivative filtering ignores sensor EMI noise.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-amber-500/40 space-y-2.5">
+              <div class="text-amber-400 font-bold text-xs uppercase">Advanced Control Strategies</div>
+              <h3 class="font-bold text-white text-sm">Feedforward & Decoupling</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">Chamber Draft Feedforward:</strong> FANE-21 exhaust fan speed tracks FANS-21 supply air fan speed to cancel draft shockwaves on startup.</p>
+                <p><strong class="text-white">Moisture Cascade:</strong> Outer chamber exhaust temperature (TIC-60226) cascades setpoint to inner slurry pump speed loop.</p>
+                <p><strong class="text-white">Sensor Redundancy:</strong> 2-out-of-2 duplex RTD/TC deviation monitoring alarms when sensor drift exceeds 3.0°C.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-850 rounded-xl p-4 border border-emerald-500/40 space-y-2.5">
+              <div class="text-emerald-400 font-bold text-xs uppercase">HMI Faceplate Standards</div>
+              <h3 class="font-bold text-white text-sm">FactoryTalk View SE Integration</h3>
+              <div class="text-xs text-slate-300 space-y-1.5 pt-1">
+                <p><strong class="text-white">ISA-101 Faceplates:</strong> Unified PlantPAx faceplates across 3 Operator Workstations and 1 Engineering Station.</p>
+                <p><strong class="text-white">Operator Controls:</strong> Real-time PV/SP/CV trend bars, one-click Auto/Manual toggling, and secure tuning access.</p>
+                <p><strong class="text-white">Alarming (ISA-18.2):</strong> PV High-High (Interlock Trip), PV High/Low (Warning), Deviation Alarm & Bad PV Quality.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `
+    };
+
+    function renderSlide() {
+      const container = document.getElementById('slide-container');
+      container.innerHTML = slidesContent[currentSlide];
+      document.getElementById('slide-indicator').textContent = `Slide ${currentSlide} / ${totalSlides}`;
+
+      for (let i = 1; i <= totalSlides; i++) {
+        const tab = document.getElementById(`tab-${i}`);
+        if (i === currentSlide) {
+          tab.className = 'tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-sky-600/30 border-sky-500 text-white shadow';
+        } else {
+          tab.className = 'tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800';
+        }
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        renderSlide();
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        renderSlide();
+      }
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      renderSlide();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    });
+
+    renderSlide();
+  </script>
+</body>
+</html>

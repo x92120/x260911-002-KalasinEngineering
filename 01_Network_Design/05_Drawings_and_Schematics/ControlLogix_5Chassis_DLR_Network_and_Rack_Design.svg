@@ -1,0 +1,2164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2500 1650" width="2500" height="1650">
+    <defs>
+        <!-- Gradients for Cards -->
+        <linearGradient id="cpuGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#1e40af" />
+            <stop offset="60%" stop-color="#1d4ed8" />
+            <stop offset="100%" stop-color="#172554" />
+        </linearGradient>
+
+        <linearGradient id="commGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#0e7490" />
+            <stop offset="60%" stop-color="#0891b2" />
+            <stop offset="100%" stop-color="#164e63" />
+        </linearGradient>
+
+        <linearGradient id="diGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#065f46" />
+            <stop offset="60%" stop-color="#059669" />
+            <stop offset="100%" stop-color="#064e3b" />
+        </linearGradient>
+
+        <linearGradient id="doGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#9a3412" />
+            <stop offset="60%" stop-color="#ea580c" />
+            <stop offset="100%" stop-color="#7c2d12" />
+        </linearGradient>
+
+        <linearGradient id="aiGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#581c87" />
+            <stop offset="60%" stop-color="#7e22ce" />
+            <stop offset="100%" stop-color="#3b0764" />
+        </linearGradient>
+
+        <linearGradient id="aoGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#9f1239" />
+            <stop offset="60%" stop-color="#e11d48" />
+            <stop offset="100%" stop-color="#881337" />
+        </linearGradient>
+
+        <linearGradient id="emptyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#f1f5f9" />
+            <stop offset="100%" stop-color="#e2e8f0" />
+        </linearGradient>
+
+        <!-- Drop Shadows -->
+        <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+            <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#64748b" flood-opacity="0.16"/>
+        </filter>
+
+        <!-- Arrow Markers -->
+        <marker id="arrowCopper" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M 0 1 L 7 4 L 0 7 z" fill="#059669" />
+        </marker>
+        <marker id="arrowFiber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M 0 1 L 7 4 L 0 7 z" fill="#d97706" />
+        </marker>
+        <marker id="arrowUplink" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M 0 1 L 7 4 L 0 7 z" fill="#0284c7" />
+        </marker>
+
+        <!-- Patterns -->
+        <pattern id="diagonalHatch" width="8" height="8" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="8" stroke="#cbd5e1" stroke-width="1.5" />
+        </pattern>
+        <pattern id="lightGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="2500" height="1650" fill="#ffffff" /><rect width="2500" height="1650" fill="url(#lightGrid)" />
+    <g id="Header_TitleBlock">
+        <rect x="30" y="25" width="2440" height="95" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)" />
+        
+        <text x="60" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" fill="#0f172a" letter-spacing="1.0">INGREDION THAILAND — SPRINT 18K TPA SPRAY DRYER PLANT (KALASIN)</text>
+        <text x="60" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#0284c7" letter-spacing="0.5">ROCKWELL CONTROLLOGIX 5580 (1756-L950TPSXT) — 5-CHASSIS DLR NETWORK CABLE &amp; 13-SLOT REDESIGN</text>
+
+        <!-- Technical Badges -->
+        <g transform="translate(1740, 45)">
+            <rect x="0" y="0" width="130" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="65" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">DRAWING NO.</text>
+            <text x="65" y="36" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#0284c7" font-weight="800">DWG-260911-NET-01</text>
+        </g>
+        <g transform="translate(1890, 45)">
+            <rect x="0" y="0" width="70" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="35" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">REVISION</text>
+            <text x="35" y="36" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#059669" font-weight="800">REV B02</text>
+        </g>
+        <g transform="translate(1980, 45)">
+            <rect x="0" y="0" width="100" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="50" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">TOPOLOGY</text>
+            <text x="50" y="36" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#d97706" font-weight="800">ODVA DLR RING</text>
+        </g>
+        <g transform="translate(2100, 45)">
+            <rect x="0" y="0" width="150" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="75" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">CONTROLLER MODEL</text>
+            <text x="75" y="36" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#db2777" font-weight="800">1756-L950TPSXT (XT)</text>
+        </g>
+        <g transform="translate(2270, 45)">
+            <rect x="0" y="0" width="170" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="85" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">CHASSIS SPEC</text>
+            <text x="85" y="36" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#0f172a" font-weight="800">5 CHASSIS x 13 SLOTS</text>
+        </g>
+    </g>
+    
+    <g id="Section1_Title">
+        <text x="45" y="132" font-family="sans-serif" font-size="14" font-weight="800" fill="#334155" letter-spacing="1">PART 1: INDUSTRIAL ETHERNET DLR NETWORK ARCHITECTURE &amp; CABLE ROUTING</text>
+    </g>
+
+    <!-- MAIN CONTROL PANEL (MCP-01) BOUNDARY -->
+    <g id="Panel_MCP">
+        <rect x="40" y="140" width="1680" height="390" rx="8" fill="#f0f9ff" stroke="#0284c7" stroke-width="1.8" stroke-dasharray="6,4" filter="url(#shadow)" />
+        <rect x="40" y="140" width="380" height="32" rx="6" fill="#0284c7" />
+        <text x="55" y="161" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">MAIN CONTROL PANEL (MCP-01) — SAME ENCLOSURE (CS1 - CS4)</text>
+        <text x="1480" y="161" font-family="monospace" font-size="11" font-weight="700" fill="#0369a1">MEDIA: INDUSTRIAL CAT6A S/FTP</text>
+    </g>
+
+    <!-- RIO200 REMOTE PANEL BOUNDARY -->
+    <g id="Panel_RIO200">
+        <rect x="1760" y="140" width="700" height="390" rx="8" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.8" stroke-dasharray="6,4" filter="url(#shadow)" />
+        <rect x="1760" y="140" width="360" height="32" rx="6" fill="#0d9488" />
+        <text x="1775" y="161" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">REMOTE I/O PANEL (RIO200) — PRE-SLURRY AREA</text>
+        <text x="2260" y="161" font-family="monospace" font-size="11" font-weight="700" fill="#0f766e">MEDIA: FIBER OPTIC OM3/OS2</text>
+    </g>
+    
+        <g id="TopNode_CS1">
+            <rect x="65" y="200" width="270" height="160" rx="6" fill="#ffffff" stroke="#eab308" stroke-width="2" filter="url(#shadow)"/>
+            <rect x="65" y="200" width="270" height="28" rx="6" fill="#334155" />
+            <text x="77" y="219" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CS1 — MASTER CONTROLLER</text>
+            
+            <rect x="215" y="206" width="112" height="18" rx="9" fill="#ca8a04" />
+            <text x="271" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">★ DLR SUPERVISOR</text>
+            
+
+            <text x="77" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0284c7">1756-L950TPSXT + EN4TR</text>
+            <text x="77" y="266" font-family="sans-serif" font-size="10" fill="#475569">Active Ring Supervisor &amp; Master CPU</text>
+            <text x="77" y="284" font-family="monospace" font-size="10" font-weight="700" fill="#059669">IP: 192.168.30.11</text>
+
+            
+            <circle cx="100" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="100" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P1 (Ring In/Out)</text>
+            <text x="100" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+            <circle cx="190" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="190" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P2 (Beacon)</text>
+            <text x="190" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+            <circle cx="280" cy="330" r="7" fill="#0284c7" stroke="#ffffff" stroke-width="1.5" />
+            <text x="280" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">UPLINK (S2)</text>
+            <text x="280" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45/Fiber</text>
+            
+        </g>
+        
+        <g id="TopNode_CS2">
+            <rect x="375" y="200" width="210" height="160" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+            <rect x="375" y="200" width="210" height="28" rx="6" fill="#334155" />
+            <text x="387" y="219" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CS2 — EXPANSION RACK 1</text>
+            
+            <rect x="500" y="206" width="78" height="18" rx="9" fill="#0f766e" />
+            <text x="539" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">DLR NODE</text>
+            
+
+            <text x="387" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0284c7">1756-EN4TR (Slot 0)</text>
+            <text x="387" y="266" font-family="sans-serif" font-size="10" fill="#475569">Remote I/O Adapter Node 1</text>
+            <text x="387" y="284" font-family="monospace" font-size="10" font-weight="700" fill="#059669">IP: 192.168.30.12</text>
+
+            
+            <circle cx="430" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="430" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P1 (From CS1)</text>
+            <text x="430" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+            <circle cx="520" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="520" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P2 (To CS3)</text>
+            <text x="520" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+        </g>
+        
+        <g id="TopNode_CS3">
+            <rect x="625" y="200" width="210" height="160" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+            <rect x="625" y="200" width="210" height="28" rx="6" fill="#334155" />
+            <text x="637" y="219" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CS3 — EXPANSION RACK 2</text>
+            
+            <rect x="750" y="206" width="78" height="18" rx="9" fill="#0f766e" />
+            <text x="789" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">DLR NODE</text>
+            
+
+            <text x="637" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0284c7">1756-EN4TR (Slot 0)</text>
+            <text x="637" y="266" font-family="sans-serif" font-size="10" fill="#475569">Remote I/O Adapter Node 2</text>
+            <text x="637" y="284" font-family="monospace" font-size="10" font-weight="700" fill="#059669">IP: 192.168.30.13</text>
+
+            
+            <circle cx="680" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="680" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P1 (From CS2)</text>
+            <text x="680" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+            <circle cx="770" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="770" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P2 (To CS4)</text>
+            <text x="770" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+        </g>
+        
+        <g id="TopNode_CS4">
+            <rect x="875" y="200" width="210" height="160" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+            <rect x="875" y="200" width="210" height="28" rx="6" fill="#334155" />
+            <text x="887" y="219" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CS4 — EXPANSION RACK 3</text>
+            
+            <rect x="1000" y="206" width="78" height="18" rx="9" fill="#0f766e" />
+            <text x="1039" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">DLR NODE</text>
+            
+
+            <text x="887" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0284c7">1756-EN4TR (Slot 0)</text>
+            <text x="887" y="266" font-family="sans-serif" font-size="10" fill="#475569">Remote I/O Adapter Node 3</text>
+            <text x="887" y="284" font-family="monospace" font-size="10" font-weight="700" fill="#059669">IP: 192.168.30.14</text>
+
+            
+            <circle cx="930" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="930" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P1 (From CS3)</text>
+            <text x="930" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+            <circle cx="1020" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="1020" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P2 (To MC-01)</text>
+            <text x="1020" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+        </g>
+        
+        <g id="TopNode_MC-01">
+            <rect x="1135" y="200" width="365" height="160" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+            <rect x="1135" y="200" width="365" height="28" rx="6" fill="#334155" />
+            <text x="1147" y="219" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">MC-01 — DLR FIBER TAP / SWITCH</text>
+            
+            <rect x="1415" y="206" width="78" height="18" rx="9" fill="#0f766e" />
+            <text x="1454" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">DLR NODE</text>
+            
+
+            <text x="1147" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0284c7">1783-ETAP2F / STRATIX</text>
+            <text x="1147" y="266" font-family="sans-serif" font-size="10" fill="#475569">Copper-to-Fiber DLR Transceiver (MCP)</text>
+            <text x="1147" y="284" font-family="monospace" font-size="10" font-weight="700" fill="#059669">IP: 192.168.30.250</text>
+
+            
+            <circle cx="1180" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="1180" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">RJ45-1 (From CS4)</text>
+            <text x="1180" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">Cat6A</text>
+            
+            <circle cx="1260" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="1260" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">RJ45-2 (To CS1)</text>
+            <text x="1260" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">Cat6A</text>
+            
+            <circle cx="1370" cy="330" r="7" fill="#d97706" stroke="#ffffff" stroke-width="1.5" />
+            <text x="1370" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">FO-1 (TX/RX Out)</text>
+            <text x="1370" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">LC Duplex</text>
+            
+            <circle cx="1460" cy="330" r="7" fill="#d97706" stroke="#ffffff" stroke-width="1.5" />
+            <text x="1460" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">FO-2 (TX/RX In)</text>
+            <text x="1460" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">LC Duplex</text>
+            
+        </g>
+        
+    <g id="Fiber_Trunk_Zone">
+        <rect x="1530" y="220" width="200" height="120" rx="6" fill="#fffdf5" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+        <text x="1630" y="245" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="800" fill="#b45309">FIBER TRUNK CABLEWAY</text>
+        <text x="1630" y="265" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d97706">4-CORE ARMORED OM3/OS2</text>
+        <text x="1630" y="285" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b">Length: ~150 - 300 m</text>
+        <text x="1630" y="305" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#059669">TAG: FOB-RIO-01 / 02</text>
+    </g>
+    
+        <g id="TopNode_MC-02">
+            <rect x="1780" y="200" width="350" height="160" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+            <rect x="1780" y="200" width="350" height="28" rx="6" fill="#334155" />
+            <text x="1792" y="219" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">MC-02 — DLR FIBER TAP / SWITCH</text>
+            
+            <rect x="2045" y="206" width="78" height="18" rx="9" fill="#0f766e" />
+            <text x="2084" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">DLR NODE</text>
+            
+
+            <text x="1792" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0284c7">1783-ETAP2F / STRATIX</text>
+            <text x="1792" y="266" font-family="sans-serif" font-size="10" fill="#475569">Fiber-to-Copper DLR Transceiver (RIO)</text>
+            <text x="1792" y="284" font-family="monospace" font-size="10" font-weight="700" fill="#059669">IP: 192.168.30.251</text>
+
+            
+            <circle cx="1820" cy="330" r="7" fill="#d97706" stroke="#ffffff" stroke-width="1.5" />
+            <text x="1820" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">FO-1 (From MC1)</text>
+            <text x="1820" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">LC Duplex</text>
+            
+            <circle cx="1910" cy="330" r="7" fill="#d97706" stroke="#ffffff" stroke-width="1.5" />
+            <text x="1910" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">FO-2 (To MC1)</text>
+            <text x="1910" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">LC Duplex</text>
+            
+            <circle cx="2010" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="2010" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">RJ45-1 (To CS5)</text>
+            <text x="2010" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">Cat6A</text>
+            
+            <circle cx="2090" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="2090" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">RJ45-2 (From CS5)</text>
+            <text x="2090" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">Cat6A</text>
+            
+        </g>
+        
+        <g id="TopNode_CS5">
+            <rect x="2170" y="200" width="260" height="160" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)"/>
+            <rect x="2170" y="200" width="260" height="28" rx="6" fill="#334155" />
+            <text x="2182" y="219" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CS5 — REMOTE EXPANSION RACK</text>
+            
+            <rect x="2345" y="206" width="78" height="18" rx="9" fill="#0f766e" />
+            <text x="2384" y="219" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">DLR NODE</text>
+            
+
+            <text x="2182" y="248" font-family="monospace" font-size="11" font-weight="700" fill="#0284c7">1756-EN4TR (Slot 0)</text>
+            <text x="2182" y="266" font-family="sans-serif" font-size="10" fill="#475569">Remote I/O Adapter Node 4</text>
+            <text x="2182" y="284" font-family="monospace" font-size="10" font-weight="700" fill="#059669">IP: 192.168.30.15</text>
+
+            
+            <circle cx="2220" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="2220" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P1 (From MC-02)</text>
+            <text x="2220" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+            <circle cx="2310" cy="330" r="7" fill="#059669" stroke="#ffffff" stroke-width="1.5" />
+            <text x="2310" y="319" text-anchor="middle" font-family="monospace" font-size="9" font-weight="700" fill="#0f172a">P2 (To MC-02)</text>
+            <text x="2310" y="349" text-anchor="middle" font-family="monospace" font-size="8" font-weight="600" fill="#64748b">RJ45</text>
+            
+        </g>
+        
+    <g id="Cables_Routing" stroke-linecap="round">
+        <!-- CBL-DLR-01: CS1 P1 -> CS2 P1 -->
+        <path d="M 100 337 L 100 420 L 430 420 L 430 337" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrowCopper)" />
+        <rect x="230" y="410" width="100" height="20" rx="4" fill="#ecfdf5" stroke="#059669" />
+        <text x="280" y="424" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">CBL-DLR-01</text>
+
+        <!-- CBL-DLR-02: CS2 P2 -> CS3 P1 -->
+        <path d="M 520 337 L 520 440 L 680 440 L 680 337" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrowCopper)" />
+        <rect x="560" y="430" width="100" height="20" rx="4" fill="#ecfdf5" stroke="#059669" />
+        <text x="610" y="444" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">CBL-DLR-02</text>
+
+        <!-- CBL-DLR-03: CS3 P2 -> CS4 P1 -->
+        <path d="M 770 337 L 770 420 L 930 420 L 930 337" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrowCopper)" />
+        <rect x="815" y="410" width="100" height="20" rx="4" fill="#ecfdf5" stroke="#059669" />
+        <text x="865" y="424" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">CBL-DLR-03</text>
+
+        <!-- CBL-DLR-04: CS4 P2 -> MC-01 RJ45-1 -->
+        <path d="M 1020 337 L 1020 440 L 1180 440 L 1180 337" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrowCopper)" />
+        <rect x="1060" y="430" width="100" height="20" rx="4" fill="#ecfdf5" stroke="#059669" />
+        <text x="1110" y="444" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">CBL-DLR-04</text>
+
+        <!-- FOB-RIO-01 (FIBER OUTBOUND): MC-01 FO-1 -> MC-02 FO-1 -->
+        <path d="M 1370 337 L 1370 400 L 1820 400 L 1820 337" fill="none" stroke="#d97706" stroke-width="3.5" stroke-dasharray="8,5" marker-end="url(#arrowFiber)" />
+        <rect x="1550" y="388" width="120" height="22" rx="4" fill="#fef3c7" stroke="#d97706" />
+        <text x="1610" y="403" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#92400e">FOB-RIO-01 (Core 1-2)</text>
+
+        <!-- CBL-DLR-05: MC-02 RJ45-1 -> CS5 P1 -->
+        <path d="M 2010 337 L 2010 420 L 2220 420 L 2220 337" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrowCopper)" />
+        <rect x="2075" y="410" width="100" height="20" rx="4" fill="#ecfdf5" stroke="#059669" />
+        <text x="2125" y="424" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">CBL-DLR-05</text>
+
+        <!-- CBL-DLR-06: CS5 P2 -> MC-02 RJ45-2 -->
+        <path d="M 2310 337 L 2310 450 L 2090 450 L 2090 337" fill="none" stroke="#059669" stroke-width="3" marker-end="url(#arrowCopper)" />
+        <rect x="2160" y="440" width="100" height="20" rx="4" fill="#ecfdf5" stroke="#059669" />
+        <text x="2210" y="454" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#065f46">CBL-DLR-06</text>
+
+        <!-- FOB-RIO-02 (FIBER RETURN): MC-02 FO-2 -> MC-01 FO-2 -->
+        <path d="M 1910 337 L 1910 480 L 1460 480 L 1460 337" fill="none" stroke="#d97706" stroke-width="3.5" stroke-dasharray="8,5" marker-end="url(#arrowFiber)" />
+        <rect x="1640" y="468" width="120" height="22" rx="4" fill="#fef3c7" stroke="#d97706" />
+        <text x="1700" y="483" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#92400e">FOB-RIO-02 (Core 3-4)</text>
+
+        <!-- CBL-DLR-07 (CLOSING RING TO SUPERVISOR BEACON PORT): MC-01 RJ45-2 -> CS1 P2 -->
+        <path d="M 1260 337 L 1260 500 L 190 500 L 190 337" fill="none" stroke="#059669" stroke-width="3.5" marker-end="url(#arrowCopper)" />
+        <rect x="670" y="490" width="220" height="22" rx="4" fill="#ecfdf5" stroke="#059669" />
+        <text x="780" y="505" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#065f46">CBL-DLR-07 (CLOSES DLR RING TO P2)</text>
+
+        <!-- CBL-UPL-01: CS1 S02 Uplink to Plant Core SCADA Network -->
+        <path d="M 280 337 L 280 180 L 320 180" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrowUplink)" />
+        <rect x="330" y="168" width="220" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" />
+        <text x="440" y="184" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#0369a1">CBL-UPL-01: TO PLANT SCADA (VLAN 30)</text>
+    </g>
+    
+    <g id="Section2_Title">
+        <text x="45" y="565" font-family="sans-serif" font-size="14" font-weight="800" fill="#334155" letter-spacing="1">PART 2: REDESIGNED 13-SLOT CHASSIS SLOT DEFINITIONS &amp; HARDWARE ELEVATION</text>
+        <text x="960" y="565" font-family="sans-serif" font-size="12" font-weight="700" fill="#059669">STANDARDIZED BALANCED I/O ARCHITECTURE (4 DI / 2 DO / 2 AI / 2 AO / 2 SPARE PER RACK)</text>
+    </g>
+    
+        <g id="RackElevation_CS1">
+            <!-- Rack Chassis Frame -->
+            <rect x="40" y="580" width="1780" height="165" rx="6" fill="#f8fafc" stroke="#0284c7" stroke-width="1.8" filter="url(#shadow)" />
+            
+            <!-- Rack Info Banner -->
+            <rect x="40" y="580" width="1780" height="26" rx="6" fill="#334155" />
+            <text x="55" y="598" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CHASSIS 1 — MASTER CONTROLLER (MCP-01)</text>
+            <text x="550" y="598" font-family="sans-serif" font-size="11" fill="#cbd5e1">Location: <tspan fill="#ffffff" font-weight="700">Main Control Panel / Rack 1</tspan></text>
+            <text x="1000" y="598" font-family="sans-serif" font-size="11" fill="#cbd5e1">Network: <tspan fill="#93c5fd" font-weight="700">Active DLR Supervisor + Supervisory Master</tspan></text>
+            <text x="1740" y="598" font-family="monospace" font-size="11" font-weight="800" fill="#fef08a">1756-A13 (13 SLOTS)</text>
+        
+            <rect x="52" y="612" width="48" height="120" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+            <text x="76.0" y="632" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">PWR</text>
+            <text x="76.0" y="648" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">1756</text>
+            <text x="76.0" y="660" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">PA72</text>
+            <circle cx="76.0" cy="692" r="4" fill="#059669" />
+            <text x="76.0" y="710" text-anchor="middle" font-family="monospace" font-size="7" font-weight="700" fill="#059669">DC OK</text>
+        
+            <g id="Slot_CS1_S00">
+                <rect x="110" y="612" width="130" height="120" rx="4" fill="url(#cpuGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="110" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="175.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 00</text>
+
+                <!-- LED status dots -->
+                <circle cx="124" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="134" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="232" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#93c5fd">CPU</text>
+
+                <!-- Card Name & Code -->
+                <text x="175.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CPU</text>
+                <text x="175.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#93c5fd">1756-L950TPSXT</text>
+
+                <!-- Terminal / Description -->
+                <rect x="118" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="175.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">GuardLogix Process</text>
+                <text x="175.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> Safety Controller</text>
+            </g>
+            
+            <g id="Slot_CS1_S01">
+                <rect x="245" y="612" width="130" height="120" rx="4" fill="url(#commGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="245" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="310.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 01</text>
+
+                <!-- LED status dots -->
+                <circle cx="259" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="269" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="367" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#67e8f9">DLR COMM</text>
+
+                <!-- Card Name & Code -->
+                <text x="310.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">Eth_Module</text>
+                <text x="310.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#67e8f9">1756-EN4TR</text>
+
+                <!-- Terminal / Description -->
+                <rect x="253" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="310.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">DLR Ring Superviso</text>
+                <text x="310.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">r (1Gbps Dual Port</text>
+            </g>
+            
+            <g id="Slot_CS1_S02">
+                <rect x="380" y="612" width="130" height="120" rx="4" fill="url(#commGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="380" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="445.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 02</text>
+
+                <!-- LED status dots -->
+                <circle cx="394" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="404" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="502" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#67e8f9">UPLINK</text>
+
+                <!-- Card Name & Code -->
+                <text x="445.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">Eth_Module</text>
+                <text x="445.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#67e8f9">1756-EN4TR</text>
+
+                <!-- Terminal / Description -->
+                <rect x="388" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="445.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Plant SCADA / Fact</text>
+                <text x="445.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">oryTalk Uplink</text>
+            </g>
+            
+            <g id="Slot_CS1_S03">
+                <rect x="515" y="612" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="515" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="580.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 03</text>
+
+                <!-- LED status dots -->
+                <circle cx="529" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="539" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="637" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="580.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="580.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="523" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="580.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Sink/Source </text>
+                <text x="580.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">Digital Input (DI-</text>
+            </g>
+            
+            <g id="Slot_CS1_S04">
+                <rect x="650" y="612" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="650" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="715.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 04</text>
+
+                <!-- LED status dots -->
+                <circle cx="664" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="674" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="772" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="715.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="715.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="658" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="715.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Sink/Source </text>
+                <text x="715.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">Digital Input (DI-</text>
+            </g>
+            
+            <g id="Slot_CS1_S05">
+                <rect x="785" y="612" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="785" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="850.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 05</text>
+
+                <!-- LED status dots -->
+                <circle cx="799" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="809" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="907" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="850.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="850.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="793" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="850.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Sink/Source </text>
+                <text x="850.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">Digital Input (DI-</text>
+            </g>
+            
+            <g id="Slot_CS1_S06">
+                <rect x="920" y="612" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="920" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="985.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 06</text>
+
+                <!-- LED status dots -->
+                <circle cx="934" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="944" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="1042" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="985.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="985.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="928" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="985.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Sink/Source </text>
+                <text x="985.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">Digital Input (DI-</text>
+            </g>
+            
+            <g id="Slot_CS1_S07">
+                <rect x="1055" y="612" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1055" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1120.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 07</text>
+
+                <!-- LED status dots -->
+                <circle cx="1069" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="1079" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="1177" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1120.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="1120.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1063" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1120.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Sourcing Dig</text>
+                <text x="1120.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ital Output (DO-01</text>
+            </g>
+            
+            <g id="Slot_CS1_S08">
+                <rect x="1190" y="612" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1190" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1255.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 08</text>
+
+                <!-- LED status dots -->
+                <circle cx="1204" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="1214" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="1312" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1255.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="1255.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1198" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1255.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Sourcing Dig</text>
+                <text x="1255.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ital Output (DO-02</text>
+            </g>
+            
+            <g id="Slot_CS1_S09">
+                <rect x="1325" y="612" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1325" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1390.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 09</text>
+
+                <!-- LED status dots -->
+                <circle cx="1339" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="1349" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="1447" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1390.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1390.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1333" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1390.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch High-Speed A</text>
+                <text x="1390.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">nalog Input (AI-01</text>
+            </g>
+            
+            <g id="Slot_CS1_S10">
+                <rect x="1460" y="612" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1460" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1525.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 10</text>
+
+                <!-- LED status dots -->
+                <circle cx="1474" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="1484" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="1582" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1525.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1525.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1468" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1525.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch High-Speed A</text>
+                <text x="1525.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">nalog Input (AI-02</text>
+            </g>
+            
+            <g id="Slot_CS1_S11">
+                <rect x="1595" y="612" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1595" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1660.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 11</text>
+
+                <!-- LED status dots -->
+                <circle cx="1609" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="1619" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="1717" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1660.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1660.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1603" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1660.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Voltage/Curre</text>
+                <text x="1660.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">nt Analog Output (</text>
+            </g>
+            
+            <g id="Slot_CS1_S12">
+                <rect x="1730" y="612" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1730" y="612" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1795.0" y="626" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 12</text>
+
+                <!-- LED status dots -->
+                <circle cx="1744" cy="640" r="2.5" fill="#34d399" />
+                <circle cx="1754" cy="640" r="2.5" fill="#38bdf8" />
+                <text x="1852" y="643" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1795.0" y="664" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1795.0" y="682" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1738" y="694" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1795.0" y="708" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Voltage/Curre</text>
+                <text x="1795.0" y="719" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">nt Analog Output (</text>
+            </g>
+            </g>
+        <g id="RackElevation_CS2">
+            <!-- Rack Chassis Frame -->
+            <rect x="40" y="760" width="1780" height="165" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)" />
+            
+            <!-- Rack Info Banner -->
+            <rect x="40" y="760" width="1780" height="26" rx="6" fill="#334155" />
+            <text x="55" y="778" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CHASSIS 2 — EXPANSION RACK 1 (MCP-01)</text>
+            <text x="550" y="778" font-family="sans-serif" font-size="11" fill="#cbd5e1">Location: <tspan fill="#ffffff" font-weight="700">Main Control Panel / Rack 2</tspan></text>
+            <text x="1000" y="778" font-family="sans-serif" font-size="11" fill="#cbd5e1">Network: <tspan fill="#93c5fd" font-weight="700">DLR Ring Node 1</tspan></text>
+            <text x="1740" y="778" font-family="monospace" font-size="11" font-weight="800" fill="#fef08a">1756-A13 (13 SLOTS)</text>
+        
+            <rect x="52" y="792" width="48" height="120" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+            <text x="76.0" y="812" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">PWR</text>
+            <text x="76.0" y="828" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">1756</text>
+            <text x="76.0" y="840" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">PA72</text>
+            <circle cx="76.0" cy="872" r="4" fill="#059669" />
+            <text x="76.0" y="890" text-anchor="middle" font-family="monospace" font-size="7" font-weight="700" fill="#059669">DC OK</text>
+        
+            <g id="Slot_CS2_S00">
+                <rect x="110" y="792" width="130" height="120" rx="4" fill="url(#commGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="110" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="175.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 00</text>
+
+                <!-- LED status dots -->
+                <circle cx="124" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="134" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="232" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#67e8f9">DLR COMM</text>
+
+                <!-- Card Name & Code -->
+                <text x="175.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">Eth_Module</text>
+                <text x="175.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#67e8f9">1756-EN4TR</text>
+
+                <!-- Terminal / Description -->
+                <rect x="118" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="175.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Remote I/O Adapter</text>
+                <text x="175.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (Slot 0 Redesigne</text>
+            </g>
+            
+            <g id="Slot_CS2_S01">
+                <rect x="245" y="792" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="245" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="310.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 01</text>
+
+                <!-- LED status dots -->
+                <circle cx="259" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="269" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="367" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="310.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="310.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="253" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="310.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="310.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-05)</text>
+            </g>
+            
+            <g id="Slot_CS2_S02">
+                <rect x="380" y="792" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="380" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="445.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 02</text>
+
+                <!-- LED status dots -->
+                <circle cx="394" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="404" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="502" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="445.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="445.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="388" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="445.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="445.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-06)</text>
+            </g>
+            
+            <g id="Slot_CS2_S03">
+                <rect x="515" y="792" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="515" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="580.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 03</text>
+
+                <!-- LED status dots -->
+                <circle cx="529" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="539" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="637" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="580.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="580.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="523" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="580.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="580.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-07)</text>
+            </g>
+            
+            <g id="Slot_CS2_S04">
+                <rect x="650" y="792" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="650" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="715.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 04</text>
+
+                <!-- LED status dots -->
+                <circle cx="664" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="674" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="772" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="715.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="715.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="658" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="715.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="715.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-08)</text>
+            </g>
+            
+            <g id="Slot_CS2_S05">
+                <rect x="785" y="792" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="785" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="850.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 05</text>
+
+                <!-- LED status dots -->
+                <circle cx="799" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="809" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="907" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="850.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="850.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="793" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="850.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="850.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-03)</text>
+            </g>
+            
+            <g id="Slot_CS2_S06">
+                <rect x="920" y="792" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="920" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="985.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 06</text>
+
+                <!-- LED status dots -->
+                <circle cx="934" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="944" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="1042" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="985.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="985.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="928" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="985.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="985.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-04)</text>
+            </g>
+            
+            <g id="Slot_CS2_S07">
+                <rect x="1055" y="792" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1055" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1120.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 07</text>
+
+                <!-- LED status dots -->
+                <circle cx="1069" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="1079" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="1177" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1120.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1120.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1063" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1120.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1120.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-03)</text>
+            </g>
+            
+            <g id="Slot_CS2_S08">
+                <rect x="1190" y="792" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1190" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1255.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 08</text>
+
+                <!-- LED status dots -->
+                <circle cx="1204" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="1214" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="1312" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1255.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1255.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1198" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1255.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1255.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-04)</text>
+            </g>
+            
+            <g id="Slot_CS2_S09">
+                <rect x="1325" y="792" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1325" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1390.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 09</text>
+
+                <!-- LED status dots -->
+                <circle cx="1339" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="1349" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="1447" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1390.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1390.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1333" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1390.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1390.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-03)</text>
+            </g>
+            
+            <g id="Slot_CS2_S10">
+                <rect x="1460" y="792" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1460" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1525.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 10</text>
+
+                <!-- LED status dots -->
+                <circle cx="1474" cy="820" r="2.5" fill="#34d399" />
+                <circle cx="1484" cy="820" r="2.5" fill="#38bdf8" />
+                <text x="1582" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1525.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1525.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1468" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1525.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1525.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-04)</text>
+            </g>
+            
+            <g id="Slot_CS2_S11">
+                <rect x="1595" y="792" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1595" y="792" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1595" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1660.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 11</text>
+
+                <!-- LED status dots -->
+                <circle cx="1609" cy="820" r="2.5" fill="#cbd5e1" />
+                <circle cx="1619" cy="820" r="2.5" fill="#cbd5e1" />
+                <text x="1717" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1660.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1660.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1603" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1660.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1660.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            
+            <g id="Slot_CS2_S12">
+                <rect x="1730" y="792" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1730" y="792" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1730" y="792" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1795.0" y="806" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 12</text>
+
+                <!-- LED status dots -->
+                <circle cx="1744" cy="820" r="2.5" fill="#cbd5e1" />
+                <circle cx="1754" cy="820" r="2.5" fill="#cbd5e1" />
+                <text x="1852" y="823" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1795.0" y="844" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1795.0" y="862" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1738" y="874" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1795.0" y="888" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1795.0" y="899" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            </g>
+        <g id="RackElevation_CS3">
+            <!-- Rack Chassis Frame -->
+            <rect x="40" y="940" width="1780" height="165" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)" />
+            
+            <!-- Rack Info Banner -->
+            <rect x="40" y="940" width="1780" height="26" rx="6" fill="#334155" />
+            <text x="55" y="958" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CHASSIS 3 — EXPANSION RACK 2 (MCP-01)</text>
+            <text x="550" y="958" font-family="sans-serif" font-size="11" fill="#cbd5e1">Location: <tspan fill="#ffffff" font-weight="700">Main Control Panel / Rack 3</tspan></text>
+            <text x="1000" y="958" font-family="sans-serif" font-size="11" fill="#cbd5e1">Network: <tspan fill="#93c5fd" font-weight="700">DLR Ring Node 2</tspan></text>
+            <text x="1740" y="958" font-family="monospace" font-size="11" font-weight="800" fill="#fef08a">1756-A13 (13 SLOTS)</text>
+        
+            <rect x="52" y="972" width="48" height="120" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+            <text x="76.0" y="992" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">PWR</text>
+            <text x="76.0" y="1008" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">1756</text>
+            <text x="76.0" y="1020" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">PA72</text>
+            <circle cx="76.0" cy="1052" r="4" fill="#059669" />
+            <text x="76.0" y="1070" text-anchor="middle" font-family="monospace" font-size="7" font-weight="700" fill="#059669">DC OK</text>
+        
+            <g id="Slot_CS3_S00">
+                <rect x="110" y="972" width="130" height="120" rx="4" fill="url(#commGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="110" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="175.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 00</text>
+
+                <!-- LED status dots -->
+                <circle cx="124" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="134" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="232" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#67e8f9">DLR COMM</text>
+
+                <!-- Card Name & Code -->
+                <text x="175.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">Eth_Module</text>
+                <text x="175.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#67e8f9">1756-EN4TR</text>
+
+                <!-- Terminal / Description -->
+                <rect x="118" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="175.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Remote I/O Adapter</text>
+                <text x="175.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (Slot 0 Redesigne</text>
+            </g>
+            
+            <g id="Slot_CS3_S01">
+                <rect x="245" y="972" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="245" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="310.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 01</text>
+
+                <!-- LED status dots -->
+                <circle cx="259" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="269" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="367" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="310.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="310.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="253" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="310.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="310.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-09)</text>
+            </g>
+            
+            <g id="Slot_CS3_S02">
+                <rect x="380" y="972" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="380" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="445.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 02</text>
+
+                <!-- LED status dots -->
+                <circle cx="394" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="404" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="502" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="445.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="445.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="388" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="445.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="445.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-10)</text>
+            </g>
+            
+            <g id="Slot_CS3_S03">
+                <rect x="515" y="972" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="515" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="580.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 03</text>
+
+                <!-- LED status dots -->
+                <circle cx="529" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="539" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="637" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="580.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="580.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="523" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="580.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="580.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-11)</text>
+            </g>
+            
+            <g id="Slot_CS3_S04">
+                <rect x="650" y="972" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="650" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="715.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 04</text>
+
+                <!-- LED status dots -->
+                <circle cx="664" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="674" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="772" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="715.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="715.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="658" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="715.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="715.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-12)</text>
+            </g>
+            
+            <g id="Slot_CS3_S05">
+                <rect x="785" y="972" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="785" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="850.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 05</text>
+
+                <!-- LED status dots -->
+                <circle cx="799" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="809" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="907" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="850.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="850.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="793" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="850.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="850.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-05)</text>
+            </g>
+            
+            <g id="Slot_CS3_S06">
+                <rect x="920" y="972" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="920" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="985.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 06</text>
+
+                <!-- LED status dots -->
+                <circle cx="934" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="944" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="1042" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="985.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="985.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="928" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="985.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="985.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-06)</text>
+            </g>
+            
+            <g id="Slot_CS3_S07">
+                <rect x="1055" y="972" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1055" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1120.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 07</text>
+
+                <!-- LED status dots -->
+                <circle cx="1069" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="1079" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="1177" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1120.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1120.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1063" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1120.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1120.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-05)</text>
+            </g>
+            
+            <g id="Slot_CS3_S08">
+                <rect x="1190" y="972" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1190" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1255.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 08</text>
+
+                <!-- LED status dots -->
+                <circle cx="1204" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="1214" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="1312" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1255.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1255.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1198" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1255.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1255.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-06)</text>
+            </g>
+            
+            <g id="Slot_CS3_S09">
+                <rect x="1325" y="972" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1325" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1390.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 09</text>
+
+                <!-- LED status dots -->
+                <circle cx="1339" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="1349" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="1447" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1390.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1390.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1333" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1390.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1390.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-05)</text>
+            </g>
+            
+            <g id="Slot_CS3_S10">
+                <rect x="1460" y="972" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1460" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1525.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 10</text>
+
+                <!-- LED status dots -->
+                <circle cx="1474" cy="1000" r="2.5" fill="#34d399" />
+                <circle cx="1484" cy="1000" r="2.5" fill="#38bdf8" />
+                <text x="1582" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1525.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1525.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1468" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1525.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1525.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-06)</text>
+            </g>
+            
+            <g id="Slot_CS3_S11">
+                <rect x="1595" y="972" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1595" y="972" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1595" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1660.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 11</text>
+
+                <!-- LED status dots -->
+                <circle cx="1609" cy="1000" r="2.5" fill="#cbd5e1" />
+                <circle cx="1619" cy="1000" r="2.5" fill="#cbd5e1" />
+                <text x="1717" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1660.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1660.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1603" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1660.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1660.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            
+            <g id="Slot_CS3_S12">
+                <rect x="1730" y="972" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1730" y="972" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1730" y="972" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1795.0" y="986" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 12</text>
+
+                <!-- LED status dots -->
+                <circle cx="1744" cy="1000" r="2.5" fill="#cbd5e1" />
+                <circle cx="1754" cy="1000" r="2.5" fill="#cbd5e1" />
+                <text x="1852" y="1003" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1795.0" y="1024" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1795.0" y="1042" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1738" y="1054" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1795.0" y="1068" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1795.0" y="1079" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            </g>
+        <g id="RackElevation_CS4">
+            <!-- Rack Chassis Frame -->
+            <rect x="40" y="1120" width="1780" height="165" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8" filter="url(#shadow)" />
+            
+            <!-- Rack Info Banner -->
+            <rect x="40" y="1120" width="1780" height="26" rx="6" fill="#334155" />
+            <text x="55" y="1138" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CHASSIS 4 — EXPANSION RACK 3 (MCP-01)</text>
+            <text x="550" y="1138" font-family="sans-serif" font-size="11" fill="#cbd5e1">Location: <tspan fill="#ffffff" font-weight="700">Main Control Panel / Rack 4</tspan></text>
+            <text x="1000" y="1138" font-family="sans-serif" font-size="11" fill="#cbd5e1">Network: <tspan fill="#93c5fd" font-weight="700">DLR Ring Node 3</tspan></text>
+            <text x="1740" y="1138" font-family="monospace" font-size="11" font-weight="800" fill="#fef08a">1756-A13 (13 SLOTS)</text>
+        
+            <rect x="52" y="1152" width="48" height="120" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+            <text x="76.0" y="1172" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">PWR</text>
+            <text x="76.0" y="1188" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">1756</text>
+            <text x="76.0" y="1200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">PA72</text>
+            <circle cx="76.0" cy="1232" r="4" fill="#059669" />
+            <text x="76.0" y="1250" text-anchor="middle" font-family="monospace" font-size="7" font-weight="700" fill="#059669">DC OK</text>
+        
+            <g id="Slot_CS4_S00">
+                <rect x="110" y="1152" width="130" height="120" rx="4" fill="url(#commGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="110" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="175.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 00</text>
+
+                <!-- LED status dots -->
+                <circle cx="124" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="134" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="232" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#67e8f9">DLR COMM</text>
+
+                <!-- Card Name & Code -->
+                <text x="175.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">Eth_Module</text>
+                <text x="175.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#67e8f9">1756-EN4TR</text>
+
+                <!-- Terminal / Description -->
+                <rect x="118" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="175.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Remote I/O Adapter</text>
+                <text x="175.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (Slot 0 Redesigne</text>
+            </g>
+            
+            <g id="Slot_CS4_S01">
+                <rect x="245" y="1152" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="245" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="310.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 01</text>
+
+                <!-- LED status dots -->
+                <circle cx="259" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="269" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="367" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="310.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="310.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="253" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="310.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="310.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-13)</text>
+            </g>
+            
+            <g id="Slot_CS4_S02">
+                <rect x="380" y="1152" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="380" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="445.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 02</text>
+
+                <!-- LED status dots -->
+                <circle cx="394" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="404" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="502" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="445.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="445.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="388" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="445.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="445.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-14)</text>
+            </g>
+            
+            <g id="Slot_CS4_S03">
+                <rect x="515" y="1152" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="515" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="580.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 03</text>
+
+                <!-- LED status dots -->
+                <circle cx="529" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="539" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="637" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="580.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="580.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="523" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="580.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="580.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-15)</text>
+            </g>
+            
+            <g id="Slot_CS4_S04">
+                <rect x="650" y="1152" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="650" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="715.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 04</text>
+
+                <!-- LED status dots -->
+                <circle cx="664" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="674" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="772" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="715.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="715.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="658" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="715.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="715.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-16)</text>
+            </g>
+            
+            <g id="Slot_CS4_S05">
+                <rect x="785" y="1152" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="785" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="850.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 05</text>
+
+                <!-- LED status dots -->
+                <circle cx="799" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="809" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="907" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="850.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="850.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="793" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="850.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="850.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-07)</text>
+            </g>
+            
+            <g id="Slot_CS4_S06">
+                <rect x="920" y="1152" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="920" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="985.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 06</text>
+
+                <!-- LED status dots -->
+                <circle cx="934" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="944" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="1042" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="985.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="985.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="928" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="985.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="985.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-08)</text>
+            </g>
+            
+            <g id="Slot_CS4_S07">
+                <rect x="1055" y="1152" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1055" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1120.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 07</text>
+
+                <!-- LED status dots -->
+                <circle cx="1069" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="1079" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="1177" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1120.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1120.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1063" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1120.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1120.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-07)</text>
+            </g>
+            
+            <g id="Slot_CS4_S08">
+                <rect x="1190" y="1152" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1190" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1255.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 08</text>
+
+                <!-- LED status dots -->
+                <circle cx="1204" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="1214" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="1312" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1255.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1255.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1198" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1255.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1255.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-08)</text>
+            </g>
+            
+            <g id="Slot_CS4_S09">
+                <rect x="1325" y="1152" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1325" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1390.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 09</text>
+
+                <!-- LED status dots -->
+                <circle cx="1339" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="1349" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="1447" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1390.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1390.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1333" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1390.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1390.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-07)</text>
+            </g>
+            
+            <g id="Slot_CS4_S10">
+                <rect x="1460" y="1152" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1460" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1525.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 10</text>
+
+                <!-- LED status dots -->
+                <circle cx="1474" cy="1180" r="2.5" fill="#34d399" />
+                <circle cx="1484" cy="1180" r="2.5" fill="#38bdf8" />
+                <text x="1582" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1525.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1525.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1468" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1525.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1525.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-08)</text>
+            </g>
+            
+            <g id="Slot_CS4_S11">
+                <rect x="1595" y="1152" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1595" y="1152" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1595" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1660.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 11</text>
+
+                <!-- LED status dots -->
+                <circle cx="1609" cy="1180" r="2.5" fill="#cbd5e1" />
+                <circle cx="1619" cy="1180" r="2.5" fill="#cbd5e1" />
+                <text x="1717" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1660.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1660.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1603" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1660.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1660.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            
+            <g id="Slot_CS4_S12">
+                <rect x="1730" y="1152" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1730" y="1152" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1730" y="1152" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1795.0" y="1166" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 12</text>
+
+                <!-- LED status dots -->
+                <circle cx="1744" cy="1180" r="2.5" fill="#cbd5e1" />
+                <circle cx="1754" cy="1180" r="2.5" fill="#cbd5e1" />
+                <text x="1852" y="1183" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1795.0" y="1204" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1795.0" y="1222" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1738" y="1234" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1795.0" y="1248" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1795.0" y="1259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            </g>
+        <g id="RackElevation_CS5">
+            <!-- Rack Chassis Frame -->
+            <rect x="40" y="1300" width="1780" height="165" rx="6" fill="#f8fafc" stroke="#0d9488" stroke-width="1.8" filter="url(#shadow)" />
+            
+            <!-- Rack Info Banner -->
+            <rect x="40" y="1300" width="1780" height="26" rx="6" fill="#334155" />
+            <text x="55" y="1318" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CHASSIS 5 — REMOTE I/O RACK (RIO200 PANEL)</text>
+            <text x="550" y="1318" font-family="sans-serif" font-size="11" fill="#cbd5e1">Location: <tspan fill="#ffffff" font-weight="700">Remote I/O Panel RIO200 (Area 200) via Fiber</tspan></text>
+            <text x="1000" y="1318" font-family="sans-serif" font-size="11" fill="#cbd5e1">Network: <tspan fill="#93c5fd" font-weight="700">DLR Ring Node 4 (Fiber Link)</tspan></text>
+            <text x="1740" y="1318" font-family="monospace" font-size="11" font-weight="800" fill="#fef08a">1756-A13 (13 SLOTS)</text>
+        
+            <rect x="52" y="1332" width="48" height="120" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="1" />
+            <text x="76.0" y="1352" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">PWR</text>
+            <text x="76.0" y="1368" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">1756</text>
+            <text x="76.0" y="1380" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#64748b">PA72</text>
+            <circle cx="76.0" cy="1412" r="4" fill="#059669" />
+            <text x="76.0" y="1430" text-anchor="middle" font-family="monospace" font-size="7" font-weight="700" fill="#059669">DC OK</text>
+        
+            <g id="Slot_CS5_S00">
+                <rect x="110" y="1332" width="130" height="120" rx="4" fill="url(#commGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="110" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="175.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 00</text>
+
+                <!-- LED status dots -->
+                <circle cx="124" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="134" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="232" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#67e8f9">DLR COMM</text>
+
+                <!-- Card Name & Code -->
+                <text x="175.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">Eth_Module</text>
+                <text x="175.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#67e8f9">1756-EN4TR</text>
+
+                <!-- Terminal / Description -->
+                <rect x="118" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="175.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Remote I/O Adapter</text>
+                <text x="175.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (Slot 0 Redesigne</text>
+            </g>
+            
+            <g id="Slot_CS5_S01">
+                <rect x="245" y="1332" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="245" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="310.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 01</text>
+
+                <!-- LED status dots -->
+                <circle cx="259" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="269" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="367" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="310.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="310.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="253" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="310.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="310.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-17)</text>
+            </g>
+            
+            <g id="Slot_CS5_S02">
+                <rect x="380" y="1332" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="380" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="445.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 02</text>
+
+                <!-- LED status dots -->
+                <circle cx="394" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="404" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="502" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="445.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="445.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="388" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="445.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="445.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-18)</text>
+            </g>
+            
+            <g id="Slot_CS5_S03">
+                <rect x="515" y="1332" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="515" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="580.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 03</text>
+
+                <!-- LED status dots -->
+                <circle cx="529" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="539" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="637" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="580.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="580.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="523" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="580.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="580.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-19)</text>
+            </g>
+            
+            <g id="Slot_CS5_S04">
+                <rect x="650" y="1332" width="130" height="120" rx="4" fill="url(#diGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="650" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="715.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 04</text>
+
+                <!-- LED status dots -->
+                <circle cx="664" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="674" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="772" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#86efac">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="715.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DI</text>
+                <text x="715.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#86efac">1756-IB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="658" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="715.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Inpu</text>
+                <text x="715.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">t (DI-20)</text>
+            </g>
+            
+            <g id="Slot_CS5_S05">
+                <rect x="785" y="1332" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="785" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="850.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 05</text>
+
+                <!-- LED status dots -->
+                <circle cx="799" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="809" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="907" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="850.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="850.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="793" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="850.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="850.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-09)</text>
+            </g>
+            
+            <g id="Slot_CS5_S06">
+                <rect x="920" y="1332" width="130" height="120" rx="4" fill="url(#doGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="920" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="985.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 06</text>
+
+                <!-- LED status dots -->
+                <circle cx="934" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="944" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="1042" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fdba74">OUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="985.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">32DO</text>
+                <text x="985.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fdba74">1756-OB32</text>
+
+                <!-- Terminal / Description -->
+                <rect x="928" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="985.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">24VDC Digital Outp</text>
+                <text x="985.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">ut (DO-10)</text>
+            </g>
+            
+            <g id="Slot_CS5_S07">
+                <rect x="1055" y="1332" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1055" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1120.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 07</text>
+
+                <!-- LED status dots -->
+                <circle cx="1069" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="1079" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="1177" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1120.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1120.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1063" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1120.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1120.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-09)</text>
+            </g>
+            
+            <g id="Slot_CS5_S08">
+                <rect x="1190" y="1332" width="130" height="120" rx="4" fill="url(#aiGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1190" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1255.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 08</text>
+
+                <!-- LED status dots -->
+                <circle cx="1204" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="1214" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="1312" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#d8b4fe">IN</text>
+
+                <!-- Card Name & Code -->
+                <text x="1255.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">16AI</text>
+                <text x="1255.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#d8b4fe">1756-IF16</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1198" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1255.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">16-Ch Analog Input</text>
+                <text x="1255.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AI-10)</text>
+            </g>
+            
+            <g id="Slot_CS5_S09">
+                <rect x="1325" y="1332" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1325" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1390.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 09</text>
+
+                <!-- LED status dots -->
+                <circle cx="1339" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="1349" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="1447" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1390.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1390.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1333" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1390.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1390.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-09)</text>
+            </g>
+            
+            <g id="Slot_CS5_S10">
+                <rect x="1460" y="1332" width="130" height="120" rx="4" fill="url(#aoGrad)" stroke="#cbd5e1" stroke-width="1" />
+                
+
+                <!-- Slot Number Badge -->
+                <rect x="1460" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1525.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 10</text>
+
+                <!-- LED status dots -->
+                <circle cx="1474" cy="1360" r="2.5" fill="#34d399" />
+                <circle cx="1484" cy="1360" r="2.5" fill="#38bdf8" />
+                <text x="1582" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#fda4af">IOUT</text>
+
+                <!-- Card Name & Code -->
+                <text x="1525.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">8AO</text>
+                <text x="1525.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fda4af">1756-OF8</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1468" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1525.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">8-Ch Analog Output</text>
+                <text x="1525.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8"> (AO-10)</text>
+            </g>
+            
+            <g id="Slot_CS5_S11">
+                <rect x="1595" y="1332" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1595" y="1332" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1595" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1660.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 11</text>
+
+                <!-- LED status dots -->
+                <circle cx="1609" cy="1360" r="2.5" fill="#cbd5e1" />
+                <circle cx="1619" cy="1360" r="2.5" fill="#cbd5e1" />
+                <text x="1717" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1660.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1660.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1603" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1660.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1660.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            
+            <g id="Slot_CS5_S12">
+                <rect x="1730" y="1332" width="130" height="120" rx="4" fill="url(#emptyGrad)" stroke="#cbd5e1" stroke-width="1" />
+                <rect x="1730" y="1332" width="130" height="120" rx="4" fill="url(#diagonalHatch)" />
+
+                <!-- Slot Number Badge -->
+                <rect x="1730" y="1332" width="130" height="20" rx="3" fill="#1e293b" />
+                <text x="1795.0" y="1346" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f8fafc">SLOT 12</text>
+
+                <!-- LED status dots -->
+                <circle cx="1744" cy="1360" r="2.5" fill="#cbd5e1" />
+                <circle cx="1754" cy="1360" r="2.5" fill="#cbd5e1" />
+                <text x="1852" y="1363" text-anchor="end" font-family="monospace" font-size="8" font-weight="700" fill="#64748b">EMPTY</text>
+
+                <!-- Card Name & Code -->
+                <text x="1795.0" y="1384" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="800" fill="#64748b">Empty</text>
+                <text x="1795.0" y="1402" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">1756-N2</text>
+
+                <!-- Terminal / Description -->
+                <rect x="1738" y="1414" width="114" height="30" rx="3" fill="#1e293b" stroke="#334155" stroke-width="0.75" />
+                <text x="1795.0" y="1428" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="600" fill="#e2e8f0">Slot Filler / Spar</text>
+                <text x="1795.0" y="1439" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">e Expansion</text>
+            </g>
+            </g>
+    <g id="RightSideTables">
+        <!-- TABLE 1: MODULE QUANTITY SUMMARY -->
+        <rect x="1840" y="580" width="620" height="380" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)" />
+        <rect x="1840" y="580" width="620" height="32" rx="6" fill="#334155" />
+        <text x="1855" y="601" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">1. REDESIGNED BILL OF MATERIALS &amp; I/O QUANTITY MATRIX</text>
+
+        <!-- Headers -->
+        <g transform="translate(1855, 625)">
+            <rect x="0" y="0" width="590" height="24" fill="#f1f5f9" />
+            <text x="10" y="16" font-family="sans-serif" font-size="10" font-weight="800" fill="#475569">CARD CODE</text>
+            <text x="95" y="16" font-family="sans-serif" font-size="10" font-weight="800" fill="#475569">MODEL NO.</text>
+            <text x="210" y="16" font-family="sans-serif" font-size="10" font-weight="800" fill="#475569">DESCRIPTION</text>
+            <text x="440" y="16" font-family="sans-serif" font-size="10" font-weight="800" fill="#475569">Q'TY</text>
+            <text x="500" y="16" font-family="sans-serif" font-size="10" font-weight="800" fill="#475569">CHANNELS</text>
+        </g>
+
+        <!-- Rows -->
+        <!-- Row 1: CPU -->
+        <g transform="translate(1855, 655)">
+            <rect x="0" y="0" width="590" height="32" fill="#ffffff" />
+            <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#1d4ed8">CPU</text>
+            <text x="95" y="20" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">1756-L950TPSXT</text>
+            <text x="210" y="20" font-family="sans-serif" font-size="10" fill="#334155">ControlLogix 5580 Process Safety (XT)</text>
+            <text x="450" y="20" font-family="monospace" font-size="11" font-weight="800" fill="#0284c7">1</text>
+            <text x="510" y="20" font-family="sans-serif" font-size="10" fill="#64748b">50MB Memory</text>
+        </g>
+        <!-- Row 2: Comm -->
+        <g transform="translate(1855, 690)">
+            <rect x="0" y="0" width="590" height="32" fill="#f8fafc" />
+            <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#0891b2">Eth_Module</text>
+            <text x="95" y="20" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">1756-EN4TR</text>
+            <text x="210" y="20" font-family="sans-serif" font-size="10" fill="#334155">Dual-Port 1Gbps DLR EtherNet/IP Adapter</text>
+            <text x="450" y="20" font-family="monospace" font-size="11" font-weight="800" fill="#0284c7">6</text>
+            <text x="510" y="20" font-family="sans-serif" font-size="10" fill="#64748b">DLR / Uplink</text>
+        </g>
+        <!-- Row 3: 32DI -->
+        <g transform="translate(1855, 725)">
+            <rect x="0" y="0" width="590" height="32" fill="#ffffff" />
+            <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#059669">32DI</text>
+            <text x="95" y="20" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">1756-IB32</text>
+            <text x="210" y="20" font-family="sans-serif" font-size="10" fill="#334155">24VDC Digital Input (Sink/Source)</text>
+            <text x="450" y="20" font-family="monospace" font-size="11" font-weight="800" fill="#059669">20</text>
+            <text x="510" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#059669">640 DI pts</text>
+        </g>
+        <!-- Row 4: 32DO -->
+        <g transform="translate(1855, 760)">
+            <rect x="0" y="0" width="590" height="32" fill="#f8fafc" />
+            <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#ea580c">32DO</text>
+            <text x="95" y="20" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">1756-OB32</text>
+            <text x="210" y="20" font-family="sans-serif" font-size="10" fill="#334155">24VDC Sourcing Digital Output</text>
+            <text x="450" y="20" font-family="monospace" font-size="11" font-weight="800" fill="#ea580c">10</text>
+            <text x="510" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#ea580c">320 DO pts</text>
+        </g>
+        <!-- Row 5: 16AI -->
+        <g transform="translate(1855, 795)">
+            <rect x="0" y="0" width="590" height="32" fill="#ffffff" />
+            <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#7e22ce">16AI</text>
+            <text x="95" y="20" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">1756-IF16</text>
+            <text x="210" y="20" font-family="sans-serif" font-size="10" fill="#334155">16-Ch Voltage/Current Analog Input</text>
+            <text x="450" y="20" font-family="monospace" font-size="11" font-weight="800" fill="#7e22ce">10</text>
+            <text x="510" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#7e22ce">160 AI pts</text>
+        </g>
+        <!-- Row 6: 8AO -->
+        <g transform="translate(1855, 830)">
+            <rect x="0" y="0" width="590" height="32" fill="#f8fafc" />
+            <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#e11d48">8AO</text>
+            <text x="95" y="20" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">1756-OF8</text>
+            <text x="210" y="20" font-family="sans-serif" font-size="10" fill="#334155">8-Ch Voltage/Current Analog Output</text>
+            <text x="450" y="20" font-family="monospace" font-size="11" font-weight="800" fill="#e11d48">10</text>
+            <text x="510" y="20" font-family="monospace" font-size="11" font-weight="700" fill="#e11d48">80 AO pts</text>
+        </g>
+        <!-- Row 7: Empty/Spare -->
+        <g transform="translate(1855, 865)">
+            <rect x="0" y="0" width="590" height="32" fill="#ffffff" />
+            <text x="10" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#64748b">Empty</text>
+            <text x="95" y="20" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">1756-N2</text>
+            <text x="210" y="20" font-family="sans-serif" font-size="10" fill="#334155">Chassis Slot Filler Covers (Spares)</text>
+            <text x="450" y="20" font-family="monospace" font-size="11" font-weight="800" fill="#64748b">8</text>
+            <text x="510" y="20" font-family="sans-serif" font-size="10" fill="#94a3b8">Future Exp</text>
+        </g>
+        <!-- Total Row -->
+        <g transform="translate(1855, 905)">
+            <rect x="0" y="0" width="590" height="36" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" />
+            <text x="15" y="23" font-family="sans-serif" font-size="11" font-weight="800" fill="#0369a1">TOTAL SLOTS ALLOCATED</text>
+            <text x="210" y="23" font-family="sans-serif" font-size="10" font-weight="600" fill="#0369a1">5 CHASSIS x 13 SLOTS = 65 SLOTS</text>
+            <text x="440" y="23" font-family="monospace" font-size="13" font-weight="800" fill="#0369a1">65</text>
+            <text x="500" y="23" font-family="monospace" font-size="11" font-weight="800" fill="#0284c7">1,200 I/O</text>
+        </g>
+
+        <!-- TABLE 2: NETWORK CABLE SCHEDULE & CONNECTIONS -->
+        <rect x="1840" y="980" width="620" height="380" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)" />
+        <rect x="1840" y="980" width="620" height="32" rx="6" fill="#334155" />
+        <text x="1855" y="1001" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">2. DLR NETWORK CABLE SCHEDULE &amp; RUN LIST</text>
+
+        <!-- Schedule Headers -->
+        <g transform="translate(1855, 1020)">
+            <rect x="0" y="0" width="590" height="22" fill="#f1f5f9" />
+            <text x="10" y="15" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">CABLE TAG</text>
+            <text x="100" y="15" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">FROM (PORT)</text>
+            <text x="230" y="15" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">TO (PORT)</text>
+            <text x="360" y="15" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">MEDIA / SPEC</text>
+            <text x="510" y="15" font-family="sans-serif" font-size="9" font-weight="800" fill="#475569">EST. LEN</text>
+        </g>
+    
+        <g transform="translate(1855, 1046)">
+            <rect x="0" y="0" width="590" height="29" fill="#ffffff" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#059669">CBL-DLR-01</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS1-EN4TR (P1)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS2-EN4TR (P1)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A Shielded S/FTP</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">1.5 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1077)">
+            <rect x="0" y="0" width="590" height="29" fill="#f8fafc" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#059669">CBL-DLR-02</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS2-EN4TR (P2)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS3-EN4TR (P1)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A Shielded S/FTP</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">1.5 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1108)">
+            <rect x="0" y="0" width="590" height="29" fill="#ffffff" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#059669">CBL-DLR-03</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS3-EN4TR (P2)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS4-EN4TR (P1)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A Shielded S/FTP</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">1.5 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1139)">
+            <rect x="0" y="0" width="590" height="29" fill="#f8fafc" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#059669">CBL-DLR-04</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS4-EN4TR (P2)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-01 (RJ45-1)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A Shielded S/FTP</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">2.0 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1170)">
+            <rect x="0" y="0" width="590" height="29" fill="#ffffff" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#d97706">FOB-RIO-01</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-01 (FO-1 TX/RX)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-02 (FO-1 TX/RX)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">4C Armored OM3/OS2</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">200 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1201)">
+            <rect x="0" y="0" width="590" height="29" fill="#f8fafc" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#059669">CBL-DLR-05</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-02 (RJ45-1)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS5-EN4TR (P1)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A Shielded S/FTP</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">1.5 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1232)">
+            <rect x="0" y="0" width="590" height="29" fill="#ffffff" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#059669">CBL-DLR-06</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS5-EN4TR (P2)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-02 (RJ45-2)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A Shielded S/FTP</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">1.5 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1263)">
+            <rect x="0" y="0" width="590" height="29" fill="#f8fafc" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#d97706">FOB-RIO-02</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-02 (FO-2 TX/RX)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-01 (FO-2 TX/RX)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">4C Armored OM3/OS2</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">200 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1294)">
+            <rect x="0" y="0" width="590" height="29" fill="#ffffff" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#059669">CBL-DLR-07</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">MC-01 (RJ45-2)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS1-EN4TR (P2 Beacon)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A S/FTP (Ring Close)</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">2.0 m</text>
+        </g>
+        
+        <g transform="translate(1855, 1325)">
+            <rect x="0" y="0" width="590" height="29" fill="#f8fafc" />
+            <text x="10" y="19" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">CBL-UPL-01</text>
+            <text x="100" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">CS1-EN4TR (S02)</text>
+            <text x="230" y="19" font-family="sans-serif" font-size="9" font-weight="600" fill="#0f172a">Core Switch (VLAN 30)</text>
+            <text x="360" y="19" font-family="sans-serif" font-size="9" fill="#334155">Cat6A / 1Gbps Fiber</text>
+            <text x="510" y="19" font-family="monospace" font-size="9" font-weight="700" fill="#64748b">15 m</text>
+        </g>
+        
+        <g transform="translate(1840, 1370)">
+            <rect x="0" y="0" width="620" height="90" rx="6" fill="#fffdf5" stroke="#f59e0b" stroke-width="1.2" />
+            <text x="15" y="22" font-family="sans-serif" font-size="11" font-weight="800" fill="#b45309">ENGINEERING NOTES &amp; DLR DESIGN RULES:</text>
+            <text x="15" y="40" font-family="sans-serif" font-size="9" fill="#334155">1. CS1 Slot 1 is the ACTIVE RING SUPERVISOR. Port 2 is beacon-blocked during normal operation.</text>
+            <text x="15" y="55" font-family="sans-serif" font-size="9" fill="#334155">2. DLR Beacon Interval configured at 400µs; single cable fault failover recovers in &lt; 3ms.</text>
+            <text x="15" y="70" font-family="sans-serif" font-size="9" fill="#334155">3. Expansion chassis CS2–CS5 standardized with 1756-EN4TR in Slot 00 per Rockwell CPwE guideline.</text>
+        </g>
+    </g>
+    </svg>

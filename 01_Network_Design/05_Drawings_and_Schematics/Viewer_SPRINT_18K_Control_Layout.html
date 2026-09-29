@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPRINT 18K Panel Layout — System Architecture (Drawing No: 600-600-001)</title>
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-blue: #0284c7;
+            --accent-green: #059669;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title h1 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+        }
+
+        .header-title p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            background: #ffffff;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        .btn-primary {
+            background: #0284c7;
+            border-color: #0369a1;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #0369a1;
+            color: #ffffff;
+        }
+
+        main {
+            flex: 1;
+            position: relative;
+            overflow: auto;
+            background: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .dwg-container {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            background: #ffffff;
+            border-radius: 4px;
+            transition: transform 0.2s ease;
+            transform-origin: top center;
+            display: inline-block;
+        }
+
+        img, object {
+            display: block;
+            width: 100%;
+            min-width: 1600px;
+            height: auto;
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 8px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .legend-items {
+            display: flex;
+            gap: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .line-swatch {
+            width: 16px;
+            height: 3px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">
+            <h1>SPRINT 18K Panel Layout — System Architecture</h1>
+            <p>Client: Ingredion_001 • Drawing No: 600-600-001 • Rev B01 • Converted from Hand-drawn Sketch to Standard CAD</p>
+        </div>
+        <div class="toolbar">
+            <button class="btn" onclick="zoomIn()">🔍 Zoom In</button>
+            <button class="btn" onclick="zoomOut()">🔎 Zoom Out</button>
+            <button class="btn" onclick="resetZoom()">↺ Reset</button>
+            <a href="SPRINT_18K_Control_Layout_System_Architecture.dxf" download class="btn btn-primary">📐 Download DXF (AutoCAD)</a>
+            <a href="SPRINT_18K_Control_Layout_System_Architecture.pdf" download class="btn">📄 Download PDF</a>
+        </div>
+    </header>
+
+    <main id="viewport">
+        <div class="dwg-container" id="container">
+            <img src="SPRINT_18K_Control_Layout_System_Architecture.png" alt="SPRINT 18K Panel Layout Architecture" id="dwgImage">
+        </div>
+    </main>
+
+    <footer>
+        <div class="legend-items">
+            <div class="legend-item"><span class="line-swatch" style="background:#dc2626;"></span> Control LAN (Red)</div>
+            <div class="legend-item"><span class="line-swatch" style="background:#16a34a;"></span> I/O DLR Ring (Green)</div>
+            <div class="legend-item"><span class="line-swatch" style="background:#2563eb;"></span> MCC Network (Blue)</div>
+            <div class="legend-item"><span class="line-swatch" style="background:#d946ef;"></span> Fiber Optic Trunk (Pink/Dashed)</div>
+        </div>
+        <div>Formats Available: AutoCAD DXF (R2010), Vector SVG, High-Res PDF, 150 DPI PNG</div>
+    </footer>
+
+    <script>
+        let currentScale = 1.0;
+        const container = document.getElementById('container');
+
+        function zoomIn() {
+            currentScale = Math.min(currentScale + 0.15, 2.5);
+            container.style.transform = `scale(${currentScale})`;
+        }
+
+        function zoomOut() {
+            currentScale = Math.max(currentScale - 0.15, 0.5);
+            container.style.transform = `scale(${currentScale})`;
+        }
+
+        function resetZoom() {
+            currentScale = 1.0;
+            container.style.transform = `scale(1.0)`;
+        }
+    </script>
+</body>
+</html>

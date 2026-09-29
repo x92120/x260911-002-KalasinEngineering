@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cable Schedule Slides: MCC to Field Junction Boxes</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .slide-content { transition: opacity 0.2s ease-in-out; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen p-4 flex flex-col items-center">
+  <div class="w-full max-w-7xl space-y-4">
+
+    <!-- Top Controls -->
+    <header class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-wrap justify-between items-center gap-4 shadow-xl">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="bg-sky-600 text-white font-bold text-xs uppercase px-2 py-0.5 rounded">Engineering Deck</span>
+          <h1 class="text-lg font-bold text-white tracking-wide">MCC to Junction Box Cable Schedule</h1>
+        </div>
+        <p class="text-xs text-slate-400 mt-0.5">Project Jet Cooker | Ingredion Kalasin | AEC Industrial Engineering (Rev. 3.6)</p>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="prevSlide()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700">&larr; Previous</button>
+        <span id="slide-indicator" class="text-xs font-mono text-sky-400 font-bold px-3">Slide 1 / 8</span>
+        <button onclick="nextSlide()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-600 hover:bg-sky-500 text-white shadow">Next &rarr;</button>
+      </div>
+    </header>
+
+    <!-- Slide Thumbnails Bar -->
+    <div class="grid grid-cols-4 md:grid-cols-8 gap-2">
+      <button onclick="goToSlide(1)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-sky-600/30 border-sky-500 text-white" id="tab-1">1. Cover</button>
+      <button onclick="goToSlide(2)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-2">2. Architecture</button>
+      <button onclick="goToSlide(3)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-3">3. Panel M1</button>
+      <button onclick="goToSlide(4)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-4">4. Panel M2</button>
+      <button onclick="goToSlide(5)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-5">5. Panel M3 (IS)</button>
+      <button onclick="goToSlide(6)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-6">6. Panel M4 (IS)</button>
+      <button onclick="goToSlide(7)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-7">7. MCC & Trunks</button>
+      <button onclick="goToSlide(8)" class="tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800" id="tab-8">8. BOQ & Drums</button>
+    </div>
+
+    <!-- Main Slide Display Canvas -->
+    <main class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl relative min-h-[560px] flex flex-col justify-center">
+      <div id="slide-container" class="p-6">
+        <!-- Rendered dynamically -->
+      </div>
+    </main>
+
+    <!-- Footer Downloads -->
+    <footer class="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-wrap justify-between items-center text-xs text-slate-400 gap-3">
+      <div>
+        Deliverables: <span class="font-mono text-slate-200">Cable_Schedule_MCC_to_Junction_Boxes.pptx / .pdf</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-emerald-400 font-medium">37 Multi-Core Cables Configured</span>
+        <span>|</span>
+        <span class="text-sky-400 font-medium">1,210 I/O Channels Served</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const cables = [{"tag": "CBL-M1-JB401-01", "from": "Panel M1", "to": "JB-401", "loc": "Infeed 2nd Flr", "func": "Digital Inputs (DI)", "ch": "64 DI", "spec": "CVV-S 48C x 1.5 mm2", "tray": "TR-IN-01", "len": 55, "gland": "M40", "type": "Control"}, {"tag": "CBL-M1-JB401-02", "from": "Panel M1", "to": "JB-401", "loc": "Infeed 2nd Flr", "func": "DI Extension & Spares", "ch": "Spares", "spec": "CVV-S 30C x 1.5 mm2", "tray": "TR-IN-01", "len": 55, "gland": "M32", "type": "Control"}, {"tag": "CBL-M1-JB401-03", "from": "Panel M1", "to": "JB-401", "loc": "Infeed 2nd Flr", "func": "Digital Outputs (DO)", "ch": "32 DO", "spec": "CVV-S 40C x 1.5 mm2", "tray": "TR-IN-01", "len": 55, "gland": "M36", "type": "Control"}, {"tag": "CBL-M1-JB401-04", "from": "Panel M1", "to": "JB-401", "loc": "Infeed 2nd Flr", "func": "Analog Inputs (AI)", "ch": "16 AI", "spec": "IS/OS/PVC 16P x 1.0 mm2", "tray": "TR-IN-01", "len": 55, "gland": "M32", "type": "Analog Shielded"}, {"tag": "CBL-M1-JB601-01", "from": "Panel M1", "to": "JB-601", "loc": "Spray Dryer 1st Flr", "func": "Digital Inputs (DI)", "ch": "51 DI", "spec": "CVV-S 60C x 1.5 mm2", "tray": "TR-SD-01", "len": 70, "gland": "M50", "type": "Control"}, {"tag": "CBL-M1-JB601-02", "from": "Panel M1", "to": "JB-601", "loc": "Spray Dryer 1st Flr", "func": "Digital Outputs (DO)", "ch": "17 DO", "spec": "CVV-S 24C x 1.5 mm2", "tray": "TR-SD-01", "len": 70, "gland": "M25", "type": "Control"}, {"tag": "CBL-M1-JB601-03", "from": "Panel M1", "to": "JB-601", "loc": "Spray Dryer 1st Flr", "func": "Analog Inputs (AI)", "ch": "16 AI", "spec": "IS/OS/PVC 16P x 1.0 mm2", "tray": "TR-SD-01", "len": 70, "gland": "M32", "type": "Analog Shielded"}, {"tag": "CBL-M1-RIO200-FO", "from": "Panel M1", "to": "RIO-200", "loc": "Slurry Out Bldg 2F", "func": "Redundant DLR Ethernet", "ch": "Backbone", "spec": "6-Core Armoured SM Fiber (OS2)", "tray": "TR-EXT-01", "len": 165, "gland": "M20", "type": "Fiber Optic"}, {"tag": "CBL-M1-RIO200-PWR", "from": "Panel M1", "to": "RIO-200", "loc": "Slurry Out Bldg 2F", "func": "230VAC UPS Power", "ch": "Feeder", "spec": "XLPE/SWA/PVC 3C x 4.0 mm2", "tray": "TR-EXT-01", "len": 165, "gland": "M25", "type": "Power"}, {"tag": "CBL-M2-JB402-01", "from": "Panel M2", "to": "JB-402", "loc": "Jet Cooker 2nd Flr", "func": "Digital Inputs (DI)", "ch": "32 DI", "spec": "CVV-S 40C x 1.5 mm2", "tray": "TR-JC-01", "len": 45, "gland": "M36", "type": "Control"}, {"tag": "CBL-M2-JB402-02", "from": "Panel M2", "to": "JB-402", "loc": "Jet Cooker 2nd Flr", "func": "Digital Outputs (DO)", "ch": "16 DO", "spec": "CVV-S 24C x 1.5 mm2", "tray": "TR-JC-01", "len": 45, "gland": "M25", "type": "Control"}, {"tag": "CBL-M2-JB402-03", "from": "Panel M2", "to": "JB-402", "loc": "Jet Cooker 2nd Flr", "func": "Analog Inputs & AO", "ch": "16 AI + 1 AO", "spec": "IS/OS/PVC 20P x 1.0 mm2", "tray": "TR-JC-01", "len": 45, "gland": "M36", "type": "Analog Shielded"}, {"tag": "CBL-M2-JB602-01", "from": "Panel M2", "to": "JB-602", "loc": "Spray Dryer 3rd Flr", "func": "Digital Inputs (DI)", "ch": "32 DI", "spec": "CVV-S 40C x 1.5 mm2", "tray": "TR-SD-02", "len": 85, "gland": "M36", "type": "Control"}, {"tag": "CBL-M2-JB602-02", "from": "Panel M2", "to": "JB-602", "loc": "Spray Dryer 3rd Flr", "func": "Digital Outputs (DO)", "ch": "16 DO", "spec": "CVV-S 24C x 1.5 mm2", "tray": "TR-SD-02", "len": 85, "gland": "M25", "type": "Control"}, {"tag": "CBL-M2-JB602-03", "from": "Panel M2", "to": "JB-602", "loc": "Spray Dryer 3rd Flr", "func": "Analog Inputs & AO", "ch": "32 AI + 2 AO", "spec": "IS/OS/PVC 36P x 1.0 mm2", "tray": "TR-SD-02", "len": 85, "gland": "M40", "type": "Analog Shielded"}, {"tag": "CBL-M2-JB607-01", "from": "Panel M2", "to": "JB-607", "loc": "Spray Dryer 7th Flr", "func": "Digital Inputs (DI) Pt 1", "ch": "48 DI", "spec": "CVV-S 60C x 1.5 mm2", "tray": "TR-SD-03", "len": 125, "gland": "M50", "type": "Control"}, {"tag": "CBL-M2-JB607-02", "from": "Panel M2", "to": "JB-607", "loc": "Spray Dryer 7th Flr", "func": "Digital Inputs (DI) Pt 2", "ch": "45 DI", "spec": "CVV-S 60C x 1.5 mm2", "tray": "TR-SD-03", "len": 125, "gland": "M50", "type": "Control"}, {"tag": "CBL-M2-JB607-03", "from": "Panel M2", "to": "JB-607", "loc": "Spray Dryer 7th Flr", "func": "Digital Outputs (DO) Pt 1", "ch": "40 DO", "spec": "CVV-S 48C x 1.5 mm2", "tray": "TR-SD-03", "len": 125, "gland": "M40", "type": "Control"}, {"tag": "CBL-M2-JB607-04", "from": "Panel M2", "to": "JB-607", "loc": "Spray Dryer 7th Flr", "func": "Digital Outputs (DO) Pt 2", "ch": "24 DO", "spec": "CVV-S 30C x 1.5 mm2", "tray": "TR-SD-03", "len": 125, "gland": "M32", "type": "Control"}, {"tag": "CBL-M2-JB607-05", "from": "Panel M2", "to": "JB-607", "loc": "Spray Dryer 7th Flr", "func": "Analog Inputs & AO", "ch": "32 AI + 5 AO", "spec": "IS/OS/PVC 40P x 1.0 mm2", "tray": "TR-SD-03", "len": 125, "gland": "M40", "type": "Analog Shielded"}, {"tag": "CBL-M3-ISJB603-01", "from": "Panel M3", "to": "IS-JB-603", "loc": "Spray Dryer 3rd Flr", "func": "Ex-i Digital Inputs (DI)", "ch": "16 DI (IS)", "spec": "CVV-S (IS) 24C x 1.5 mm2 [BLUE]", "tray": "TR-SD-IS", "len": 85, "gland": "M25 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M3-ISJB603-02", "from": "Panel M3", "to": "IS-JB-603", "loc": "Spray Dryer 3rd Flr", "func": "Ex-i Analog Inputs (AI)", "ch": "16 AI (IS)", "spec": "IS/OS/PVC (IS) 16P x 1.0 mm2 [BLUE]", "tray": "TR-SD-IS", "len": 85, "gland": "M32 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M3-ISJB618-01", "from": "Panel M3", "to": "IS-JB-618", "loc": "Packing Tower 8th Flr", "func": "Ex-i Digital Inputs (DI)", "ch": "32 DI (IS)", "spec": "CVV-S (IS) 40C x 1.5 mm2 [BLUE]", "tray": "TR-PT-IS", "len": 140, "gland": "M36 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M3-ISJB618-02", "from": "Panel M3", "to": "IS-JB-618", "loc": "Packing Tower 8th Flr", "func": "Ex-i Analog Inputs (AI)", "ch": "12 AI (IS)", "spec": "IS/OS/PVC (IS) 16P x 1.0 mm2 [BLUE]", "tray": "TR-PT-IS", "len": 140, "gland": "M32 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M3-JB618-01", "from": "Panel M3", "to": "JB-618", "loc": "Packing Tower 8th Flr", "func": "Non-IS DI & AI", "ch": "16 DI + 4 AI", "spec": "CVV-S 24C x 1.5 mm2", "tray": "TR-PT-01", "len": 140, "gland": "M25", "type": "Control"}, {"tag": "CBL-M3-JB618-02", "from": "Panel M3", "to": "JB-618", "loc": "Packing Tower 8th Flr", "func": "Non-IS Digital Outputs", "ch": "32 DO", "spec": "CVV-S 40C x 1.5 mm2", "tray": "TR-PT-01", "len": 140, "gland": "M36", "type": "Control"}, {"tag": "CBL-M4-ISJB608-01", "from": "Panel M4", "to": "IS-JB-608", "loc": "Spray Dryer 8th Flr", "func": "Ex-i DI & DO Signals", "ch": "16 DI + 8 DO (IS)", "spec": "CVV-S (IS) 30C x 1.5 mm2 [BLUE]", "tray": "TR-SD-IS", "len": 135, "gland": "M32 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M4-ISJB608-02", "from": "Panel M4", "to": "IS-JB-608", "loc": "Spray Dryer 8th Flr", "func": "Ex-i Analog Inputs (AI)", "ch": "8 AI (IS)", "spec": "IS/OS/PVC (IS) 10P x 1.0 mm2 [BLUE]", "tray": "TR-SD-IS", "len": 135, "gland": "M25 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M4-ISJB612-01", "from": "Panel M4", "to": "IS-JB-612", "loc": "Packing Tower 2nd Flr", "func": "Ex-i Digital Inputs (DI)", "ch": "31 DI (IS)", "spec": "CVV-S (IS) 40C x 1.5 mm2 [BLUE]", "tray": "TR-PT-IS", "len": 65, "gland": "M36 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M4-ISJB612-02", "from": "Panel M4", "to": "IS-JB-612", "loc": "Packing Tower 2nd Flr", "func": "Ex-i Analog Inputs (AI)", "ch": "10 AI (IS)", "spec": "IS/OS/PVC (IS) 12P x 1.0 mm2 [BLUE]", "tray": "TR-PT-IS", "len": 65, "gland": "M25 (IS)", "type": "Ex-i Intrinsically Safe"}, {"tag": "CBL-M4-JB606-01", "from": "Panel M4", "to": "JB-606", "loc": "Spray Dryer 6th Flr", "func": "Non-IS DI, DO & AI", "ch": "16 DI + 8 DO + 2 AI", "spec": "CVV-S 30C x 1.5 mm2", "tray": "TR-SD-02", "len": 115, "gland": "M32", "type": "Control"}, {"tag": "CBL-M4-JB608-01", "from": "Panel M4", "to": "JB-608", "loc": "Spray Dryer 8th Flr", "func": "Non-IS Analog Inputs", "ch": "6 AI", "spec": "IS/OS/PVC 8P x 1.0 mm2", "tray": "TR-SD-03", "len": 135, "gland": "M20", "type": "Analog Shielded"}, {"tag": "CBL-M4-JB612-01", "from": "Panel M4", "to": "JB-612", "loc": "Packing Tower 2nd Flr", "func": "Non-IS Digital Inputs", "ch": "32 DI", "spec": "CVV-S 40C x 1.5 mm2", "tray": "TR-PT-01", "len": 65, "gland": "M36", "type": "Control"}, {"tag": "CBL-M4-JB612-02", "from": "Panel M4", "to": "JB-612", "loc": "Packing Tower 2nd Flr", "func": "Non-IS DO & AI", "ch": "16 DO + 8 AI", "spec": "CVV-S 24C x 1.5 + 10P x 1.0", "tray": "TR-PT-01", "len": 65, "gland": "M32", "type": "Control & Analog"}, {"tag": "CBL-M1-MCC-01", "from": "Panel M1", "to": "MCC Lineup", "loc": "MCC Room", "func": "Motor Feedback Signals", "ch": "125 DI", "spec": "2x CVV-S 48C + 36C x 1.5 mm2", "tray": "TR-MCC-01", "len": 25, "gland": "M40", "type": "Control"}, {"tag": "CBL-M1-MCC-02", "from": "Panel M1", "to": "MCC Lineup", "loc": "MCC Room", "func": "Motor Command Signals", "ch": "95 DO", "spec": "2x CVV-S 48C + 24C x 1.5 mm2", "tray": "TR-MCC-01", "len": 25, "gland": "M40", "type": "Control"}, {"tag": "CBL-M1-MCC-NET", "from": "Panel M1", "to": "MCC Lineup", "loc": "MCC Room", "func": "Smart Overloads (E300)", "ch": "17 BUS Nodes", "spec": "Armoured Industrial Cat6A DLR", "tray": "TR-MCC-01", "len": 30, "gland": "M20", "type": "Industrial Ethernet"}];
+    let currentSlide = 1;
+    const totalSlides = 8;
+
+    function renderSlide(slideNo) {
+      const container = document.getElementById('slide-container');
+      
+      if (slideNo === 1) {
+        container.innerHTML = `
+          <div class="flex flex-col items-center justify-center py-12 text-center space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950 border border-sky-800 text-sky-300 text-xs font-semibold">
+              INGREDION (THAILAND) CO., LTD. &bull; KALASIN PLANT
+            </div>
+            <h2 class="text-4xl font-extrabold text-white tracking-tight">PROJECT JET COOKER</h2>
+            <h3 class="text-2xl font-bold text-sky-400">Interconnection Cable Schedule</h3>
+            <p class="text-sm text-slate-400 max-w-2xl">
+              Complete engineering schedule detailing multi-core control, analog instrumentation, intrinsically safe (Ex-i), and fiber optic backbone cables between the MCC / CA1 Suite and all field Junction Boxes.
+            </p>
+            <div class="pt-6 border-t border-slate-800 flex flex-wrap justify-center gap-6 text-xs text-slate-300 font-mono">
+              <div><span class="text-slate-500">Doc No:</span> CA1-SCH-CBL-001</div>
+              <div><span class="text-slate-500">Revision:</span> 3.6 (Approved)</div>
+              <div><span class="text-slate-500">Date:</span> September 2026</div>
+              <div><span class="text-slate-500">Contractor:</span> AEC Industrial Engineering</div>
+            </div>
+          </div>
+        `;
+      } else if (slideNo === 2) {
+        container.innerHTML = `
+          <div>
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-sky-400 uppercase tracking-wider">System Architecture</span>
+              <h2 class="text-xl font-bold text-white">Overall Cable Routing & Signal Segregation Architecture</h2>
+              <p class="text-xs text-slate-400">Physical pathways from Substation MCC Room to Process Areas</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <div class="bg-slate-950 p-4 rounded-xl border border-sky-700/60">
+                <div class="text-xs font-bold text-sky-400 mb-1">Spine Tray (TR-01)</div>
+                <div class="text-sm font-semibold text-white">Substation to Pipe Rack</div>
+                <p class="text-xs text-slate-400 mt-2">600x100mm heavy-duty ladder tray exiting MCC room basement trench to main process piperack.</p>
+              </div>
+              <div class="bg-slate-950 p-4 rounded-xl border border-emerald-700/60">
+                <div class="text-xs font-bold text-emerald-400 mb-1">Spray Dryer Riser (TR-SD)</div>
+                <div class="text-sm font-semibold text-white">1st to 8th Floors</div>
+                <p class="text-xs text-slate-400 mt-2">Traverses building height with separate trays for Non-IS Control, Analog Shielded, and Ex-i.</p>
+              </div>
+              <div class="bg-slate-950 p-4 rounded-xl border border-amber-700/60">
+                <div class="text-xs font-bold text-amber-400 mb-1">Packing Tower Riser (TR-PT)</div>
+                <div class="text-sm font-semibold text-white">2nd and 8th Floors</div>
+                <p class="text-xs text-slate-400 mt-2">Dedicated blue-coated Ex-i tray with >=300mm air gap physical separation from power cables.</p>
+              </div>
+              <div class="bg-slate-950 p-4 rounded-xl border border-purple-700/60">
+                <div class="text-xs font-bold text-purple-400 mb-1">Slurry Out Trunk (TR-EXT)</div>
+                <div class="text-sm font-semibold text-white">RIO-200 Link</div>
+                <p class="text-xs text-slate-400 mt-2">6-core steel wire armoured fiber optic cable running 165m to Slurry Out building.</p>
+              </div>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-2">
+              <div class="font-bold text-white text-sm">Key Engineering Design Standards</div>
+              <div>&bull; <span class="text-sky-400 font-semibold">Ex-i Segregation:</span> Distinctive blue outer sheath cables. Physical 50mm separation on terminal strips and 300mm on cable trays (IEC 60079-14).</div>
+              <div>&bull; <span class="text-emerald-400 font-semibold">Single-Point Shielding:</span> Individual and overall shields terminated at MCC clean earth bar only; left floating at field JBs.</div>
+              <div>&bull; <span class="text-amber-400 font-semibold">Installed Spares:</span> All multicore trunks incorporate 20% to 35% spare conductors for future modifications.</div>
+            </div>
+          </div>
+        `;
+      } else if (slideNo >= 3 && slideNo <= 7) {
+        let filterFrom = "";
+        let title = "";
+        let sub = "";
+        if (slideNo === 3) {
+          filterFrom = "Panel M1";
+          title = "Panel M1 Interconnection Cable Schedule";
+          sub = "Master Controller Bay (=CA1+MCP-M1) serving Infeed (JB-401), Spray Dryer 1F (JB-601), and Slurry (RIO-200)";
+        } else if (slideNo === 4) {
+          filterFrom = "Panel M2";
+          title = "Panel M2 Interconnection Cable Schedule";
+          sub = "High-Density I/O Bay (=CA1+MCP-M2) serving Jet Cooker (JB-402), Spray Dryer 3F (JB-602), and Spray Dryer 7F (JB-607)";
+        } else if (slideNo === 5) {
+          filterFrom = "Panel M3";
+          title = "Panel M3 Intrinsically Safe (Ex-i) Cable Schedule";
+          sub = "Ex-i Hazardous Area Bay 1 (=CA1+MCP-M3) with Pepperl+Fuchs Isolators serving IS-JB-603, IS-JB-618, and JB-618";
+        } else if (slideNo === 6) {
+          filterFrom = "Panel M4";
+          title = "Panel M4 Intrinsically Safe (Ex-i) Cable Schedule";
+          sub = "Ex-i Hazardous Area Bay 2 (=CA1+MCP-M4) serving IS-JB-608, IS-JB-612, JB-606, JB-608, and JB-612";
+        } else if (slideNo === 7) {
+          filterFrom = "MCC_TRUNK";
+          title = "MCC Switchgear & Remote I/O Trunk Schedule";
+          sub = "Hardwired control interlocks to Motor Control Center switchgear and Armoured Fiber link to RIO-200";
+        }
+
+        let list = [];
+        if (filterFrom === "MCC_TRUNK") {
+          list = cables.filter(c => c.to.includes("MCC") || c.to.includes("RIO"));
+        } else {
+          list = cables.filter(c => c.from === filterFrom && !c.to.includes("MCC"));
+        }
+
+        let rowsHtml = list.map((c, i) => {
+          const isExI = c.type.includes("Ex-i");
+          const bgClass = isExI ? "bg-sky-950/30 text-sky-200" : (i % 2 === 0 ? "bg-slate-900/60" : "bg-slate-950/60");
+          return `
+            <tr class="${bgClass} border-b border-slate-800/60 hover:bg-slate-800 text-xs">
+              <td class="p-2 font-mono font-bold text-sky-400">${c.tag}</td>
+              <td class="p-2 text-center text-slate-400">${c.from}</td>
+              <td class="p-2 font-semibold text-white">${c.to}</td>
+              <td class="p-2 text-slate-400">${c.loc}</td>
+              <td class="p-2">${c.func}</td>
+              <td class="p-2 font-mono ${isExI ? 'text-sky-300 font-semibold' : 'text-slate-300'}">${c.spec}</td>
+              <td class="p-2 text-center text-slate-400">${c.tray}</td>
+              <td class="p-2 text-center font-bold text-amber-400">${c.len}m</td>
+            </tr>
+          `;
+        }).join('');
+
+        container.innerHTML = `
+          <div>
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-sky-400 uppercase tracking-wider">Interconnection Schedule</span>
+              <h2 class="text-xl font-bold text-white">${title}</h2>
+              <p class="text-xs text-slate-400">${sub}</p>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-slate-800">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-slate-950 text-slate-300 text-[11px] font-bold uppercase tracking-wider border-b border-slate-800">
+                    <th class="p-2.5">Cable Tag</th>
+                    <th class="p-2.5 text-center">From</th>
+                    <th class="p-2.5">To (JB)</th>
+                    <th class="p-2.5">Location</th>
+                    <th class="p-2.5">Function</th>
+                    <th class="p-2.5">Specification</th>
+                    <th class="p-2.5 text-center">Tray</th>
+                    <th class="p-2.5 text-center">Length</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rowsHtml}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      } else if (slideNo === 8) {
+        // BOQ Table
+        const boqMap = {};
+        cables.forEach(c => {
+          if (!boqMap[c.spec]) boqMap[c.spec] = { runs: 0, net: 0, type: c.type };
+          boqMap[c.spec].runs += 1;
+          boqMap[c.spec].net += c.len;
+        });
+
+        let boqRows = Object.keys(boqMap).map((sp, idx) => {
+          const item = boqMap[sp];
+          const tot = Math.round(item.net * 1.10);
+          const drum = tot <= 500 ? `1x ${tot}m Drum` : `2x ${Math.round(tot/2)}m Drums`;
+          return `
+            <tr class="${idx % 2 === 0 ? 'bg-slate-900/60' : 'bg-slate-950/60'} border-b border-slate-800/60 hover:bg-slate-800 text-xs">
+              <td class="p-2 font-mono text-slate-400">CBL-${(idx+1).toString().padStart(2, '0')}</td>
+              <td class="p-2 font-semibold text-white font-mono">${sp}</td>
+              <td class="p-2 text-slate-300">${item.type}</td>
+              <td class="p-2 text-center text-slate-300">${item.runs}</td>
+              <td class="p-2 text-center font-bold text-amber-400">${tot} m</td>
+              <td class="p-2 text-center text-sky-400 font-mono">${drum}</td>
+            </tr>
+          `;
+        }).join('');
+
+        container.innerHTML = `
+          <div>
+            <div class="mb-4">
+              <span class="text-[11px] font-bold text-sky-400 uppercase tracking-wider">Procurement Schedule</span>
+              <h2 class="text-xl font-bold text-white">Master Cable Bill of Quantities (BOQ) & Drum Schedule</h2>
+              <p class="text-xs text-slate-400">Consolidated procurement quantities with 10% installation slack and drum reel specifications</p>
+            </div>
+            <div class="overflow-x-auto rounded-xl border border-slate-800">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="bg-slate-950 text-slate-300 text-[11px] font-bold uppercase tracking-wider border-b border-slate-800">
+                    <th class="p-2.5">Item</th>
+                    <th class="p-2.5">Cable Specification & Construction</th>
+                    <th class="p-2.5">Signal Category</th>
+                    <th class="p-2.5 text-center">No. of Runs</th>
+                    <th class="p-2.5 text-center">Total Length (+10%)</th>
+                    <th class="p-2.5 text-center">Drum Reel Packaging</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${boqRows}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      }
+
+      // Update button styles
+      for (let i = 1; i <= totalSlides; i++) {
+        const btn = document.getElementById('tab-' + i);
+        if (i === slideNo) {
+          btn.className = "tab-btn p-2 rounded-lg text-center text-xs font-semibold border bg-sky-600 border-sky-500 text-white shadow";
+        } else {
+          btn.className = "tab-btn p-2 rounded-lg text-center text-xs font-medium border bg-slate-900 border-slate-800 text-slate-400 hover:bg-slate-800";
+        }
+      }
+      document.getElementById('slide-indicator').innerText = `Slide ${slideNo} / ${totalSlides}`;
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      renderSlide(currentSlide);
+    }
+    function prevSlide() {
+      if (currentSlide > 1) goToSlide(currentSlide - 1);
+    }
+    function nextSlide() {
+      if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+    }
+
+    // Keyboard support
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Initialize first slide
+    renderSlide(1);
+  </script>
+</body>
+</html>

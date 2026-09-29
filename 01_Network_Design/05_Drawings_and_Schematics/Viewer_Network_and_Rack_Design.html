@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredion Kalasin — ControlLogix 5-Chassis DLR Network & Rack Elevation</title>
+    <style>
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --accent-blue: #0284c7;
+            --accent-green: #059669;
+            --accent-amber: #d97706;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top App Bar */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .header-title h1 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 0.3px;
+        }
+
+        .header-title p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            font-weight: 500;
+        }
+
+        .toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn {
+            background: #ffffff;
+            color: #334155;
+            border: 1px solid #cbd5e1;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+            border-color: #94a3b8;
+        }
+
+        .btn-primary {
+            background: #0284c7;
+            border-color: #0369a1;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: #0369a1;
+            color: #ffffff;
+        }
+
+        /* Main Viewport */
+        main {
+            flex: 1;
+            position: relative;
+            overflow: auto;
+            background: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .svg-container {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            transition: transform 0.2s ease;
+            transform-origin: top center;
+        }
+
+        svg {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 2500px;
+        }
+
+        /* Float Zoom Indicator */
+        .zoom-badge {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid #cbd5e1;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            font-family: monospace;
+        }
+
+        /* Legend Footer */
+        .legend-bar {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid #cbd5e1;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            color: #334155;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>ControlLogix 5580 (1756-L950TPSXT) — 5-Chassis DLR Network &amp; Rack Elevation</h1>
+            <p>Ingredion Thailand Sprint 18K • Area 200/400/600/814 • DWG-260911-NET-01 (LIGHT STYLE)</p>
+        </div>
+        <div class="toolbar">
+            <button class="btn" onclick="zoomIn()">➕ Zoom In</button>
+            <button class="btn" onclick="zoomOut()">➖ Zoom Out</button>
+            <button class="btn" onclick="fitWidth()">↔️ Fit Width</button>
+            <button class="btn" onclick="resetZoom()">🔄 100%</button>
+            <span style="border-left: 1px solid #cbd5e1; height: 20px; margin: 0 4px;"></span>
+            <a class="btn btn-primary" href="ControlLogix_5Chassis_DLR_Network_and_Rack_Design.pdf" target="_blank">📄 View PDF</a>
+            <a class="btn" href="ControlLogix_5Chassis_DLR_Network_and_Rack_Design.png" target="_blank">🖼️ View PNG</a>
+        </div>
+    </header>
+
+    <main id="mainContainer">
+        <div class="svg-container" id="svgContainer">
+            <object id="svgObject" data="ControlLogix_5Chassis_DLR_Network_and_Rack_Design.svg" type="image/svg+xml" style="width: 2500px; height: 1650px; pointer-events: none;"></object>
+        </div>
+
+        <div class="zoom-badge" id="zoomLevel">100%</div>
+
+        <div class="legend-bar">
+            <div class="legend-item">
+                <span class="legend-color" style="background: #059669;"></span>
+                <span>Copper DLR (Cat6A)</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #d97706;"></span>
+                <span>Fiber Trunk (OM3/OS2)</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #0284c7;"></span>
+                <span>Plant SCADA Uplink</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color" style="background: #ca8a04;"></span>
+                <span>Active Supervisor (CS1)</span>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const container = document.getElementById('svgContainer');
+        const zoomLevelEl = document.getElementById('zoomLevel');
+        let currentZoom = 1.0;
+
+        function updateZoom(val) {
+            currentZoom = Math.min(Math.max(val, 0.25), 3.0);
+            container.style.transform = `scale(${currentZoom})`;
+            zoomLevelEl.textContent = `${Math.round(currentZoom * 100)}%`;
+        }
+
+        function zoomIn() {
+            updateZoom(currentZoom + 0.15);
+        }
+
+        function zoomOut() {
+            updateZoom(currentZoom - 0.15);
+        }
+
+        function resetZoom() {
+            updateZoom(1.0);
+        }
+
+        function fitWidth() {
+            const mainW = document.getElementById('mainContainer').clientWidth - 64;
+            const svgW = 2500;
+            updateZoom(mainW / svgW);
+        }
+
+        window.addEventListener('wheel', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                if (e.deltaY < 0) zoomIn();
+                else zoomOut();
+            }
+        }, { passive: false });
+
+        window.addEventListener('load', () => {
+            fitWidth();
+        });
+        window.addEventListener('resize', () => {
+            fitWidth();
+        });
+    </script>
+</body>
+</html>

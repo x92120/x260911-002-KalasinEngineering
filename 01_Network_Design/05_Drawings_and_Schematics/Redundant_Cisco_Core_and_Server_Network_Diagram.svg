@@ -1,0 +1,507 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 1750" width="2600" height="1750">
+    <defs>
+        <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+            <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#64748b" flood-opacity="0.16"/>
+        </filter>
+
+        <pattern id="lightGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="2600" height="1750" fill="#ffffff" /><rect width="2600" height="1750" fill="url(#lightGrid)" />
+    <g id="Header">
+        <rect x="40" y="25" width="2520" height="95" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" filter="url(#shadow)" />
+        <text x="70" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="800" fill="#0f172a" letter-spacing="0.8">INGREDION THAILAND — SPRINT 18K SPRAY DRYER PLANT (KALASIN)</text>
+        <text x="70" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#0284c7" letter-spacing="0.5">REDUNDANT CISCO CORE SWITCHES &amp; REDUNDANT SERVER INFRASTRUCTURE CONFIGURATION</text>
+
+        <!-- Technical Badges -->
+        <g transform="translate(1760, 45)">
+            <rect x="0" y="0" width="130" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="65" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">DRAWING NO.</text>
+            <text x="65" y="36" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#0284c7" font-weight="800">DWG-260911-NET-02</text>
+        </g>
+        <g transform="translate(1910, 45)">
+            <rect x="0" y="0" width="120" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="60" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">CISCO PROTOCOL</text>
+            <text x="60" y="36" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#0284c7" font-weight="800">HSRP v2 + LACP</text>
+        </g>
+        <g transform="translate(2050, 45)">
+            <rect x="0" y="0" width="130" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="65" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">SERVER REDUNDANCY</text>
+            <text x="65" y="36" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#059669" font-weight="800">FT VIEW SE CLUSTER</text>
+        </g>
+        <g transform="translate(2200, 45)">
+            <rect x="0" y="0" width="150" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="75" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">MCC TRUNK</text>
+            <text x="75" y="36" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#d97706" font-weight="800">802.1Q (VLAN 30,50,99)</text>
+        </g>
+        <g transform="translate(2370, 45)">
+            <rect x="0" y="0" width="170" height="45" rx="5" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="85" y="18" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#64748b" font-weight="700">SERVER ROOM LINK</text>
+            <text x="85" y="36" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#db2777" font-weight="800">DUAL 10G FIBER TRUNK</text>
+        </g>
+    </g>
+    
+    <g id="Zone_ServerRoom">
+        <rect x="50" y="150" width="680" height="480" rx="8" fill="#fff5f7" stroke="#f43f5e" stroke-width="1.8" stroke-dasharray="6,4" filter="url(#shadow)" />
+        <rect x="50" y="150" width="280" height="32" rx="6" fill="#e11d48" />
+        <text x="65" y="171" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">EXISTING SERVER ROOM (ZONE 1)</text>
+        <text x="520" y="171" font-family="monospace" font-size="11" font-weight="700" fill="#be123c">FIBER BACKBONE ENDPOINT</text>
+
+        <!-- FDF-SR01 Fiber Distribution Panel -->
+        <rect x="80" y="200" width="620" height="45" rx="4" fill="#ffffff" stroke="#f43f5e" stroke-width="1.5" />
+        <text x="95" y="227" font-family="monospace" font-size="11" font-weight="800" fill="#be123c">FDF-SR01</text>
+        <text x="180" y="227" font-family="sans-serif" font-size="11" font-weight="600" fill="#334155">12-Core OM3/OS2 Fiber Optic Patch Panel (LC Duplex)</text>
+    
+        <g transform="translate(80, 265)">
+            <rect x="0" y="0" width="620" height="65" rx="5" fill="#ffffff" stroke="#fda4af" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">DC01: Primary Domain Controller</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Active Directory / DNS / NTP Master</text>
+            <rect x="450" y="10" width="150" height="22" rx="3" fill="#fff1f2" stroke="#fecdd3" />
+            <text x="525" y="25" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#be123c">IP: 192.168.10.30</text>
+            <text x="525" y="50" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="600" fill="#94a3b8">HPE DL380 Gen10</text>
+        </g>
+        
+        <g transform="translate(80, 345)">
+            <rect x="0" y="0" width="620" height="65" rx="5" fill="#ffffff" stroke="#fda4af" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">DC02: Secondary Domain Controller</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Active Directory Backup / Failover</text>
+            <rect x="450" y="10" width="150" height="22" rx="3" fill="#fff1f2" stroke="#fecdd3" />
+            <text x="525" y="25" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#be123c">IP: 192.168.10.31</text>
+            <text x="525" y="50" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="600" fill="#94a3b8">HPE DL380 Gen10</text>
+        </g>
+        
+        <g transform="translate(80, 425)">
+            <rect x="0" y="0" width="620" height="65" rx="5" fill="#ffffff" stroke="#fda4af" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">FT Historian SE 01 (Primary)</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">FactoryTalk Process Data Archive</text>
+            <rect x="450" y="10" width="150" height="22" rx="3" fill="#fff1f2" stroke="#fecdd3" />
+            <text x="525" y="25" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#be123c">IP: 192.168.10.20</text>
+            <text x="525" y="50" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="600" fill="#94a3b8">HPE DL380 Gen11</text>
+        </g>
+        
+        <g transform="translate(80, 505)">
+            <rect x="0" y="0" width="620" height="65" rx="5" fill="#ffffff" stroke="#fda4af" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">FT Historian SE 02 (Mirror)</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">OSIsoft PI Collective Mirror Node</text>
+            <rect x="450" y="10" width="150" height="22" rx="3" fill="#fff1f2" stroke="#fecdd3" />
+            <text x="525" y="25" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#be123c">IP: 192.168.10.21</text>
+            <text x="525" y="50" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="600" fill="#94a3b8">HPE DL380 Gen11</text>
+        </g>
+        
+        <g transform="translate(80, 575)">
+            <rect x="0" y="0" width="620" height="65" rx="5" fill="#ffffff" stroke="#94a3b8" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">Server Room Online UPS Unit</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">5kVA Redundant Dual-Power Source</text>
+            <rect x="450" y="10" width="150" height="22" rx="3" fill="#fff1f2" stroke="#fecdd3" />
+            <text x="525" y="25" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#be123c">IP: SNMP: 192.168.99.10</text>
+            <text x="525" y="50" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="600" fill="#94a3b8">APC Smart-UPS RT</text>
+        </g>
+        </g>
+    <g id="Zone_OperationRoom">
+        <rect x="780" y="150" width="1770" height="950" rx="8" fill="#f8fafc" stroke="#0284c7" stroke-width="1.8" filter="url(#shadow)" />
+        <rect x="780" y="150" width="420" height="32" rx="6" fill="#0284c7" />
+        <text x="795" y="171" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">OPERATION 1 ROOM — CENTRAL CONTROL &amp; NETWORK CABINET</text>
+        <text x="2230" y="171" font-family="monospace" font-size="11" font-weight="700" fill="#0369a1">REDUNDANT CORE SWITCH &amp; SERVERS</text>
+    
+    <g id="Switch_Cisco_Core_01">
+        <rect x="820" y="210" width="520" height="220" rx="6" fill="#ffffff" stroke="#0284c7" stroke-width="2" filter="url(#shadow)" />
+        <rect x="820" y="210" width="520" height="32" rx="6" fill="#0284c7" />
+        <text x="835" y="231" font-family="sans-serif" font-size="13" font-weight="800" fill="#ffffff">SW-CORE-01 (CISCO CATALYST 9300)</text>
+        <rect x="1200" y="217" width="125" height="18" rx="4" fill="#0369a1" />
+        <text x="1262" y="230" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">★ HSRP ACTIVE (110)</text>
+
+        <text x="835" y="265" font-family="sans-serif" font-size="11" fill="#334155">Role: <tspan fill="#0284c7" font-weight="800">Primary Layer 3 Gateway &amp; STP Root</tspan></text>
+        <text x="835" y="285" font-family="monospace" font-size="11" font-weight="700" fill="#059669">Mgmt IP: 192.168.99.2 (VLAN 99)</text>
+
+        <!-- SVI Table inside SW1 -->
+        <rect x="835" y="300" width="490" height="115" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+        <text x="845" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">VLAN SVI</text>
+        <text x="950" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">SWITCH SVI IP</text>
+        <text x="1100" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">HSRP VIP (GATEWAY)</text>
+        <text x="1260" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">STATE</text>
+
+        <text x="845" y="340" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 10 (SCADA)</text>
+        <text x="950" y="340" font-family="monospace" font-size="10" font-weight="700" fill="#0284c7">192.168.10.2</text>
+        <text x="1100" y="340" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.10.1</text>
+        <text x="1260" y="340" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">Active</text>
+
+        <text x="845" y="360" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 20 (HMI)</text>
+        <text x="950" y="360" font-family="monospace" font-size="10" font-weight="700" fill="#0284c7">192.168.20.2</text>
+        <text x="1100" y="360" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.20.1</text>
+        <text x="1260" y="360" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">Active</text>
+
+        <text x="845" y="380" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 30 (PLC)</text>
+        <text x="950" y="380" font-family="monospace" font-size="10" font-weight="700" fill="#0284c7">192.168.30.2</text>
+        <text x="1100" y="380" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.30.1</text>
+        <text x="1260" y="380" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">Active</text>
+
+        <text x="845" y="400" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 50 (MCC)</text>
+        <text x="950" y="400" font-family="monospace" font-size="10" font-weight="700" fill="#0284c7">192.168.50.2</text>
+        <text x="1100" y="400" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.50.1</text>
+        <text x="1260" y="400" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">Active</text>
+    </g>
+    
+    <g id="Switch_Cisco_Core_02">
+        <rect x="1420" y="210" width="520" height="220" rx="6" fill="#ffffff" stroke="#0d9488" stroke-width="2" filter="url(#shadow)" />
+        <rect x="1420" y="210" width="520" height="32" rx="6" fill="#0d9488" />
+        <text x="1435" y="231" font-family="sans-serif" font-size="13" font-weight="800" fill="#ffffff">SW-CORE-02 (CISCO CATALYST 9300)</text>
+        <rect x="1800" y="217" width="125" height="18" rx="4" fill="#115e59" />
+        <text x="1862" y="230" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">HSRP STANDBY (100)</text>
+
+        <text x="1435" y="265" font-family="sans-serif" font-size="11" fill="#334155">Role: <tspan fill="#0d9488" font-weight="800">Secondary Gateway &amp; Hot Standby</tspan></text>
+        <text x="1435" y="285" font-family="monospace" font-size="11" font-weight="700" fill="#059669">Mgmt IP: 192.168.99.3 (VLAN 99)</text>
+
+        <!-- SVI Table inside SW2 -->
+        <rect x="1435" y="300" width="490" height="115" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+        <text x="1445" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">VLAN SVI</text>
+        <text x="1550" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">SWITCH SVI IP</text>
+        <text x="1700" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">HSRP VIP (GATEWAY)</text>
+        <text x="1860" y="320" font-family="monospace" font-size="10" font-weight="800" fill="#64748b">STATE</text>
+
+        <text x="1445" y="340" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 10 (SCADA)</text>
+        <text x="1550" y="340" font-family="monospace" font-size="10" font-weight="700" fill="#0d9488">192.168.10.3</text>
+        <text x="1700" y="340" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.10.1</text>
+        <text x="1860" y="340" font-family="monospace" font-size="10" font-weight="800" fill="#d97706">Standby</text>
+
+        <text x="1445" y="360" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 20 (HMI)</text>
+        <text x="1550" y="360" font-family="monospace" font-size="10" font-weight="700" fill="#0d9488">192.168.20.3</text>
+        <text x="1700" y="360" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.20.1</text>
+        <text x="1860" y="360" font-family="monospace" font-size="10" font-weight="800" fill="#d97706">Standby</text>
+
+        <text x="1445" y="380" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 30 (PLC)</text>
+        <text x="1550" y="380" font-family="monospace" font-size="10" font-weight="700" fill="#0d9488">192.168.30.3</text>
+        <text x="1700" y="380" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.30.1</text>
+        <text x="1860" y="380" font-family="monospace" font-size="10" font-weight="800" fill="#d97706">Standby</text>
+
+        <text x="1445" y="400" font-family="monospace" font-size="10" font-weight="600" fill="#0f172a">VLAN 50 (MCC)</text>
+        <text x="1550" y="400" font-family="monospace" font-size="10" font-weight="700" fill="#0d9488">192.168.50.3</text>
+        <text x="1700" y="400" font-family="monospace" font-size="10" font-weight="800" fill="#059669">192.168.50.1</text>
+        <text x="1860" y="400" font-family="monospace" font-size="10" font-weight="800" fill="#d97706">Standby</text>
+    </g>
+    
+    <!-- Inter-Switch Link (LACP Port-Channel 1) -->
+    <path d="M 1340 280 L 1420 280" stroke="#0284c7" stroke-width="4" />
+    <path d="M 1340 295 L 1420 295" stroke="#0284c7" stroke-width="4" />
+    <rect x="1295.0" y="272" width="170" height="32" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" />
+    <text x="1380.0" y="292" text-anchor="middle" font-family="monospace" font-size="11" font-weight="800" fill="#0369a1">ISL: LACP Po1 (20G)</text>
+    
+    <g id="Server_SCADA_01">
+        <rect x="820" y="500" width="520" height="260" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="2" filter="url(#shadow)" />
+        <rect x="820" y="500" width="520" height="32" rx="6" fill="#2563eb" />
+        <text x="835" y="521" font-family="sans-serif" font-size="13" font-weight="800" fill="#ffffff">SRV-SCADA-01 (PRIMARY HMI SERVER)</text>
+        <rect x="1220" y="507" width="105" height="18" rx="4" fill="#1e40af" />
+        <text x="1272" y="520" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">● ACTIVE MASTER</text>
+
+        <text x="835" y="555" font-family="sans-serif" font-size="11" fill="#334155">Role: <tspan fill="#1d4ed8" font-weight="800">Primary FactoryTalk View SE Data &amp; Alarm Server</tspan></text>
+        <text x="835" y="575" font-family="monospace" font-size="12" font-weight="800" fill="#059669">Cluster IP: 192.168.10.10 (VLAN 10)</text>
+
+        <!-- NIC details -->
+        <rect x="835" y="590" width="490" height="150" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+        <text x="845" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">INTERFACE</text>
+        <text x="940" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">TEAM / ROLE</text>
+        <text x="1060" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">CONNECTED TO</text>
+        <text x="1220" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">STATUS</text>
+
+        <text x="845" y="635" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">NIC 1 (10G)</text>
+        <text x="940" y="635" font-family="sans-serif" font-size="10" font-weight="600" fill="#0284c7">LACP Team A</text>
+        <text x="1060" y="635" font-family="monospace" font-size="10" fill="#0369a1">SW-CORE-01 (Gi1/0/1)</text>
+        <text x="1220" y="635" font-family="sans-serif" font-size="10" font-weight="800" fill="#059669">Active</text>
+
+        <text x="845" y="660" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">NIC 2 (10G)</text>
+        <text x="940" y="660" font-family="sans-serif" font-size="10" font-weight="600" fill="#0284c7">LACP Team B</text>
+        <text x="1060" y="660" font-family="monospace" font-size="10" fill="#0d9488">SW-CORE-02 (Gi1/0/1)</text>
+        <text x="1220" y="660" font-family="sans-serif" font-size="10" font-weight="800" fill="#059669">Standby Link</text>
+
+        <text x="845" y="685" font-family="monospace" font-size="10" font-weight="700" fill="#b45309">NIC 3 (Sync)</text>
+        <text x="940" y="685" font-family="sans-serif" font-size="10" font-weight="600" fill="#b45309">Heartbeat Private</text>
+        <text x="1060" y="685" font-family="monospace" font-size="10" fill="#b45309">Server 02 (10.10.10.1)</text>
+        <text x="1220" y="685" font-family="sans-serif" font-size="10" font-weight="800" fill="#b45309">&lt; 500ms</text>
+
+        <text x="845" y="710" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">NIC 4 (iLO)</text>
+        <text x="940" y="710" font-family="sans-serif" font-size="10" fill="#64748b">Hardware Mgmt</text>
+        <text x="1060" y="710" font-family="monospace" font-size="10" fill="#64748b">SW-MGMT-01 (VLAN99)</text>
+        <text x="1220" y="710" font-family="sans-serif" font-size="10" font-weight="700" fill="#64748b">Ready</text>
+    </g>
+    
+    <g id="Server_SCADA_02">
+        <rect x="1420" y="500" width="520" height="260" rx="6" fill="#ffffff" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)" />
+        <rect x="1420" y="500" width="520" height="32" rx="6" fill="#7c3aed" />
+        <text x="1435" y="521" font-family="sans-serif" font-size="13" font-weight="800" fill="#ffffff">SRV-SCADA-02 (SECONDARY HMI SERVER)</text>
+        <rect x="1820" y="507" width="105" height="18" rx="4" fill="#5b21b6" />
+        <text x="1872" y="520" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="800" fill="#ffffff">● HOT STANDBY</text>
+
+        <text x="1435" y="555" font-family="sans-serif" font-size="11" fill="#334155">Role: <tspan fill="#6d28d9" font-weight="800">Secondary FactoryTalk View SE Data &amp; Alarm Server</tspan></text>
+        <text x="1435" y="575" font-family="monospace" font-size="12" font-weight="800" fill="#059669">Cluster IP: 192.168.10.11 (VLAN 10)</text>
+
+        <!-- NIC details -->
+        <rect x="1435" y="590" width="490" height="150" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+        <text x="1445" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">INTERFACE</text>
+        <text x="1540" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">TEAM / ROLE</text>
+        <text x="1660" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">CONNECTED TO</text>
+        <text x="1820" y="612" font-family="sans-serif" font-size="10" font-weight="800" fill="#64748b">STATUS</text>
+
+        <text x="1445" y="635" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">NIC 1 (10G)</text>
+        <text x="1540" y="635" font-family="sans-serif" font-size="10" font-weight="600" fill="#7c3aed">LACP Team A</text>
+        <text x="1660" y="635" font-family="monospace" font-size="10" fill="#0d9488">SW-CORE-02 (Gi1/0/2)</text>
+        <text x="1820" y="635" font-family="sans-serif" font-size="10" font-weight="800" fill="#059669">Active</text>
+
+        <text x="1445" y="660" font-family="monospace" font-size="10" font-weight="700" fill="#0f172a">NIC 2 (10G)</text>
+        <text x="1540" y="660" font-family="sans-serif" font-size="10" font-weight="600" fill="#7c3aed">LACP Team B</text>
+        <text x="1660" y="660" font-family="monospace" font-size="10" fill="#0369a1">SW-CORE-01 (Gi1/0/2)</text>
+        <text x="1820" y="660" font-family="sans-serif" font-size="10" font-weight="800" fill="#059669">Standby Link</text>
+
+        <text x="1445" y="685" font-family="monospace" font-size="10" font-weight="700" fill="#b45309">NIC 3 (Sync)</text>
+        <text x="1540" y="685" font-family="sans-serif" font-size="10" font-weight="600" fill="#b45309">Heartbeat Private</text>
+        <text x="1660" y="685" font-family="monospace" font-size="10" fill="#b45309">Server 01 (10.10.10.2)</text>
+        <text x="1820" y="685" font-family="sans-serif" font-size="10" font-weight="800" fill="#b45309">&lt; 500ms</text>
+
+        <text x="1445" y="710" font-family="monospace" font-size="10" font-weight="700" fill="#64748b">NIC 4 (iLO)</text>
+        <text x="1540" y="710" font-family="sans-serif" font-size="10" fill="#64748b">Hardware Mgmt</text>
+        <text x="1660" y="710" font-family="monospace" font-size="10" fill="#64748b">SW-MGMT-01 (VLAN99)</text>
+        <text x="1820" y="710" font-family="sans-serif" font-size="10" font-weight="700" fill="#64748b">Ready</text>
+    </g>
+    
+    <!-- Direct Heartbeat Link between Server 1 and Server 2 -->
+    <path d="M 1340 715 L 1420 715" stroke="#d97706" stroke-width="3.5" stroke-dasharray="6,4" />
+    <rect x="1270.0" y="700" width="220" height="30" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" />
+    <text x="1380.0" y="720" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#92400e">DEDICATED HEARTBEAT (10.10.10.x/30)</text>
+    
+    <!-- Server 1 to SW1 -->
+    <path d="M 940 500 L 940 430" stroke="#0284c7" stroke-width="2.5" />
+    <text x="948" y="465.0" font-family="monospace" font-size="9" font-weight="700" fill="#0369a1">NIC1 &#8594; Gi1/0/1</text>
+
+    <!-- Server 1 to SW2 (Cross-connect) -->
+    <path d="M 1040 500 L 1040 470 L 1520 470 L 1520 430" stroke="#0d9488" stroke-width="2.5" stroke-dasharray="5,3" />
+    <text x="1100" y="464" font-family="monospace" font-size="9" font-weight="700" fill="#0f766e">NIC2 &#8594; SW2 Gi1/0/1 (Cross)</text>
+
+    <!-- Server 2 to SW2 -->
+    <path d="M 1770 500 L 1770 430" stroke="#0d9488" stroke-width="2.5" />
+    <text x="1778" y="465.0" font-family="monospace" font-size="9" font-weight="700" fill="#0f766e">NIC1 &#8594; Gi1/0/2</text>
+
+    <!-- Server 2 to SW1 (Cross-connect) -->
+    <path d="M 1670 500 L 1670 450 L 1200 450 L 1200 430" stroke="#0284c7" stroke-width="2.5" stroke-dasharray="5,3" />
+    <text x="1200" y="444" font-family="monospace" font-size="9" font-weight="700" fill="#0369a1">NIC2 &#8594; SW1 Gi1/0/2 (Cross)</text>
+    
+    <g id="ControlRoom_Clients">
+        <rect x="2000" y="210" width="510" height="550" rx="6" fill="#ffffff" stroke="#64748b" stroke-width="1.5" filter="url(#shadow)" />
+        <rect x="2000" y="210" width="510" height="32" rx="6" fill="#475569" />
+        <text x="2015" y="231" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">CONTROL ROOM CLIENTS &amp; OVERVIEW DISPLAYS (VLAN 20)</text>
+
+        <!-- Workstation List -->
+    
+        <g transform="translate(2020, 265)">
+            <rect x="0" y="0" width="470" height="60" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+            <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">Engineering Workstation (EWS)</text>
+            <text x="12" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Studio 5000 / FT Admin / System Config</text>
+            <rect x="330" y="12" width="130" height="22" rx="3" fill="#e0f2fe" stroke="#bae6fd" />
+            <text x="395" y="27" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">192.168.20.150</text>
+        </g>
+        
+        <g transform="translate(2020, 345)">
+            <rect x="0" y="0" width="470" height="60" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+            <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">Operator Station 1 (Main Console)</text>
+            <text x="12" y="42" font-family="sans-serif" font-size="10" fill="#64748b">FT View SE Client / Batch Control</text>
+            <rect x="330" y="12" width="130" height="22" rx="3" fill="#e0f2fe" stroke="#bae6fd" />
+            <text x="395" y="27" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">192.168.20.101</text>
+        </g>
+        
+        <g transform="translate(2020, 425)">
+            <rect x="0" y="0" width="470" height="60" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+            <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">Operator Station 2 (Main Console)</text>
+            <text x="12" y="42" font-family="sans-serif" font-size="10" fill="#64748b">FT View SE Client / Dryer Control</text>
+            <rect x="330" y="12" width="130" height="22" rx="3" fill="#e0f2fe" stroke="#bae6fd" />
+            <text x="395" y="27" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">192.168.20.102</text>
+        </g>
+        
+        <g transform="translate(2020, 505)">
+            <rect x="0" y="0" width="470" height="60" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+            <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">Operator Station 3 (Remote Station 2)</text>
+            <text x="12" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Remote Thin Client / Field Operation</text>
+            <rect x="330" y="12" width="130" height="22" rx="3" fill="#e0f2fe" stroke="#bae6fd" />
+            <text x="395" y="27" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">192.168.20.103</text>
+        </g>
+        
+        <g transform="translate(2020, 585)">
+            <rect x="0" y="0" width="470" height="60" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+            <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">55" Overhead Display: Process Overview</text>
+            <text x="12" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Central High-Res Overview Monitor</text>
+            <rect x="330" y="12" width="130" height="22" rx="3" fill="#e0f2fe" stroke="#bae6fd" />
+            <text x="395" y="27" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">ThinManager</text>
+        </g>
+        
+        <g transform="translate(2020, 655)">
+            <rect x="0" y="0" width="470" height="60" rx="4" fill="#f8fafc" stroke="#cbd5e1" />
+            <text x="12" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">55" Overhead Display: Trending &amp; Alarms</text>
+            <text x="12" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Process Curve &amp; Realtime Trends</text>
+            <rect x="330" y="12" width="130" height="22" rx="3" fill="#e0f2fe" stroke="#bae6fd" />
+            <text x="395" y="27" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#0284c7">ThinManager</text>
+        </g>
+        </g></g>
+    <g id="Zone_MCCRoom">
+        <rect x="1350" y="1140" width="1200" height="560" rx="8" fill="#fffdf5" stroke="#f59e0b" stroke-width="1.8" stroke-dasharray="6,4" filter="url(#shadow)" />
+        <rect x="1350" y="1140" width="340" height="32" rx="6" fill="#d97706" />
+        <text x="1365" y="1161" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">MCC ROOM — MOTOR CONTROL CENTER (ZONE 3)</text>
+        <text x="2270" y="1161" font-family="monospace" font-size="11" font-weight="700" fill="#b45309">802.1Q TRUNK: VLAN 30, 50, 99</text>
+
+        <!-- SW-MCC-01 Stratix Managed Switch -->
+        <g transform="translate(1380, 1190)">
+            <rect x="0" y="0" width="1140" height="80" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="2" filter="url(#shadow)" />
+            <rect x="0" y="0" width="1140" height="28" rx="6" fill="#d97706" />
+            <text x="15" y="19" font-family="sans-serif" font-size="12" font-weight="800" fill="#ffffff">SW-MCC-01: ALLEN-BRADLEY STRATIX 5700 (1783-BMS10CGN)</text>
+            <text x="980" y="19" font-family="monospace" font-size="11" font-weight="800" fill="#ffffff">IP: 192.168.50.10</text>
+
+            <text x="15" y="48" font-family="sans-serif" font-size="11" fill="#334155">Trunk Port 1: <tspan fill="#0284c7" font-weight="800">From SW-CORE-01 (Gi1/0/24)</tspan></text>
+            <text x="350" y="48" font-family="sans-serif" font-size="11" fill="#334155">Trunk Port 2: <tspan fill="#0d9488" font-weight="800">From SW-CORE-02 (Gi1/0/24 - Standby)</tspan></text>
+            <text x="750" y="48" font-family="monospace" font-size="11" font-weight="800" fill="#059669">Gateway VIP: 192.168.50.1</text>
+        </g>
+    
+        <g transform="translate(1380, 1290)">
+            <rect x="0" y="0" width="360" height="95" rx="5" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">PowerFlex 755 (110kW)</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Supply Air Fan FN-60201</text>
+            <rect x="15" y="58" width="160" height="22" rx="3" fill="#fef3c7" stroke="#fde68a" />
+            <text x="95" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#b45309">IP: 192.168.50.21</text>
+            <rect x="200" y="58" width="120" height="22" rx="3" fill="#ecfdf5" stroke="#a7f3d0" />
+            <text x="260" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#059669">VLAN 50</text>
+        </g>
+        
+        <g transform="translate(1770, 1290)">
+            <rect x="0" y="0" width="360" height="95" rx="5" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">PowerFlex 755 (132kW)</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Exhaust Air Fan FN-60202</text>
+            <rect x="15" y="58" width="160" height="22" rx="3" fill="#fef3c7" stroke="#fde68a" />
+            <text x="95" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#b45309">IP: 192.168.50.22</text>
+            <rect x="200" y="58" width="120" height="22" rx="3" fill="#ecfdf5" stroke="#a7f3d0" />
+            <text x="260" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#059669">VLAN 50</text>
+        </g>
+        
+        <g transform="translate(2160, 1290)">
+            <rect x="0" y="0" width="360" height="95" rx="5" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">PowerFlex 525 (18.5kW)</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Slurry Transfer Pump PC-20201</text>
+            <rect x="15" y="58" width="160" height="22" rx="3" fill="#fef3c7" stroke="#fde68a" />
+            <text x="95" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#b45309">IP: 192.168.50.31</text>
+            <rect x="200" y="58" width="120" height="22" rx="3" fill="#ecfdf5" stroke="#a7f3d0" />
+            <text x="260" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#059669">VLAN 50</text>
+        </g>
+        
+        <g transform="translate(1380, 1410)">
+            <rect x="0" y="0" width="360" height="95" rx="5" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">PowerFlex 525 (18.5kW)</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Slurry Transfer Pump PC-20211</text>
+            <rect x="15" y="58" width="160" height="22" rx="3" fill="#fef3c7" stroke="#fde68a" />
+            <text x="95" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#b45309">IP: 192.168.50.32</text>
+            <rect x="200" y="58" width="120" height="22" rx="3" fill="#ecfdf5" stroke="#a7f3d0" />
+            <text x="260" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#059669">VLAN 50</text>
+        </g>
+        
+        <g transform="translate(1770, 1410)">
+            <rect x="0" y="0" width="360" height="95" rx="5" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">Power Meter 1408-BC3A</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Main Incoming 400V Metering</text>
+            <rect x="15" y="58" width="160" height="22" rx="3" fill="#fef3c7" stroke="#fde68a" />
+            <text x="95" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#b45309">IP: 192.168.50.50</text>
+            <rect x="200" y="58" width="120" height="22" rx="3" fill="#ecfdf5" stroke="#a7f3d0" />
+            <text x="260" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#059669">VLAN 50</text>
+        </g>
+        
+        <g transform="translate(2160, 1410)">
+            <rect x="0" y="0" width="360" height="95" rx="5" fill="#ffffff" stroke="#fed7aa" stroke-width="1.2" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">Agitator Starters (ME-20201/11)</text>
+            <text x="15" y="42" font-family="sans-serif" font-size="10" fill="#64748b">Slurry Tanks Agitator VFDs</text>
+            <rect x="15" y="58" width="160" height="22" rx="3" fill="#fef3c7" stroke="#fde68a" />
+            <text x="95" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#b45309">IP: 192.168.50.33</text>
+            <rect x="200" y="58" width="120" height="22" rx="3" fill="#ecfdf5" stroke="#a7f3d0" />
+            <text x="260" y="73" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#059669">VLAN 50</text>
+        </g>
+        </g>
+    <g id="Zone_MCP">
+        <rect x="50" y="660" width="680" height="1040" rx="8" fill="#f0fdf4" stroke="#10b981" stroke-width="1.8" filter="url(#shadow)" />
+        <rect x="50" y="660" width="420" height="32" rx="6" fill="#059669" />
+        <text x="65" y="681" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff">MAIN CONTROL PANEL (MCP-01) — CONTROLLOGIX CS1 - CS4</text>
+
+        <!-- CS1 Master Controller -->
+        <g transform="translate(70, 710)">
+            <rect x="0" y="0" width="640" height="140" rx="6" fill="#ffffff" stroke="#10b981" stroke-width="1.5" />
+            <text x="15" y="24" font-family="sans-serif" font-size="12" font-weight="800" fill="#0f172a">RACK 1 (CS1): MASTER CONTROLLER &amp; DLR SUPERVISOR</text>
+            <text x="15" y="44" font-family="sans-serif" font-size="10" fill="#334155">Slot 00: 1756-L950TPSXT Master Controller (50MB Process Safety)</text>
+            <text x="15" y="62" font-family="sans-serif" font-size="10" font-weight="700" fill="#0284c7">Slot 01: 1756-EN4TR (DLR Supervisor Node) — IP: 192.168.30.11</text>
+            <text x="15" y="80" font-family="sans-serif" font-size="10" font-weight="700" fill="#be123c">Slot 02: 1756-EN4TR (Control LAN SCADA Uplink) — IP: 192.168.30.20</text>
+            <text x="15" y="98" font-family="sans-serif" font-size="10" fill="#64748b">Slots 03-12: Redesigned Balanced I/O (4 DI / 2 DO / 2 AI / 2 AO)</text>
+            <text x="15" y="118" font-family="monospace" font-size="10" font-weight="800" fill="#059669">Gateway VIP: 192.168.30.1</text>
+        </g>
+
+        <!-- CS2, CS3, CS4 Summaries -->
+        <g transform="translate(70, 870)">
+            <rect x="0" y="0" width="640" height="70" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">RACK 2 (CS2): Expansion Rack 1 (DLR Node 1)</text>
+            <text x="15" y="44" font-family="sans-serif" font-size="10" fill="#64748b">Slot 00: 1756-EN4TR (IP: 192.168.30.12) + I/O Modules &amp; Spares</text>
+        </g>
+        <g transform="translate(70, 955)">
+            <rect x="0" y="0" width="640" height="70" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">RACK 3 (CS3): Expansion Rack 2 (DLR Node 2)</text>
+            <text x="15" y="44" font-family="sans-serif" font-size="10" fill="#64748b">Slot 00: 1756-EN4TR (IP: 192.168.30.13) + I/O Modules &amp; Spares</text>
+        </g>
+        <g transform="translate(70, 1040)">
+            <rect x="0" y="0" width="640" height="70" rx="4" fill="#ffffff" stroke="#cbd5e1" />
+            <text x="15" y="24" font-family="sans-serif" font-size="11" font-weight="800" fill="#0f172a">RACK 4 (CS4): Expansion Rack 3 (DLR Node 3)</text>
+            <text x="15" y="44" font-family="sans-serif" font-size="10" fill="#64748b">Slot 00: 1756-EN4TR (IP: 192.168.30.14) + I/O Modules &amp; Spares</text>
+        </g>
+
+        <!-- Technical Table: Architecture Summary & Key Rules -->
+        <g transform="translate(70, 1130)">
+            <rect x="0" y="0" width="640" height="280" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+            <rect x="0" y="0" width="640" height="30" rx="6" fill="#334155" />
+            <text x="15" y="20" font-family="sans-serif" font-size="11" font-weight="800" fill="#ffffff">TECHNICAL ARCHITECTURE SPECIFICATIONS</text>
+
+            <text x="15" y="55" font-family="sans-serif" font-size="10" font-weight="800" fill="#0284c7">1. CISCO CORE SWITCH HIGH AVAILABILITY (HSRP v2):</text>
+            <text x="25" y="72" font-family="sans-serif" font-size="9" fill="#334155">• SW-CORE-01 is configured with Priority 110 (Active Gateway for all VLANs).</text>
+            <text x="25" y="87" font-family="sans-serif" font-size="9" fill="#334155">• SW-CORE-02 is Standby (Priority 100). Automated failover time &lt; 900 ms.</text>
+
+            <text x="15" y="112" font-family="sans-serif" font-size="10" font-weight="800" fill="#059669">2. SERVER REDUNDANCY &amp; DUAL-HOMING:</text>
+            <text x="25" y="129" font-family="sans-serif" font-size="9" fill="#334155">• FT View SE Primary (SRV-01) &amp; Secondary (SRV-02) have dual cross-connected NICs.</text>
+            <text x="25" y="144" font-family="sans-serif" font-size="9" fill="#334155">• Private direct Cat6A Heartbeat link on NIC 3 ensures zero split-brain.</text>
+
+            <text x="15" y="169" font-family="sans-serif" font-size="10" font-weight="800" fill="#d97706">3. 802.1Q TRUNK TO MCC ROOM:</text>
+            <text x="25" y="186" font-family="sans-serif" font-size="9" fill="#334155">• Carries VLAN 30 (Control), VLAN 50 (MCC Drives), and VLAN 99 (Management).</text>
+            <text x="25" y="201" font-family="sans-serif" font-size="9" fill="#334155">• Connected to SW-MCC-01 Stratix 5700 switch feeding PowerFlex VFDs.</text>
+
+            <text x="15" y="226" font-family="sans-serif" font-size="10" font-weight="800" fill="#be123c">4. FIBER OPTIC BACKBONE TO SERVER ROOM:</text>
+            <text x="25" y="243" font-family="sans-serif" font-size="9" fill="#334155">• Redundant 10G/1G multi-strand fiber connecting Core Switches to FDF-SR01.</text>
+            <text x="25" y="258" font-family="sans-serif" font-size="9" fill="#334155">• Ensures continuous access to Historian, Batch Archives, and Active Directory.</text>
+        </g>
+    </g>
+    
+    <!-- 6A. FIBER OPTIC RUN TO EXISTING SERVER ROOM -->
+    <!-- From SW-CORE-01 SFP to FDF-SR01 -->
+    <path d="M 900 210 L 900 120 L 670 120 L 670 220" fill="none" stroke="#db2777" stroke-width="3.5" stroke-dasharray="8,5" />
+    <rect x="760" y="107" width="180" height="24" rx="4" fill="#fdf2f8" stroke="#db2777" stroke-width="1.2" />
+    <text x="850" y="123" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#9d174d">FOB-SR-01 (10G Fiber A)</text>
+
+    <!-- From SW-CORE-02 SFP to FDF-SR01 (Redundant Fiber Path) -->
+    <path d="M 1500 210 L 1500 85 L 640 85 L 640 220" fill="none" stroke="#db2777" stroke-width="3.5" stroke-dasharray="8,5" />
+    <rect x="970" y="73" width="180" height="24" rx="4" fill="#fdf2f8" stroke="#db2777" stroke-width="1.2" />
+    <text x="1060" y="89" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#9d174d">FOB-SR-02 (10G Fiber B)</text>
+
+    <!-- 6B. 802.1Q TRUNK TO MCC ROOM (Routed via cable corridor to avoid servers) -->
+    <!-- From SW-CORE-01 Gi1/0/24 to SW-MCC-01 Port 1 -->
+    <path d="M 1300 430 L 1300 460 L 1940 460 L 1940 1080 L 1550 1080 L 1550 1190" fill="none" stroke="#d97706" stroke-width="4" />
+    <rect x="1560" y="1067" width="220" height="26" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" />
+    <text x="1670" y="1084" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#92400e">TRK-MCC-01 (Main 802.1Q Trunk)</text>
+
+    <!-- From SW-CORE-02 Gi1/0/24 to SW-MCC-01 Port 2 (Standby Trunk) -->
+    <path d="M 1900 430 L 1900 480 L 1970 480 L 1970 1105 L 1850 1105 L 1850 1190" fill="none" stroke="#d97706" stroke-width="3" stroke-dasharray="6,4" />
+    <rect x="1560" y="1095" width="240" height="24" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="1.5" />
+    <text x="1680" y="1111" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#92400e">TRK-MCC-02 (Redundant Trunk STP)</text>
+
+    <!-- 6C. CONTROL LAN UPLINK TO MAIN CONTROL PANEL (MCP-01) -->
+    <path d="M 850 430 L 850 775 L 710 775" fill="none" stroke="#059669" stroke-width="3.5" />
+    <rect x="740" y="760" width="160" height="26" rx="4" fill="#ecfdf5" stroke="#059669" stroke-width="1.5" />
+    <text x="820" y="777" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#065f46">CBL-UPL-01 (VLAN 30)</text>
+
+    <!-- 6D. UPLINK TO CONTROL ROOM CLIENTS (VLAN 20) -->
+    <path d="M 1940 320 L 2000 320" fill="none" stroke="#0284c7" stroke-width="3" />
+    <rect x="1945" y="308" width="70" height="24" rx="4" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2" />
+    <text x="1980" y="324" text-anchor="middle" font-family="monospace" font-size="10" font-weight="800" fill="#0369a1">VLAN 20</text>
+    </svg>
