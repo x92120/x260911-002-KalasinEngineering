@@ -4,15 +4,6 @@
 *.bak
 *.BAK
 
-# Office temporary lock files
-~$*
-.~lock.*
-*.tmp
-~$*.xlsx
-~$*.xls
-~$*.docx
-~$*.doc
-
 # OS generated
 .DS_Store
 .DS_Store?
@@ -20,3 +11,7 @@
 .Spotlight-V100
 .Trashes
 
+# Temporary Office and CAD lock files
+~$*
+.~lock.*
+*.tmp

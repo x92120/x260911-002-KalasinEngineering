@@ -5,6 +5,7 @@ KALASIN ENGINEERING xCIP-1545 AUTOMATION SYSTEM (Ref: x2608003)
 IO LIST EXTRACTION BY CHASSIS SLOT CONFIGURATION (C1S0 through C5S4)
 ALL CHASSIS C1 - C4 STANDARDIZED TO 13-SLOT ARCHITECTURE (SLOTS 0 TO 12)
 WITH DEDICATED CxSlotConfig CHASSIS SUMMARY SHEETS
+AND TERMINAL NUMBER COLUMN (Px-TBDIx-m) ON ALL SLOT SCHEDULES
 =============================================================================
 Source File: 03_IO_Lists_and_Schedules/IO_List_xDev-R02.xlsx (Sheet: 'IO List')
 Output File: 03_IO_Lists_and_Schedules/IO_List-By_SlotConfig.xlsx
@@ -16,16 +17,17 @@ Chassis Configuration (13-Slot Standard for C1 to C4):
   - C4: 13 Slots (Slots 0 to 12) -> C4S0 (Comm) .. C4S6 (AI), C4S7..C4S12 (1756-N2 Empty)
   - C5: 5 Slots  (Slots 0 to 4)  -> C5S0 (Comm) .. C5S4 (Slurry Building RIO-200)
 
-Required Columns per Slot Sheet:
-  Col 1: Terminal_No           (Ordered numerically: 1..36, 1..20, RJ45-1/2, USB-1, etc.)
-  Col 2: Terminal_Description  (Channel / function: IN-0, OUT-0, GND-0, VOUT-0, etc.)
-  Col 3: PLC_Tag_Side          (Wire mark on PLC side: C1S4-1/P1-TBDI1-1)
-  Col 4: Terminal_Tag_Side     (Wire mark on terminal side: P1-TBDI1-1/C1S4-1)
-  Col 5: Destination_Area      (Target JB / Field Enclosure: CA1, JB-401, etc.)
-  Col 6: PLC_Tag               (Program tag name: Spare_DI_0, FSL-40201_DI_1)
-  Col 7: Instrument_Tag        (Field instrument tag)
-  Col 8: Instrument_Description(Instrument process service description)
-  Col 9: Channel_Status        (ACTIVE / SPARE / COMMON)
+Required Columns per Slot Sheet (10 Columns):
+  Col 1:  Terminal_No                  (Ordered numerically: 1..36, 1..20, RJ45-1/2, USB-1, etc.)
+  Col 2:  Terminal_Description         (Channel / function: IN-0, OUT-0, GND-0, VOUT-0, etc.)
+  Col 3:  Terminal_Number (Px-TBDIx-m) (Marshaling Terminal Block item: P1-TBDI1-1, P2-TBDI1-8, etc.)
+  Col 4:  PLC_Tag_Side                 (Wire mark on PLC side: C1S4-1/P1-TBDI1-1)
+  Col 5:  Terminal_Tag_Side            (Wire mark on terminal side: P1-TBDI1-1/C1S4-1)
+  Col 6:  Destination_Area             (Target JB / Field Enclosure: CA1, JB-401, etc.)
+  Col 7:  PLC_Tag                      (Program tag name: Spare_DI_0, FSL-40201_DI_1)
+  Col 8:  Instrument_Tag               (Field instrument tag)
+  Col 9:  Instrument_Description       (Instrument process service description)
+  Col 10: Channel_Status               (ACTIVE / SPARE / COMMON / EMPTY)
 =============================================================================
 """
 
@@ -146,6 +148,48 @@ MODULE_INFO = {
         'rtb': 'N/A (Blanking Plate)',
         'total_chan': 0
     }
+}
+
+SLOT_TB_MAP = {
+    'C1S4': 'P1-TBDI1',
+    'C1S5': 'P1-TBDI2',
+    'C1S6': 'P1-TBDI3',
+    'C1S7': 'P1-TBDI4',
+    'C1S8': 'P1-TBRL1',
+    'C1S9': 'P1-TBRL2',
+    'C1S10': 'P1-TBAI1',
+    'C1S11': 'P1-TBAI2',
+    
+    'C2S1': 'P2-TBDI1',
+    'C2S2': 'P2-TBDI2',
+    'C2S3': 'P2-TBDI3',
+    'C2S4': 'P2-TBDI4',
+    'C2S5': 'P2-TBDI5',
+    'C2S6': 'P2-TBRL1',
+    'C2S7': 'P2-TBRL2',
+    'C2S8': 'P2-TBRL3',
+    'C2S9': 'P2-TBAI1',
+    'C2S10': 'P2-TBAI2',
+    'C2S11': 'P2-TBAI3',
+    'C2S12': 'P2-TBAI4',
+    
+    'C3S1': 'P3-TBDI1',
+    'C3S2': 'P3-TBDI2',
+    'C3S3': 'P3-TBDI3',
+    'C3S4': 'P3-TBRL1',
+    'C3S5': 'P3-TBRL2',
+    'C3S6': 'P3-TBAI1',
+    'C3S7': 'P3-TBAI2',
+    'C3S8': 'P3-TBAI3',
+    'C3S9': 'P3-TBAI4',
+    'C3S12': 'P3-TBAO1',
+    
+    'C4S1': 'P4-TBDI1',
+    'C4S2': 'P4-TBDI2',
+    'C4S3': 'P4-TBDI3',
+    'C4S4': 'P4-TBRL1',
+    'C4S5': 'P4-TBAI1',
+    'C4S6': 'P4-TBAI2',
 }
 
 def thin_border():
@@ -287,7 +331,7 @@ def get_slot_summary_info(s_key, ch, sl_num, slot_desc_map, slot_rows):
         if active > 0:
             status = "ACTIVE"
         else:
-            # Unwired/Spare installed module (e.g. C2S11, C2S12)
+            # Installed spare card (e.g. C2S11, C2S12)
             status = "SPARE RESERVE"
             spares = total_chan
     else:
@@ -474,7 +518,8 @@ def build_chassis_config_sheet(ws, ch, ch_meta, slot_desc_map, slot_rows):
 
 def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_map, slot_rows, slot_term_lookup):
     """
-    Builds an individual slot terminal wiring schedule sheet (e.g. C1S0, C1S4, C2S11, etc.).
+    Builds an individual slot terminal wiring schedule sheet (e.g. C1S0, C1S4, C2S11, etc.)
+    with dedicated Terminal_Number (Px-TBDIx-m) column.
     """
     ws.views.sheetView[0].showGridLines = True
     s_desc_info = slot_desc_map.get(s_key, {})
@@ -498,6 +543,7 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
         clean_card = str(raw_card)
         
     enclosure = ch_meta['location']
+    default_tb_prefix = SLOT_TB_MAP.get(s_key, f"P{ch[1]}-TB")
     
     # Determine Card Type and Terminal Count
     if 'L950' in clean_card or 'CPU' in str(raw_io).upper() or s_key == 'C1S0':
@@ -531,8 +577,8 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
         max_terminals = 0
         card_lookup_key = None
         
-    # Sheet Header Block
-    ws.merge_cells("A1:I1")
+    # Sheet Header Block (Columns A to J)
+    ws.merge_cells("A1:J1")
     h1 = ws["A1"]
     h1.value = f"SLOT CONFIGURATION & TERMINAL SCHEDULE --- {s_key}"
     h1.font = Font(name="Arial", size=13, bold=True, color=WHITE)
@@ -540,7 +586,7 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
     h1.alignment = Alignment(horizontal="center", vertical="center")
     ws.row_dimensions[1].height = 25
     
-    ws.merge_cells("A2:I2")
+    ws.merge_cells("A2:J2")
     h2 = ws["A2"]
     h2.value = f"{card_type_title}  |  LOCATION: {enclosure.upper()}"
     h2.font = Font(name="Arial", size=9, bold=True, color=WHITE)
@@ -560,7 +606,7 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
     elif s_key.endswith('S0'):
         dest_str = "CA1 / Field RIO (EtherNet/IP DLR Trunk)"
         
-    ws.merge_cells("A3:I3")
+    ws.merge_cells("A3:J3")
     h3 = ws["A3"]
     h3.value = f"CHASSIS: {ch}   |   SLOT: {sl_num}   |   MODULE: {clean_card}   |   DESTINATION AREA: {dest_str}"
     h3.font = Font(name="Arial", size=8.5, bold=True, color="334155")
@@ -574,17 +620,18 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
     ws["A4"].hyperlink = f"#'{ch}SlotConfig'!A1"
     ws["A4"].font = Font(name="Arial", size=8.5, bold=True, color="1E40AF", underline="single")
     
-    ws.merge_cells("E4:I4")
+    ws.merge_cells("E4:J4")
     ws["E4"].value = "← Back to Master Slot Directory (00_Slot_Index)"
     ws["E4"].hyperlink = "#'00_Slot_Index'!A1"
     ws["E4"].font = Font(name="Arial", size=8.5, italic=True, color="475569", underline="single")
     ws["E4"].alignment = Alignment(horizontal="right", vertical="center")
     ws.row_dimensions[4].height = 16
 
-    # Column Headers - Row 5
+    # Column Headers - Row 5 (10 Columns)
     sheet_headers = [
         "Terminal_No",
         "Terminal_Description",
+        "Terminal_Number (Px-TBDIx-m)",
         "PLC_Tag_Side",
         "Terminal_Tag_Side",
         "Destination_Area",
@@ -609,23 +656,23 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
         target_dest = dest_str if dest_str != "Reserve / Unused" else "CA1"
         cpu_rows = [
             ("RJ45-1", "Embedded 1Gbps EtherNet/IP Port (SCADA / Enterprise Network)", 
-             f"{s_key}-ETH1/SW-CORE-01", f"SW-CORE-01/{s_key}-ETH1", 
+             "ETH-CORE-01", f"{s_key}-ETH1/SW-CORE-01", f"SW-CORE-01/{s_key}-ETH1", 
              target_dest, "CPU_Embedded_ETH", "PLC-01", 
              "Main Process Controller EtherNet/IP Uplink Port", "ACTIVE"),
             ("USB-1", "USB 2.0 Type-B Programming Port (Maintenance / Diagnostics)", 
-             f"{s_key}-USB/CONSOLE", f"CONSOLE/{s_key}-USB", 
+             "USB-CONSOLE", f"{s_key}-USB/CONSOLE", f"CONSOLE/{s_key}-USB", 
              target_dest, "CPU_USB_Console", "USB-PGM", 
              "Engineering Workstation Maintenance Access Port", "ACTIVE"),
             ("SD-1", "1784-SD2 Industrial SD Memory Card Slot (Firmware & Program Backup)", 
-             f"{s_key}-SD/INTERNAL", f"INTERNAL/{s_key}-SD", 
+             "SD-SLOT", f"{s_key}-SD/INTERNAL", f"INTERNAL/{s_key}-SD", 
              target_dest, "CPU_SD_Card", "1784-SD2", 
              "Non-volatile System Image & User Program Storage", "ACTIVE"),
             ("ESM-1", "Capacitor Energy Storage Module (Maintenance-free, Battery-free)", 
-             f"{s_key}-ESM/INTERNAL", f"INTERNAL/{s_key}-ESM", 
+             "ESM-CAP", f"{s_key}-ESM/INTERNAL", f"INTERNAL/{s_key}-ESM", 
              target_dest, "CPU_ESM_Module", "1756-ESMCAP", 
              "Energy Storage Module for Power Loss Data Retention", "ACTIVE"),
             ("DISP-1", "4-Character Alphanumeric Diagnostic Display & Status LEDs (RUN, FORCE, SD, OK)", 
-             f"{s_key}-DISP/DIAG", f"DIAG/{s_key}-DISP", 
+             "DIAG-DISP", f"{s_key}-DISP/DIAG", f"DIAG/{s_key}-DISP", 
              target_dest, "CPU_Status_Display", "DIAG-LED", 
              "System Controller Status & Fault Diagnostic Indicators", "ACTIVE")
         ]
@@ -637,11 +684,11 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
                 cell.font = Font(name="Arial", size=9)
                 cell.fill = PatternFill(start_color=LIGHT_BG_1, end_color=LIGHT_BG_1, fill_type="solid")
                 cell.border = thin_border()
-                if col_idx in [1, 2, 5, 9]:
+                if col_idx in [1, 2, 3, 6, 8, 10]:
                     cell.alignment = Alignment(horizontal="center", vertical="center")
                 else:
                     cell.alignment = Alignment(horizontal="left", vertical="center", indent=1)
-                if col_idx == 9:
+                if col_idx == 10:
                     cell.fill = PatternFill(start_color=ACTIVE_FILL, end_color=ACTIVE_FILL, fill_type="solid")
                     cell.font = Font(name="Arial", size=9, bold=True, color=ACTIVE_FONT)
             r_data_start += 1
@@ -653,6 +700,9 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
         # Check if source IO List has specific tagging for this slot (like C2S0)
         tag_plc_p1 = f"{s_key}-P1/ETH"
         tag_term_p1 = f"ETH/{s_key}-P1"
+        tag_tb_p1 = "ETH-DLR-P1"
+        if rows and rows[0][44] and str(rows[0][44]).strip() not in ['-', '#N/A', '']:
+            tag_tb_p1 = str(rows[0][44]).strip()
         if rows and rows[0][45] and str(rows[0][45]).strip() not in ['-', '#N/A', '']:
             tag_plc_p1 = str(rows[0][45]).strip()
         if rows and rows[0][46] and str(rows[0][46]).strip() not in ['-', '#N/A', '']:
@@ -660,16 +710,16 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
             
         comm_rows = [
             ("RJ45-1", "EtherNet/IP Port 1 (DLR Ring Node 1 / Primary Adapter Link)", 
-             tag_plc_p1, tag_term_p1, target_dest, f"{s_key}_ETH_Port1", "ETH-01", 
+             tag_tb_p1, tag_plc_p1, tag_term_p1, target_dest, f"{s_key}_ETH_Port1", "ETH-01", 
              "10/100/1000 Mbps RJ45 Device Level Ring Port 1", "ACTIVE"),
             ("RJ45-2", "EtherNet/IP Port 2 (DLR Ring Node 2 / Redundant Loop)", 
-             f"{s_key}-P2/ETH", f"ETH/{s_key}-P2", target_dest, f"{s_key}_ETH_Port2", "ETH-02", 
+             "ETH-DLR-P2", f"{s_key}-P2/ETH", f"ETH/{s_key}-P2", target_dest, f"{s_key}_ETH_Port2", "ETH-02", 
              "10/100/1000 Mbps RJ45 Device Level Ring Port 2", "ACTIVE"),
             ("USB-1", "USB 2.0 Type-B Device Port (Local Configuration & Diagnostics)", 
-             f"{s_key}-USB/CONSOLE", f"CONSOLE/{s_key}-USB", target_dest, f"{s_key}_USB_Config", "USB-CFG", 
+             "USB-CONSOLE", f"{s_key}-USB/CONSOLE", f"CONSOLE/{s_key}-USB", target_dest, f"{s_key}_USB_Config", "USB-CFG", 
              "Local IP Configuration and Firmware Flashing Port", "ACTIVE"),
             ("DISP-1", "4-Character Diagnostic Display & Status LEDs (OK, NET A/B, LINK 1/2)", 
-             f"{s_key}-DISP/DIAG", f"DIAG/{s_key}-DISP", target_dest, f"{s_key}_Status_Display", "DIAG-LED", 
+             "DIAG-DISP", f"{s_key}-DISP/DIAG", f"DIAG/{s_key}-DISP", target_dest, f"{s_key}_Status_Display", "DIAG-LED", 
              "Hardware Status & Network Link Diagnostic Indicators", "ACTIVE")
         ]
         for row_vals in comm_rows:
@@ -680,11 +730,11 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
                 cell.font = Font(name="Arial", size=9)
                 cell.fill = PatternFill(start_color=LIGHT_BG_1, end_color=LIGHT_BG_1, fill_type="solid")
                 cell.border = thin_border()
-                if col_idx in [1, 2, 5, 9]:
+                if col_idx in [1, 2, 3, 6, 8, 10]:
                     cell.alignment = Alignment(horizontal="center", vertical="center")
                 else:
                     cell.alignment = Alignment(horizontal="left", vertical="center", indent=1)
-                if col_idx == 9:
+                if col_idx == 10:
                     cell.fill = PatternFill(start_color=ACTIVE_FILL, end_color=ACTIVE_FILL, fill_type="solid")
                     cell.font = Font(name="Arial", size=9, bold=True, color=ACTIVE_FONT)
             r_data_start += 1
@@ -699,8 +749,10 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
             # Check if we have active/spare signal assigned in IO List
             if t_num in t_lookup:
                 r = t_lookup[t_num]
-                tag_plc = r[45] if r[45] is not None else f"{s_key}-{t_num}"
-                tag_term = r[46] if r[46] is not None else f"{s_key}-{t_num}"
+                # Col 45 in Excel is Terminal Tagging-Item (e.g. P1-TBDI1-1)
+                tb_item = str(r[44]).strip() if (r[44] is not None and str(r[44]).strip() not in ['-', '#N/A', '']) else f"{default_tb_prefix}-{t_num}"
+                tag_plc = r[45] if r[45] is not None else f"{s_key}-{t_num}/{tb_item}"
+                tag_term = r[46] if r[46] is not None else f"{tb_item}/{s_key}-{t_num}"
                 dest = r[1] if r[1] is not None else dest_str
                 plc_tag = r[19] if r[19] is not None else (r[6] if r[6] is not None else "-")
                 inst_tag = r[11] if r[11] is not None else "-"
@@ -713,21 +765,23 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
                     inst_tag = "Spare"
                     inst_desc = "Spare Reserve Channel"
             else:
-                # Pin not in IO List: It is a Power Common, RTN, Ground or Unwired Pin / Installed Spare Card
+                # Pin not in IO List: Power Common, RTN, Ground or Unwired Pin / Installed Spare Card
                 dest = dest_str.split(',')[0] if dest_str else ("CA1" if ch in ['C1', 'C2'] else "Field RIO")
                 is_power = any(p in t_desc.upper() for p in ['GND', 'DC', 'RTN', 'COM', 'VOUT'])
                 if is_power:
                     status = "COMMON"
-                    tag_plc = "0VDC" if ('GND' in t_desc.upper() or 'RTN' in t_desc.upper()) else "+24VDC"
-                    tag_term = tag_plc
+                    tb_item = "0VDC" if ('GND' in t_desc.upper() or 'RTN' in t_desc.upper()) else "+24VDC"
+                    tag_plc = tb_item
+                    tag_term = tb_item
                     plc_tag = "Internal Power Common"
                     inst_tag = "-"
                     inst_desc = "Module Power / Common Return Terminal"
                 else:
                     # Spare channel on an installed card (e.g. C2S11, C2S12 IF16 spare card)
                     status = "SPARE"
-                    tag_plc = f"{s_key}-{t_num}"
-                    tag_term = f"{s_key}-{t_num}"
+                    tb_item = f"{default_tb_prefix}-{t_num}"
+                    tag_plc = f"{s_key}-{t_num}/{tb_item}"
+                    tag_term = f"{tb_item}/{s_key}-{t_num}"
                     if 'IF' in clean_card:
                         plc_tag = f"Spare_AI_{t_num}"
                     elif 'IB' in clean_card:
@@ -742,6 +796,7 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
             row_vals = [
                 t_num,
                 t_desc,
+                tb_item,
                 tag_plc,
                 tag_term,
                 dest,
@@ -762,13 +817,13 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
                 cell.border = thin_border()
                 
                 # Alignments
-                if col_idx in [1, 2, 5, 9]:
+                if col_idx in [1, 2, 3, 6, 8, 10]:
                     cell.alignment = Alignment(horizontal="center", vertical="center")
                 else:
                     cell.alignment = Alignment(horizontal="left", vertical="center", indent=1)
                     
                 # Status styling
-                if col_idx == 9:
+                if col_idx == 10:
                     if status == "ACTIVE":
                         cell.fill = PatternFill(start_color=ACTIVE_FILL, end_color=ACTIVE_FILL, fill_type="solid")
                         cell.font = Font(name="Arial", size=9, bold=True, color=ACTIVE_FONT)
@@ -783,7 +838,7 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
     # Branch 4: Empty / Reserve Slot (1756-N2)
     else:
         row_vals = [
-            "-", "Empty Slot / Reserve (1756-N2)", "-", "-", "-", 
+            "-", "Empty Slot / Reserve (1756-N2)", "-", "-", "-", "-", 
             "-", "-", "Unpopulated Slot Position", "EMPTY"
         ]
         ws.append(row_vals)
