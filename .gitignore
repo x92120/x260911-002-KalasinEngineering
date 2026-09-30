@@ -1,0 +1,4 @@
+# AutoCAD temporary lock and backup files
+*.dwl
+*.dwl2
+*.bak
