@@ -2,3 +2,16 @@
 *.dwl
 *.dwl2
 *.bak
+*.BAK
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Temporary Office and CAD lock files
+~$*
+.~lock.*
+*.tmp
