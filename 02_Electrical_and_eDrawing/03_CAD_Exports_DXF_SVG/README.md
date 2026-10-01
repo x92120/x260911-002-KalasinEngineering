@@ -26,6 +26,17 @@ This directory contains categorized, production-grade AutoCAD DXF and SVG engine
 │   ├── C4S2_DI_Wiring_Diagram.dxf
 │   └── C4S3_DI_Wiring_Diagram.dxf
 │
+├── DO_Slot_Drawings/                     # 9 Digital Output (1756-OB32 with SPDT Relay) Wiring Diagrams
+│   ├── C1S8_DO_Wiring_Diagram.dxf
+│   ├── C1S9_DO_Wiring_Diagram.dxf
+│   ├── C2S6_DO_Wiring_Diagram.dxf
+│   ├── C2S7_DO_Wiring_Diagram.dxf
+│   ├── C2S8_DO_Wiring_Diagram.dxf
+│   ├── C3S4_DO_Wiring_Diagram.dxf
+│   ├── C3S5_DO_Wiring_Diagram.dxf
+│   ├── C4S4_DO_Wiring_Diagram.dxf
+│   └── C5S3_DO_Wiring_Diagram.dxf
+│
 ├── 01_PLC_IO_Wiring_DXF/                 # 40 PLC I/O Modular Wiring Schematics (DXF)
 │   ├── KAL-JC-WIR-00001_Sheet01_Cover.dxf
 │   ├── KAL-JC-WIR-00002_Sheet02_Index.dxf
@@ -67,6 +78,7 @@ This directory contains categorized, production-grade AutoCAD DXF and SVG engine
 | Subfolder | Count | Format | Primary Source / Purpose |
 | :--- | :---: | :---: | :--- |
 | **`DI_Slot_Drawings/`** | 15 | `.dxf` | Individual DI drawings generated from `template_DI.dxf` and `IO_List-By_SlotConfig.xlsx` |
+| **`DO_Slot_Drawings/`** | 9 | `.dxf` | Individual DO drawings (with SPDT Relay) generated from `template_DO.dxf` and `IO_List-By_SlotConfig.xlsx` |
 | **`01_PLC_IO_Wiring_DXF/`** | 40 | `.dxf` | Full ControlLogix 1756 PLC I/O wiring sheets (`KAL-JC-WIR-*`) |
 | **`02_Instrument_Typical_DXF/`** | 26 | `.dxf` | Field instrument installation and hookup typical drawings (`KAL-JC-TYP-*`) |
 | **`03_MCC_Panel_Layout/`** | 14 | `.dxf`, `.svg` | Front elevation, internal GA, and panel layout sheets M1-M4 |
