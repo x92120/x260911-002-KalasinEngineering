@@ -20,7 +20,7 @@ from ezdxf import colors
 from ezdxf.enums import TextEntityAlignment
 
 BASE_DIR = "/Users/x92120/xApp-001/x260911-002-KalasinEngineering"
-CAD_DIR = os.path.join(BASE_DIR, "02_Electrical_and_eDrawing/03_CAD_Exports_DXF_SVG")
+CAD_DIR = os.path.join(BASE_DIR, "02_Electrical_and_eDrawing/03_CAD_Exports_DXF_SVG/04_System_Architecture_CAD")
 os.makedirs(CAD_DIR, exist_ok=True)
 
 DXF_OUTPUT = os.path.join(CAD_DIR, "C1_C8_Slot_to_Destination_JB_Architecture_Diagram.dxf")

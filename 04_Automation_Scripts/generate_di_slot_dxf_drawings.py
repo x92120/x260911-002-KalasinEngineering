@@ -21,7 +21,6 @@ def main():
     template_path = os.path.join(base_dir, "eDrawingTemplate", "template_DI.dxf")
     excel_path = os.path.join(base_dir, "03_IO_Lists_and_Schedules", "IO_List-By_SlotConfig.xlsx")
     out_dir = os.path.join(base_dir, "02_Electrical_and_eDrawing", "03_CAD_Exports_DXF_SVG", "DI_Slot_Drawings")
-    symlink_dir = os.path.join(base_dir, "02_Electrical_and_eDrawing", "03_CAD_Exports_DXF_SVG")
 
     os.makedirs(out_dir, exist_ok=True)
 
@@ -311,10 +310,6 @@ def main():
         out_filepath = os.path.join(out_dir, out_filename)
         doc.saveas(out_filepath)
         generated_files.append(out_filepath)
-
-        # Also copy to root CAD exports folder for quick access
-        symlink_filepath = os.path.join(symlink_dir, out_filename)
-        shutil.copyfile(out_filepath, symlink_filepath)
 
         print(f"  -> Generated: {out_filepath} ({os.path.getsize(out_filepath):,} bytes)")
 
