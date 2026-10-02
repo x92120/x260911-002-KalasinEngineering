@@ -212,6 +212,43 @@ def summary_total_border():
     s_side = Side(style='thin', color="CBD5E1")
     return Border(left=s_side, right=s_side, top=s_top, bottom=s_double)
 
+def get_clean_inst_desc(inst_tag, raw_desc):
+    desc_str = str(raw_desc).strip() if raw_desc is not None else ''
+    if desc_str and desc_str not in ['0', '#N/A', '-', 'None', '']:
+        return desc_str
+    tag = str(inst_tag).strip().upper()
+    if tag.startswith('FT-') or tag.startswith('FIT-'):
+        return "Flow Transmitter"
+    elif tag.startswith('TT-') or tag.startswith('TIT-'):
+        return "Temperature Transmitter"
+    elif tag.startswith('TI-'):
+        return "Temperature Indicator / Sensor"
+    elif tag.startswith('PT-') or tag.startswith('PIT-'):
+        return "Pressure Transmitter"
+    elif tag.startswith('DPT-') or tag.startswith('PDT-'):
+        return "Differential Pressure Transmitter"
+    elif tag.startswith('LT-') or tag.startswith('LIT-'):
+        return "Level Transmitter"
+    elif tag.startswith('PHT-') or 'PH' in tag:
+        return "pH Transmitter"
+    elif tag.startswith('VT-'):
+        return "Vibration Transmitter"
+    elif tag.startswith('XT-'):
+        return "Speed / Position Transmitter"
+    elif tag.startswith('XV-') or tag.startswith('FCV-'):
+        return "Control Valve Position Feedback"
+    elif tag.startswith('TCV-') or tag.startswith('TV-'):
+        return "Temperature Control Valve"
+    elif tag.startswith('PV-'):
+        return "Pressure Control Valve"
+    elif tag.startswith('UY-'):
+        return "I/P Converter Control Valve"
+    elif 'BOILER' in tag or 'BIILER' in tag:
+        return "External Boiler 4-20mA Interface"
+    elif 'SPARE' in tag:
+        return "Spare Reserve Channel"
+    return "Process Instrument"
+
 def load_source_data():
     print(f"Loading source workbook: {SOURCE_FILE}")
     wb = openpyxl.load_workbook(SOURCE_FILE, data_only=True)
@@ -279,6 +316,13 @@ def load_source_data():
                     slot_term_lookup[s_key][int(front_term)] = r
                 except:
                     pass
+
+    # For C3S12 (1756-OF8), map channel rows sequentially to IOUT pins:
+    if 'C3S12' in slot_rows and not slot_term_lookup['C3S12']:
+        of8_pin_sequence = [3, 9, 13, 19, 4, 10, 14, 20]
+        for idx, r in enumerate(slot_rows['C3S12']):
+            if idx < len(of8_pin_sequence):
+                slot_term_lookup['C3S12'][of8_pin_sequence[idx]] = r
 
     return card_term_map, slot_desc_map, slot_rows, slot_term_lookup
 
@@ -774,10 +818,16 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
                 else:
                     tb_item = f"{default_tb_prefix}-{t_num}"
 
+                if clean_card == '1756-OF8':
+                    of8_pin_to_ch = {3: 1, 9: 2, 13: 3, 19: 4, 4: 5, 10: 6, 14: 7, 20: 8}
+                    if t_num in of8_pin_to_ch:
+                        ch_num = of8_pin_to_ch[t_num]
+                        tb_item = f"{default_tb_prefix}-{ch_num}"
+
                 tag_plc_raw = str(r[45]).strip() if (r[45] is not None and str(r[45]).strip() not in ['-', '#N/A', '']) else ''
                 tag_term_raw = str(r[46]).strip() if (r[46] is not None and str(r[46]).strip() not in ['-', '#N/A', '']) else ''
 
-                if tag_plc_raw and not tag_plc_raw.endswith('/-') and '/-' not in tag_plc_raw and not tag_plc_raw.endswith('/-1') and not tag_plc_raw.endswith('/-2'):
+                if tag_plc_raw and not tag_plc_raw.endswith('/-') and '/-' not in tag_plc_raw and not tag_plc_raw.endswith('/-1') and not tag_plc_raw.endswith('/-2') and not tag_plc_raw.endswith('/-3'):
                     tag_plc = tag_plc_raw
                 else:
                     tag_plc = f"{s_key}-{t_num}/{tb_item}"
@@ -790,7 +840,7 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
                 dest = r[1] if r[1] is not None else dest_str
                 plc_tag = r[19] if r[19] is not None else (r[6] if r[6] is not None else "-")
                 inst_tag = r[11] if r[11] is not None else "-"
-                inst_desc = r[12] if r[12] is not None else "-"
+                inst_desc = get_clean_inst_desc(inst_tag, r[12])
                 
                 # Status determination
                 is_spare = ('SPARE' in str(inst_tag).upper() or not inst_tag or inst_tag == '#N/A' or inst_tag == '0')
@@ -856,10 +906,12 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
                         inst_desc = "Loop Power Terminal (+24VDC)"
                     else:
                         status = "SPARE"
-                        tb_item = f"{default_tb_prefix}-{t_num}"
+                        of8_pin_to_ch = {3: 1, 9: 2, 13: 3, 19: 4, 4: 5, 10: 6, 14: 7, 20: 8}
+                        ch_num = of8_pin_to_ch.get(t_num, t_num)
+                        tb_item = f"{default_tb_prefix}-{ch_num}"
                         tag_plc = f"{s_key}-{t_num}/{tb_item}"
                         tag_term = f"{tb_item}/{s_key}-{t_num}"
-                        plc_tag = f"Spare_AO_{t_num}"
+                        plc_tag = f"Spare_AO_{ch_num}"
                         inst_tag = "Spare"
                         inst_desc = "Spare Reserve Channel"
                 else:
