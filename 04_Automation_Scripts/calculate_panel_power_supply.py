@@ -778,6 +778,209 @@ def build_calculation():
         ws5.column_dimensions[col_letter].width = max(max_len + 3, 12)
     ws5.column_dimensions['E'].width = 46
 
+    # ---------------------------------------------------------------------------------
+    # SHEET 6: TRIO_Quotation_Design (Model: 2903151 TRIO-PS-2G/1AC/24DC/20)
+    # ---------------------------------------------------------------------------------
+    ws6 = wb.create_sheet(title="TRIO_Quotation_Design")
+    ws6.views.sheetView[0].showGridLines = True
+
+    ws6.merge_cells("A1:J1")
+    ws6["A1"] = "PHOENIX CONTACT TRIO POWER (2903151) SIZING & VERIFICATION --- JW TECH QUOTATION REF: QJP-260901724-R0"
+    ws6["A1"].font = FONT_TITLE
+    ws6["A1"].fill = NAVY_HDR
+    ws6["A1"].alignment = Alignment(horizontal="center", vertical="center")
+    ws6.row_dimensions[1].height = 26
+
+    # 1. Commercial & Quotation Metadata
+    ws6.merge_cells("A3:J3")
+    ws6["A3"] = "1. PROCUREMENT & COMMERCIAL METADATA (QUOTATION QJP-260901724-R0)"
+    ws6["A3"].font = FONT_SECTION
+    ws6["A3"].fill = SLATE_SUB
+    ws6.row_dimensions[3].height = 22
+
+    quote_meta = [
+        ("Quotation Number", "QJP-260901724-R0", "Supplier / Vendor", "JW TECH., LTD. (เลขที่ 226 ซอยศูนย์การค้าแฮปปี้แลนด์ 1 บางกะปิ กรุงเทพฯ)"),
+        ("Quotation Date", "11 กันยายน 2026 (11 Sep 2026)", "Vendor Contact", "นางสาวจิรัชยา โพธิ์งาม (Tel: +66863101172, nidda@jwtech.co.th)"),
+        ("Buyer / Client", "บริษัท อีโคแมกซ์ เอ็นจิเนียริ่ง ซัพพลายแอนด์ เซอร์วิส จำกัด", "Attention", "Khun Surachet Jumpit (Tel: 089-8926578, info.ecomax3@gmail.com)"),
+        ("Item Description", "Power supply unit, primary-switched, 1-phase AC, 24VDC, 20A", "Part Number / Model", "2903151 --- TRIO-PS-2G/1AC/24DC/20"),
+        ("Quoted Quantity", "5 EA (In Stock)", "Unit Price (THB)", "7,260.00 THB / EA"),
+        ("Subtotal Amount", "36,300.00 THB", "Grand Total (+7% VAT)", "38,841.00 THB (Payment: Cash, Warranty: 1 Year)"),
+    ]
+
+    r6 = 4
+    for row_data in quote_meta:
+        ws6.cell(row=r6, column=1, value=row_data[0]).font = FONT_BOLD
+        ws6.cell(row=r6, column=1).fill = GRAY_BG
+        ws6.cell(row=r6, column=2, value=row_data[1]).font = FONT_REG
+        ws6.merge_cells(start_row=r6, start_column=2, end_row=r6, end_column=4)
+
+        ws6.cell(row=r6, column=5, value=row_data[2]).font = FONT_BOLD
+        ws6.cell(row=r6, column=5).fill = GRAY_BG
+        ws6.cell(row=r6, column=6, value=row_data[3]).font = FONT_REG
+        ws6.merge_cells(start_row=r6, start_column=6, end_row=r6, end_column=10)
+
+        for c in range(1, 11):
+            ws6.cell(row=r6, column=c).border = THIN_BORDER
+        r6 += 1
+
+    # 2. Technical Specifications of Quoted Model
+    r6 += 1
+    ws6.merge_cells(f"A{r6}:J{r6}")
+    ws6[f"A{r6}"] = "2. TECHNICAL PARAMETERS OF PHOENIX CONTACT TRIO-PS-2G/1AC/24DC/20 (2903151)"
+    ws6[f"A{r6}"].font = FONT_SECTION
+    ws6[f"A{r6}"].fill = SLATE_SUB
+    ws6.row_dimensions[r6].height = 22
+    r6 += 1
+
+    tech_specs = [
+        ("Nominal AC Input Voltage", "100 V AC ... 240 V AC (-15% / +10%)", "Efficiency @ 230VAC", "> 93.0% (Typical)", "Heat Dissipation (Max)", "36.0 W @ 20A full load"),
+        ("AC Input Voltage Range", "85 V AC ... 264 V AC (45 ... 65 Hz)", "Power Factor (cos phi)", "0.95 (Built-in active PFC)", "Inrush Current", "< 15 A @ 230VAC (Cold Start)"),
+        ("Nominal Output Voltage", "24 V DC (Adjustable 24 ... 28 V DC)", "Push-in Conductor Size", "0.2 ... 4 mm² (In), 0.2 ... 10 mm² (Out)", "Housing Dimensions", "68 x 130 x 160 mm (W x H x D)"),
+        ("Nominal Output Current", "20.0 A continuous (-25°C ... +60°C)", "Dynamic Boost (150%)", "30.0 A for 5 seconds (heavy startup)", "Status Contact", "DC OK Floating Relay (30V, 100mA)"),
+    ]
+
+    for ts in tech_specs:
+        ws6.cell(row=r6, column=1, value=ts[0]).font = FONT_BOLD
+        ws6.cell(row=r6, column=1).fill = GRAY_BG
+        ws6.cell(row=r6, column=2, value=ts[1]).font = FONT_REG
+        ws6.merge_cells(start_row=r6, start_column=2, end_row=r6, end_column=3)
+
+        ws6.cell(row=r6, column=4, value=ts[2]).font = FONT_BOLD
+        ws6.cell(row=r6, column=4).fill = GRAY_BG
+        ws6.cell(row=r6, column=5, value=ts[3]).font = FONT_REG
+        ws6.merge_cells(start_row=r6, start_column=5, end_row=r6, end_column=6)
+
+        ws6.cell(row=r6, column=7, value=ts[4]).font = FONT_BOLD
+        ws6.cell(row=r6, column=7).fill = GRAY_BG
+        ws6.cell(row=r6, column=8, value=ts[5]).font = FONT_REG
+        ws6.merge_cells(start_row=r6, start_column=8, end_row=r6, end_column=10)
+
+        for c in range(1, 11):
+            ws6.cell(row=r6, column=c).border = THIN_BORDER
+        r6 += 1
+
+    # 3. Allocation & Loading Analysis for the 5 Units
+    r6 += 1
+    ws6.merge_cells(f"A{r6}:J{r6}")
+    ws6[f"A{r6}"] = "3. SIZING & LOADING ANALYSIS --- 5 QUOTED UNITS ALLOCATION OPTIONS"
+    ws6[f"A{r6}"].font = FONT_SECTION
+    ws6[f"A{r6}"].fill = SLATE_SUB
+    ws6.row_dimensions[r6].height = 22
+    r6 += 1
+
+    ws6.merge_cells(f"A{r6}:J{r6}")
+    ws6[f"A{r6}"] = "OPTION A: DEDICATED PER-CHASSIS DC DOMAIN (1x 20A TRIO PSU Per ControlLogix Chassis C1 to C5) --- RECOMMENDED"
+    ws6[f"A{r6}"].font = FONT_BOLD
+    ws6[f"A{r6}"].fill = GRAY_BG
+    r6 += 1
+
+    headers_optA = ["Unit #", "Target Chassis", "Panel & Location", "24VDC Oper. Load (A)", "Design Load +30% (A)", "TRIO Rated (A)", "TRIO Utilization (%)", "Dynamic Boost (5s)", "Thermal Loss (W)", "Engineering Sizing Verdict"]
+    for c_i, h in enumerate(headers_optA, 1):
+        cell = ws6.cell(row=r6, column=c_i, value=h)
+        cell.font = FONT_HEADER
+        cell.fill = SLATE_SUB
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+    ws6.row_dimensions[r6].height = 24
+    r6 += 1
+
+    optA_data = [
+        ("Unit 1", "Chassis C1", "CA1 (Main Control Room)", 7.45, 9.69, 20.0, "48.5%", "30.0 A (150%)", 17.5, "PASS (Optimal Load <50%)"),
+        ("Unit 2", "Chassis C2", "CA1 (Main Control Room)", 11.20, 14.56, 20.0, "72.8%", "30.0 A (150%)", 26.2, "PASS (Safe Continuous <75%)"),
+        ("Unit 3", "Chassis C3", "CA-RIO-1 (Spray Dryer 3F/7F)", 11.38, 14.79, 20.0, "74.0%", "30.0 A (150%)", 26.6, "PASS (Safe Continuous <75%)"),
+        ("Unit 4", "Chassis C4", "CA-RIO-2 (Spray Dryer 6F/8F)", 5.57, 7.24, 20.0, "36.2%", "30.0 A (150%)", 13.0, "PASS (Generous Spare Headroom)"),
+        ("Unit 5", "Chassis C5", "CA-RIO-200 (Slurry Building 2F)", 5.63, 7.32, 20.0, "36.6%", "30.0 A (150%)", 13.2, "PASS (Generous Spare Headroom)"),
+    ]
+
+    for d in optA_data:
+        for c_i, val in enumerate(d, 1):
+            cell = ws6.cell(row=r6, column=c_i, value=val)
+            cell.font = FONT_REG
+            cell.border = THIN_BORDER
+            if c_i in (1, 2, 7, 8, 10):
+                cell.alignment = Alignment(horizontal="center")
+            elif c_i in (4, 5, 6, 9):
+                cell.alignment = Alignment(horizontal="right")
+            if c_i == 10:
+                cell.font = FONT_BOLD
+                cell.fill = GREEN_BG
+        r6 += 1
+
+    # Option B
+    r6 += 1
+    ws6.merge_cells(f"A{r6}:J{r6}")
+    ws6[f"A{r6}"] = "OPTION B: PANEL-LEVEL REDUNDANT BUS (2x 20A in CA1 + 1x 20A in each Remote Panel) --- ALTERNATIVE"
+    ws6[f"A{r6}"].font = FONT_BOLD
+    ws6[f"A{r6}"].fill = GRAY_BG
+    r6 += 1
+
+    headers_optB = ["Unit Allocation", "Target Panel", "Location & Role", "Total 24VDC Load (A)", "Design Load +30% (A)", "Bus Capacity (A)", "Redundancy / Mode", "Single PSU Load", "Thermal Loss (W)", "Engineering Sizing Verdict"]
+    for c_i, h in enumerate(headers_optB, 1):
+        cell = ws6.cell(row=r6, column=c_i, value=h)
+        cell.font = FONT_HEADER
+        cell.fill = SLATE_SUB
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+    ws6.row_dimensions[r6].height = 24
+    r6 += 1
+
+    optB_data = [
+        ("Units 1 & 2 (2 EA)", "Panel CA1", "Main Control Room (C1 + C2)", 27.60, 35.88, 40.0, "2x 20A Parallel / Redundant", "89.7% (Single) / 44.9% (Dual)", 64.0, "PASS (Sufficient Bus Capacity)"),
+        ("Unit 3 (1 EA)", "Panel CA-RIO-1", "Spray Dryer 3F/7F (C3)", 11.38, 14.79, 20.0, "Single Switched Mode", "74.0% of nominal 20A", 26.6, "PASS (Safe Continuous <75%)"),
+        ("Unit 4 (1 EA)", "Panel CA-RIO-2", "Spray Dryer 6F/8F (C4)", 5.57, 7.24, 20.0, "Single Switched Mode", "36.2% of nominal 20A", 13.0, "PASS (Optimal <50%)"),
+        ("Unit 5 (1 EA)", "Panel CA-RIO-200", "Slurry Building 2F (C5)", 5.63, 7.32, 20.0, "Single Switched Mode", "36.6% of nominal 20A", 13.2, "PASS (Optimal <50%)"),
+    ]
+
+    for d in optB_data:
+        for c_i, val in enumerate(d, 1):
+            cell = ws6.cell(row=r6, column=c_i, value=val)
+            cell.font = FONT_REG
+            cell.border = THIN_BORDER
+            if c_i in (1, 2, 6, 7, 10):
+                cell.alignment = Alignment(horizontal="center")
+            elif c_i in (4, 5, 9):
+                cell.alignment = Alignment(horizontal="right")
+            if c_i == 10:
+                cell.font = FONT_BOLD
+                cell.fill = GREEN_BG
+        r6 += 1
+
+    # 4. Protection & Integration Guidelines
+    r6 += 1
+    ws6.merge_cells(f"A{r6}:J{r6}")
+    ws6[f"A{r6}"] = "4. SWITCHGEAR PROTECTION & PLC SCADA INTEGRATION DESIGN"
+    ws6[f"A{r6}"].font = FONT_SECTION
+    ws6[f"A{r6}"].fill = SLATE_SUB
+    ws6.row_dimensions[r6].height = 22
+    r6 += 1
+
+    integration_notes = [
+        ("AC Mains Infeed Protection", "Each TRIO 20A unit must be protected by an upstream 2-Pole Miniature Circuit Breaker rated 10A (or 6A), Characteristic C (e.g. Schneider Acti9 iC60N 2P 10A C). Inrush current is <15A, well below the C-curve magnetic trip threshold (50-100A)."),
+        ("DC Output Distribution", "Branch feeds from each 24VDC TRIO power supply should be segregated using multi-channel electronic circuit breakers (Phoenix Contact PTCB or C60H-DC) to ensure selective trip during field sensor/solenoid short circuits without collapsing the 24V bus."),
+        ("DC OK Contact Supervision", "The integrated floating relay contact (terminals 13/14, 30V AC/DC, 100mA) on each TRIO unit shall be hardwired directly into a spare channel on the 1756-IB32 digital input card (e.g. Tag: 'PSU_HEALTHY_CHx')."),
+        ("SCADA Alarm Logic", "FactoryTalk View SE will display a yellow banner alarm if 'PSU_HEALTHY' de-energizes, alerting operators to power supply derating, AC line loss, or output under-voltage (<21.5V) prior to PLC brownout."),
+        ("Push-in Terminal Cabling", "AC Input: 2.5 mm² multi-strand copper (THW / H07V-K) with insulated ferrule. DC Output: 6.0 mm² or 10.0 mm² copper (Red/Black) to main 24VDC terminal blocks Px-TBDC(+) and Px-TBDC(-)."),
+    ]
+
+    for n_title, n_desc in integration_notes:
+        ws6.cell(row=r6, column=1, value=n_title).font = FONT_BOLD
+        ws6.cell(row=r6, column=1).fill = GRAY_BG
+        ws6.cell(row=r6, column=1).border = THIN_BORDER
+        ws6.merge_cells(start_row=r6, start_column=2, end_row=r6, end_column=10)
+        ws6.cell(row=r6, column=2, value=n_desc).font = FONT_REG
+        ws6.cell(row=r6, column=2).alignment = Alignment(wrap_text=True)
+        for c in range(1, 11):
+            ws6.cell(row=r6, column=c).border = THIN_BORDER
+        ws6.row_dimensions[r6].height = 28
+        r6 += 1
+
+    for col in ws6.columns:
+        max_len = max(len(str(cell.value or '')) for cell in col)
+        col_letter = get_column_letter(col[0].column)
+        ws6.column_dimensions[col_letter].width = max(max_len + 3, 14)
+    ws6.column_dimensions['A'].width = 22
+    ws6.column_dimensions['B'].width = 28
+    ws6.column_dimensions['C'].width = 30
+    ws6.column_dimensions['J'].width = 28
+
     # Save Workbook
     wb.save(out_file)
     print(f"\n=======================================================")
