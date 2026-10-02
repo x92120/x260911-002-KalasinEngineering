@@ -92,12 +92,28 @@ def build_calculation():
             if slot_sheet_name in wb_io.sheetnames:
                 ss = wb_io[slot_sheet_name]
                 act, spr = 0, 0
+                cat = slot_info['cat']
                 for r in range(6, 42):
+                    desc = str(ss.cell(row=r, column=2).value or '')
                     st = ss.cell(row=r, column=10).value
                     if st == 'ACTIVE':
-                        act += 1
+                        if cat == '1756-IF16':
+                            if desc.startswith('IN-'):
+                                act += 1
+                        elif cat == '1756-OF8':
+                            if desc.startswith('OUT-'):
+                                act += 1
+                        else:
+                            act += 1
                     elif st == 'SPARE':
-                        spr += 1
+                        if cat == '1756-IF16':
+                            if desc.startswith('IN-'):
+                                spr += 1
+                        elif cat == '1756-OF8':
+                            if desc.startswith('OUT-'):
+                                spr += 1
+                        else:
+                            spr += 1
                 slot_info['active_ch'] = act
                 slot_info['spare_ch'] = spr
 
@@ -267,31 +283,44 @@ def build_calculation():
 
         # Add estimated loads for MCC and IS panels
         if p_id == 'CA-MCC':
-            bp_w_tot = 45.0  # C6 & C7 racks
+            bp_w_tot = 35.0  # C6 & C7 racks
             di_ch_tot, di_ch_act = 64, 42
             do_ch_tot, do_ch_act = 64, 38
             ai_ch_tot, ai_ch_act = 32, 20
         elif p_id == 'CA-IS':
-            bp_w_tot = 25.0  # Barrier racks
-            di_ch_tot, di_ch_act = 48, 36
-            ai_ch_tot, ai_ch_act = 32, 24
+            bp_w_tot = 15.0  # HiCTB16 Termination Boards quiescent
+            di_ch_tot, di_ch_act = 48, 48
+            do_ch_tot, do_ch_act = 16, 16
+            ai_ch_tot, ai_ch_act = 32, 32
 
         # 24VDC Load Calculations (Current in Amperes)
-        # 1. DI Loop Current: 8mA per channel (Diversity factor: 0.70)
-        i_di_connected = di_ch_tot * 0.008
-        i_di_operating = di_ch_act * 0.008 * 0.70
+        if p_id == 'CA-IS':
+            # Panel CA-IS: Power drawn through Pepperl+Fuchs HiC Isolated Barriers
+            # 48x HiC2821 (DI): 0.5W each (21mA @ 24VDC)
+            # 16x HiC2871 (DO): 1.2W each (50mA @ 24VDC)
+            # 32x HiC2025 (AI): 1.1W each (45mA @ 24VDC)
+            i_di_connected = 48 * 0.021
+            i_di_operating = 48 * 0.021 * 0.85
+            i_do_relays = 0.0
+            i_do_solenoids = 16 * 0.050 * 0.60
+            i_ai_operating = 32 * 0.045
+            i_ao_operating = 0.0
+        else:
+            # 1. DI Loop Current: 8mA per channel (Diversity factor: 0.70)
+            i_di_connected = di_ch_tot * 0.008
+            i_di_operating = di_ch_act * 0.008 * 0.70
 
-        # 2. DO Relays & Actuators:
-        # Relay coils: 9mA each (Phoenix Contact PLC-RSC-24DC/21)
-        # Solenoid load: 300mA per active valve with diversity 0.60
-        i_do_relays = do_ch_tot * 0.009
-        i_do_solenoids = do_ch_act * 0.300 * 0.60
+            # 2. DO Relays & Actuators:
+            # Relay coils: 9mA each (Phoenix Contact PLC-RSC-24DC/21)
+            # Solenoid load: 100mA (2.4W) per 24VDC pneumatic valve with 50% simultaneous duty cycle
+            i_do_relays = do_ch_act * 0.009 * 0.70
+            i_do_solenoids = do_ch_act * 0.100 * 0.50
 
-        # 3. AI 4-20mA Loops: 24mA per loop (loop powered transmitters)
-        i_ai_operating = ai_ch_act * 0.024
+            # 3. AI 4-20mA Loops: 20mA per loop (operating full scale)
+            i_ai_operating = ai_ch_act * 0.020
 
-        # 4. AO 4-20mA Loops: 22mA per loop
-        i_ao_operating = ao_ch_act * 0.022
+            # 4. AO 4-20mA Loops: 20mA per loop
+            i_ao_operating = ao_ch_act * 0.020
 
         # 5. Network Hardware: 2.0A per switch
         i_network = p_info['switches'] * 2.0
@@ -884,11 +913,11 @@ def build_calculation():
     r6 += 1
 
     optA_data = [
-        ("Unit 1", "Chassis C1", "CA1 (Main Control Room)", 7.45, 9.69, 20.0, "48.5%", "30.0 A (150%)", 17.5, "PASS (Optimal Load <50%)"),
-        ("Unit 2", "Chassis C2", "CA1 (Main Control Room)", 11.20, 14.56, 20.0, "72.8%", "30.0 A (150%)", 26.2, "PASS (Safe Continuous <75%)"),
-        ("Unit 3", "Chassis C3", "CA-RIO-1 (Spray Dryer 3F/7F)", 11.38, 14.79, 20.0, "74.0%", "30.0 A (150%)", 26.6, "PASS (Safe Continuous <75%)"),
-        ("Unit 4", "Chassis C4", "CA-RIO-2 (Spray Dryer 6F/8F)", 5.57, 7.24, 20.0, "36.2%", "30.0 A (150%)", 13.0, "PASS (Generous Spare Headroom)"),
-        ("Unit 5", "Chassis C5", "CA-RIO-200 (Slurry Building 2F)", 5.63, 7.32, 20.0, "36.6%", "30.0 A (150%)", 13.2, "PASS (Generous Spare Headroom)"),
+        ("Unit 1", "Chassis C1", "CA1 (Main Control Room)", 6.12, 7.96, 20.0, "39.8%", "30.0 A (150%)", 14.4, "PASS (Optimal Load <40%)"),
+        ("Unit 2", "Chassis C2", "CA1 (Main Control Room)", 7.36, 9.57, 20.0, "47.8%", "30.0 A (150%)", 17.3, "PASS (Optimal Load <50%)"),
+        ("Unit 3", "Chassis C3", "CA-RIO-1 (Spray Dryer 3F/7F)", 6.11, 7.94, 20.0, "39.7%", "30.0 A (150%)", 14.3, "PASS (Optimal Load <40%)"),
+        ("Unit 4", "Chassis C4", "CA-RIO-2 (Spray Dryer 6F/8F)", 4.32, 5.62, 20.0, "28.1%", "30.0 A (150%)", 10.1, "PASS (Generous Headroom)"),
+        ("Unit 5", "Chassis C5", "CA-RIO-200 (Slurry Building 2F)", 4.05, 5.27, 20.0, "26.3%", "30.0 A (150%)", 9.5, "PASS (Generous Headroom)"),
     ]
 
     for d in optA_data:
@@ -923,10 +952,10 @@ def build_calculation():
     r6 += 1
 
     optB_data = [
-        ("Units 1 & 2 (2 EA)", "Panel CA1", "Main Control Room (C1 + C2)", 27.60, 35.88, 40.0, "2x 20A Parallel / Redundant", "89.7% (Single) / 44.9% (Dual)", 64.0, "PASS (Sufficient Bus Capacity)"),
-        ("Unit 3 (1 EA)", "Panel CA-RIO-1", "Spray Dryer 3F/7F (C3)", 11.38, 14.79, 20.0, "Single Switched Mode", "74.0% of nominal 20A", 26.6, "PASS (Safe Continuous <75%)"),
-        ("Unit 4 (1 EA)", "Panel CA-RIO-2", "Spray Dryer 6F/8F (C4)", 5.57, 7.24, 20.0, "Single Switched Mode", "36.2% of nominal 20A", 13.0, "PASS (Optimal <50%)"),
-        ("Unit 5 (1 EA)", "Panel CA-RIO-200", "Slurry Building 2F (C5)", 5.63, 7.32, 20.0, "Single Switched Mode", "36.6% of nominal 20A", 13.2, "PASS (Optimal <50%)"),
+        ("Units 1 & 2 (2 EA)", "Panel CA1", "Main Control Room (C1 + C2)", 13.48, 17.52, 40.0, "2x 20A Parallel / Redundant", "87.6% (Single) / 43.8% (Dual)", 31.7, "PASS (True N+1 Redundancy)"),
+        ("Unit 3 (1 EA)", "Panel CA-RIO-1", "Spray Dryer 3F/7F (C3)", 6.11, 7.94, 20.0, "Single Switched Mode", "39.7% of nominal 20A", 14.3, "PASS (Optimal Load <40%)"),
+        ("Unit 4 (1 EA)", "Panel CA-RIO-2", "Spray Dryer 6F/8F (C4)", 4.32, 5.62, 20.0, "Single Switched Mode", "28.1% of nominal 20A", 10.1, "PASS (Generous Headroom)"),
+        ("Unit 5 (1 EA)", "Panel CA-RIO-200", "Slurry Building 2F (C5)", 4.05, 5.27, 20.0, "Single Switched Mode", "26.3% of nominal 20A", 9.5, "PASS (Generous Headroom)"),
     ]
 
     for d in optB_data:
