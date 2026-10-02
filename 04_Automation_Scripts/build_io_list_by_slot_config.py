@@ -190,6 +190,11 @@ SLOT_TB_MAP = {
     'C4S4': 'P4-TBRL1',
     'C4S5': 'P4-TBAI1',
     'C4S6': 'P4-TBAI2',
+    
+    'C5S1': 'P5-TBDI1',
+    'C5S2': 'P5-TBDI2',
+    'C5S3': 'P5-TBRL1',
+    'C5S4': 'P5-TBAI1',
 }
 
 def thin_border():
@@ -628,10 +633,21 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
     ws.row_dimensions[4].height = 16
 
     # Column Headers - Row 5 (10 Columns)
+    if 'IF16' in clean_card:
+        col3_header = "Terminal_Number (Px-TBAIx-m)"
+    elif 'OF8' in clean_card:
+        col3_header = "Terminal_Number (Px-TBAOx-m)"
+    elif 'OB32' in clean_card:
+        col3_header = "Terminal_Number (Px-TBRLx-m)"
+    elif 'IB32' in clean_card:
+        col3_header = "Terminal_Number (Px-TBDIx-m)"
+    else:
+        col3_header = "Terminal_Number"
+
     sheet_headers = [
         "Terminal_No",
         "Terminal_Description",
-        "Terminal_Number (Px-TBDIx-m)",
+        col3_header,
         "PLC_Tag_Side",
         "Terminal_Tag_Side",
         "Destination_Area",
@@ -749,10 +765,28 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
             # Check if we have active/spare signal assigned in IO List
             if t_num in t_lookup:
                 r = t_lookup[t_num]
-                # Col 45 in Excel is Terminal Tagging-Item (e.g. P1-TBDI1-1)
-                tb_item = str(r[44]).strip() if (r[44] is not None and str(r[44]).strip() not in ['-', '#N/A', '']) else f"{default_tb_prefix}-{t_num}"
-                tag_plc = r[45] if r[45] is not None else f"{s_key}-{t_num}/{tb_item}"
-                tag_term = r[46] if r[46] is not None else f"{tb_item}/{s_key}-{t_num}"
+                # Col 44 in Excel is Terminal Tagging-Item (e.g. P1-TBDI1-1)
+                raw_tb_item = str(r[44]).strip() if (r[44] is not None and str(r[44]).strip() not in ['-', '#N/A', '']) else ''
+                if raw_tb_item.startswith('-'):
+                    tb_item = f"{default_tb_prefix}{raw_tb_item}"
+                elif raw_tb_item:
+                    tb_item = raw_tb_item
+                else:
+                    tb_item = f"{default_tb_prefix}-{t_num}"
+
+                tag_plc_raw = str(r[45]).strip() if (r[45] is not None and str(r[45]).strip() not in ['-', '#N/A', '']) else ''
+                tag_term_raw = str(r[46]).strip() if (r[46] is not None and str(r[46]).strip() not in ['-', '#N/A', '']) else ''
+
+                if tag_plc_raw and not tag_plc_raw.endswith('/-') and '/-' not in tag_plc_raw and not tag_plc_raw.endswith('/-1') and not tag_plc_raw.endswith('/-2'):
+                    tag_plc = tag_plc_raw
+                else:
+                    tag_plc = f"{s_key}-{t_num}/{tb_item}"
+
+                if tag_term_raw and not tag_term_raw.startswith('-') and not tag_term_raw.startswith('/-'):
+                    tag_term = tag_term_raw
+                else:
+                    tag_term = f"{tb_item}/{s_key}-{t_num}"
+
                 dest = r[1] if r[1] is not None else dest_str
                 plc_tag = r[19] if r[19] is not None else (r[6] if r[6] is not None else "-")
                 inst_tag = r[11] if r[11] is not None else "-"
@@ -767,31 +801,88 @@ def build_slot_sheet(ws, s_key, ch, sl_num, ch_meta, card_term_map, slot_desc_ma
             else:
                 # Pin not in IO List: Power Common, RTN, Ground or Unwired Pin / Installed Spare Card
                 dest = dest_str.split(',')[0] if dest_str else ("CA1" if ch in ['C1', 'C2'] else "Field RIO")
-                is_power = any(p in t_desc.upper() for p in ['GND', 'DC', 'RTN', 'COM', 'VOUT'])
-                if is_power:
-                    status = "COMMON"
-                    tb_item = "0VDC" if ('GND' in t_desc.upper() or 'RTN' in t_desc.upper()) else "+24VDC"
-                    tag_plc = tb_item
-                    tag_term = tb_item
-                    plc_tag = "Internal Power Common"
-                    inst_tag = "-"
-                    inst_desc = "Module Power / Common Return Terminal"
-                else:
-                    # Spare channel on an installed card (e.g. C2S11, C2S12 IF16 spare card)
-                    status = "SPARE"
-                    tb_item = f"{default_tb_prefix}-{t_num}"
-                    tag_plc = f"{s_key}-{t_num}/{tb_item}"
-                    tag_term = f"{tb_item}/{s_key}-{t_num}"
-                    if 'IF' in clean_card:
-                        plc_tag = f"Spare_AI_{t_num}"
-                    elif 'IB' in clean_card:
-                        plc_tag = f"Spare_DI_{t_num}"
-                    elif 'OB' in clean_card:
-                        plc_tag = f"Spare_DO_{t_num}"
+
+                if clean_card == '1756-IF16':
+                    if t_desc == 'RTN':
+                        status = "COMMON"
+                        tb_item = "0VDC"
+                        tag_plc = "0VDC"
+                        tag_term = "0VDC"
+                        plc_tag = "Internal Power Common"
+                        inst_tag = "-"
+                        inst_desc = "Module Power / Common Return Terminal"
+                    elif t_desc.startswith('i RTN-'):
+                        ch_idx = int(t_desc.split('-')[1]) + 1
+                        status = "SPARE"
+                        tb_item = f"{default_tb_prefix}-{ch_idx}(B)"
+                        tag_plc = f"{s_key}-{t_num}/{tb_item}"
+                        tag_term = f"{tb_item}/{s_key}-{t_num}"
+                        plc_tag = f"Spare_AI_{ch_idx}"
+                        inst_tag = "Spare"
+                        inst_desc = "Spare Reserve Channel"
+                    elif t_desc.startswith('IN-'):
+                        ch_idx = int(t_desc.split('-')[1]) + 1
+                        status = "SPARE"
+                        tb_item = f"{default_tb_prefix}-{ch_idx}(A)"
+                        tag_plc = f"{s_key}-{t_num}/{tb_item}"
+                        tag_term = f"{tb_item}/{s_key}-{t_num}"
+                        plc_tag = f"Spare_AI_{ch_idx}"
+                        inst_tag = "Spare"
+                        inst_desc = "Spare Reserve Channel"
                     else:
+                        status = "COMMON"
+                        tb_item = "0VDC"
+                        tag_plc = "0VDC"
+                        tag_term = "0VDC"
+                        plc_tag = "Module Ground / Shield"
+                        inst_tag = "-"
+                        inst_desc = "Shield Ground Terminal"
+                elif clean_card == '1756-OF8':
+                    if t_desc == 'RTN':
+                        status = "COMMON"
+                        tb_item = "0VDC"
+                        tag_plc = "0VDC"
+                        tag_term = "0VDC"
+                        plc_tag = "Internal Power Common"
+                        inst_tag = "-"
+                        inst_desc = "Module Power / Common Return Terminal"
+                    elif t_desc.startswith('VOUT-'):
+                        status = "COMMON"
+                        tb_item = "+24VDC"
+                        tag_plc = "+24VDC"
+                        tag_term = "+24VDC"
+                        plc_tag = "Internal Power Common"
+                        inst_tag = "-"
+                        inst_desc = "Loop Power Terminal (+24VDC)"
+                    else:
+                        status = "SPARE"
+                        tb_item = f"{default_tb_prefix}-{t_num}"
+                        tag_plc = f"{s_key}-{t_num}/{tb_item}"
+                        tag_term = f"{tb_item}/{s_key}-{t_num}"
                         plc_tag = f"Spare_AO_{t_num}"
-                    inst_tag = "Spare"
-                    inst_desc = "Spare Reserve Channel"
+                        inst_tag = "Spare"
+                        inst_desc = "Spare Reserve Channel"
+                else:
+                    is_power = any(p in t_desc.upper() for p in ['GND', 'DC', 'COM', 'VDC']) or t_desc.upper() == 'RTN'
+                    if is_power:
+                        status = "COMMON"
+                        tb_item = "0VDC" if ('GND' in t_desc.upper() or 'RTN' in t_desc.upper()) else "+24VDC"
+                        tag_plc = tb_item
+                        tag_term = tb_item
+                        plc_tag = "Internal Power Common"
+                        inst_tag = "-"
+                        inst_desc = "Module Power / Common Return Terminal"
+                    else:
+                        status = "SPARE"
+                        tb_item = f"{default_tb_prefix}-{t_num}"
+                        tag_plc = f"{s_key}-{t_num}/{tb_item}"
+                        tag_term = f"{tb_item}/{s_key}-{t_num}"
+                        if 'IB' in clean_card:
+                            plc_tag = f"Spare_DI_{t_num}"
+                        else:
+                            plc_tag = f"Spare_DO_{t_num}"
+                        inst_tag = "Spare"
+                        inst_desc = "Spare Reserve Channel"
                     
             row_vals = [
                 t_num,
