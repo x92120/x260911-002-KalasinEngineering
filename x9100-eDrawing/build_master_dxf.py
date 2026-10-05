@@ -163,8 +163,15 @@ def main():
             pos_x = col_idx * COL_PITCH
             pos_y = row_y
 
+            ch_dir = os.path.join(base_dir, ch_code)
             dxf_filename = f"{slot_tag}.dxf"
-            dxf_path = os.path.join(base_dir, dxf_filename)
+            dxf_path = os.path.join(ch_dir, dxf_filename)
+            if not os.path.exists(dxf_path) and os.path.exists(ch_dir):
+                matching = [f for f in os.listdir(ch_dir) if f.startswith(f"{slot_tag}-") and f.endswith(".dxf") and "Wiring_Diagram" not in f]
+                if matching:
+                    dxf_path = os.path.join(ch_dir, matching[0])
+                else:
+                    dxf_path = os.path.join(base_dir, dxf_filename)
 
             s_info = slots_info.get(slot_tag, {})
             hw_card = s_info.get("hw_card", "1756-N2" if col_idx >= max_col_slots else "1756-CARD")

@@ -18,6 +18,7 @@
 
 # Large ePlan, CAD databases, archives, and heavy export files (>50MB)
 x900-eDrawing/
+x9200-eDrawing_Layout/
 *.zw1
 *.edb/
 *.zip

@@ -1,13 +1,11 @@
 # Ingredion Kalasin Plant — Project SPRINT
-## SCADA & PlantPAx DCS Simulation Video (Rev 3.5 P&ID Baseline)
+## SCADA & PlantPAx DCS Simulation Video & Interactive HMI Viewers
 
-### 📹 Video Deliverable
-* **Video File:** `Kalasin_Plant_SCADA_Demo_Project_SPRINT_Rev3.5.mp4`
-* **Format:** MP4 (H.264 / AVC, High Profile)
-* **Resolution:** 1920 × 1080 (Full HD, 16:9 Widescreen)
-* **Framerate:** 30 fps
-* **Duration:** 60.0 Seconds (1,800 frames)
-* **File Size:** 5.28 MB
+### 📹 Video & Interactive Web Deliverables
+* **Video File:** `Kalasin_Plant_SCADA_Demo_Project_SPRINT_Rev3.5.mp4` (Full HD 1080p, 60s H.264)
+* 🌐 **Interactive SCADA Dashboard**: [scada_process_dashboard.html](file:///e:/xApp-01/x260911-002-KalasinEngineering/02_Electrical_and_eDrawing/06_SCADA_Demo/scada_process_dashboard.html)
+* 🌐 **Automation Architecture Presentation**: [automation_architecture_slides.html](file:///e:/xApp-01/x260911-002-KalasinEngineering/02_Electrical_and_eDrawing/06_SCADA_Demo/automation_architecture_slides.html)
+* 🌐 **Light Theme Presentation**: [automation_architecture_slides_light.html](file:///e:/xApp-01/x260911-002-KalasinEngineering/02_Electrical_and_eDrawing/06_SCADA_Demo/automation_architecture_slides_light.html)
 
 ---
 

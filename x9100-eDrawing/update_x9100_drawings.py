@@ -334,8 +334,10 @@ def main():
         # 9. Add I/O List Frame Table
         add_io_list_table(msp, slot_key, pin_data, "DI")
 
-        out_file1 = os.path.join(base_dir, f"{slot_key}_DI_Wiring_Diagram.dxf")
-        out_file2 = os.path.join(base_dir, f"{slot_key}.dxf")
+        ch_dir = os.path.join(base_dir, chassis_str)
+        os.makedirs(ch_dir, exist_ok=True)
+        out_file1 = os.path.join(ch_dir, f"{slot_key}-IB32_Wiring_Diagram.dxf")
+        out_file2 = os.path.join(ch_dir, f"{slot_key}-IB32.dxf")
         s1 = safe_saveas(doc, out_file1)
         s2 = safe_saveas(doc, out_file2)
         if s1 or s2:
@@ -463,8 +465,10 @@ def main():
         # 9. Add I/O List Frame Table
         add_io_list_table(msp, slot_key, pin_data, "DO")
 
-        out_file1 = os.path.join(base_dir, f"{slot_key}_DO_Wiring_Diagram.dxf")
-        out_file2 = os.path.join(base_dir, f"{slot_key}.dxf")
+        ch_dir = os.path.join(base_dir, chassis_str)
+        os.makedirs(ch_dir, exist_ok=True)
+        out_file1 = os.path.join(ch_dir, f"{slot_key}-OB32_Wiring_Diagram.dxf")
+        out_file2 = os.path.join(ch_dir, f"{slot_key}-OB32.dxf")
         s1 = safe_saveas(doc, out_file1)
         s2 = safe_saveas(doc, out_file2)
         if s1 or s2:
@@ -567,8 +571,10 @@ def main():
         # 9. Add I/O List Frame Table
         add_io_list_table(msp, slot_key, pin_data, "AI")
 
-        out_file1 = os.path.join(base_dir, f"{slot_key}_AI_Wiring_Diagram.dxf")
-        out_file2 = os.path.join(base_dir, f"{slot_key}.dxf")
+        ch_dir = os.path.join(base_dir, chassis_str)
+        os.makedirs(ch_dir, exist_ok=True)
+        out_file1 = os.path.join(ch_dir, f"{slot_key}-IF16_Wiring_Diagram.dxf")
+        out_file2 = os.path.join(ch_dir, f"{slot_key}-IF16.dxf")
         s1 = safe_saveas(doc, out_file1)
         s2 = safe_saveas(doc, out_file2)
         if s1 or s2:
