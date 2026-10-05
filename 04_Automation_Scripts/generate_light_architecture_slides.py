@@ -167,7 +167,7 @@ def render_slide_images():
         "• Dual Allen-Bradley 1756-A4 Chassis in Main PLC Cabinet\n"
         "• Dual 1756-L83E GuardLogix 5580 Controller (10 MB Memory, 1 GHz Scan Engine)\n"
         "• 1756-RM2 Redundancy Modules: High-Speed Optical Cross-Chassis Synchronization\n"
-        "• 1756-EN2TR Dual-Port EtherNet/IP Bridge Modules for Device Level Ring (DLR)\n"
+        "• 1756-EN4TR Dual-Port EtherNet/IP Bridge Modules for Device Level Ring (DLR)\n"
         "• Dual 1756-PA75 Redundant Power Supply Bundles with Separate AC Feeders\n"
         "• Bumpless Failover Time: < 20 ms (Zero Process Disruption)", font=f_body, fill=(30, 41, 59))
 
@@ -225,7 +225,7 @@ def render_slide_images():
         ("Engineering Workstation (EWS)", "1 Unit", "Dell Precision 3660 Tower (Core i7, 32GB RAM, 1TB NVMe SSD, Dual 27\" 4K IPS Displays)", "Windows 11 Pro for Workstations\nStudio 5000 Logix Designer (v33+)\nFactoryTalk View Studio Enterprise", "Dedicated Dev/Diagnostics\nNon-Redundant\nMCR Engineering Desk"),
         ("Operator Workstations (OWS)", "3 Units", "Dell OptiPlex 7000 Series (Core i5, 16GB RAM, 512GB SSD, Dual 27\" Industrial Displays per desk)", "Windows 11 Enterprise LTSC\nFactoryTalk View SE Client v13\nAuto-Login Operator Shell Mode", "OWS-01: Slurry & Jet Cooker\nOWS-02: Spray Dryer & BMS\nOWS-03: Packing & Utilities"),
         ("Wall Overview Displays", "2 Units", "50\" 4K Industrial Commercial Display (24/7 Rating, HDMI Matrix Switcher)", "Live Plant Overview & Master Alarm\nPer Ingredion Kalasin Standard Spec", "MCR Wall Mounted\nMatrix Shared Video Feed"),
-        ("ControlLogix Controller Pair", "2 Racks", "Dual 1756-A4 Chassis, Dual 1756-L83E CPU (10MB),\n1756-RM2 Redundancy, 1756-EN2TR DLR, 1756-PA75 PSU", "ControlLogix Firmware v33+\nEmbedded GuardLogix Safety Tasks", "Bumpless Optical Cross-Sync\nSwitchover < 20 ms"),
+        ("ControlLogix Controller Pair", "2 Racks", "Dual 1756-A4 Chassis, Dual 1756-L83E CPU (10MB),\n1756-RM2 Redundancy, 1756-EN4TR DLR, 1756-PA75 PSU", "ControlLogix Firmware v33+\nEmbedded GuardLogix Safety Tasks", "Bumpless Optical Cross-Sync\nSwitchover < 20 ms"),
         ("Distributed Remote I/O", "4 Skids", "1794 Flex I/O w/ HART (1794-AENTR, IB32, OB16, IF8IH)\nRIO-200, RIO-400, RIO-600, RIO-MCC", "FactoryTalk Network Manager Config\nHART Instrument Device DTMs", "DLR Self-Healing Ring\nRecovery < 3 ms")
     ]
 

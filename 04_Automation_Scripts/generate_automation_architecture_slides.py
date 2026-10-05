@@ -314,7 +314,7 @@ def create_presentation():
     pl1.font.bold = True
     pl1.font.color.rgb = ACCENT_GREEN
     pl1_2 = tf_l1.add_paragraph()
-    pl1_2.text = "• Allen-Bradley 1756-L83E GuardLogix (10MB Memory, High Perf)\n• 1756-RM2 Redundancy Modules (Fiber-Optic Cross-Sync)\n• Dual 1756-EN2TR EtherNet/IP DLR Modules & 1756-PA75 PSU\n• Bumpless controller switchover (<20ms)"
+    pl1_2.text = "• Allen-Bradley 1756-L83E GuardLogix (10MB Memory, High Perf)\n• 1756-RM2 Redundancy Modules (Fiber-Optic Cross-Sync)\n• Dual 1756-EN4TR EtherNet/IP DLR Modules & 1756-PA75 PSU\n• Bumpless controller switchover (<20ms)"
     pl1_2.font.size = Pt(8.5)
     pl1_2.font.color.rgb = LIGHT_GRAY
 
@@ -377,7 +377,7 @@ def create_presentation():
         ["Engineering Workstation (EWS)", "1 Unit", "Dell Precision 3660 Tower\nCore i7, 32GB RAM, 1TB NVMe SSD\nDual 27\" 4K IPS Displays", "Windows 11 Pro for Workstations\nStudio 5000 Logix Designer (v33+)\nFactoryTalk View Studio Enterprise\nFactoryTalk Network Manager", "Non-redundant\nDedicated Dev/Diag\nMCR Engineering Desk"],
         ["Operator Workstations (OWS)", "3 Units", "Dell OptiPlex 7000 Micro / Tower\nCore i5, 16GB RAM, 512GB SSD\nDual 27\" Industrial Monitors", "Windows 11 Enterprise LTSC\nFactoryTalk View SE Client v13\nAuto-login Operator Shell Mode", "OWS-01: Slurry & Jet Cooker\nOWS-02: Spray Dryer & BMS\nOWS-03: Silo, Packing & Utility"],
         ["Large Wall Display Monitor", "2 Units", "50\" 4K Industrial Commercial Display\nContinuous 24/7 Rating, HDMI/DP", "Connected to OWS / Matrix Splitter\nPlant Overview & Alarm Marquee", "MCR Wall Mounted\n(Per IGD Kalasin Spec)"],
-        ["ControlLogix Controller", "2 Racks", "1756-A4 Chassis (x2)\n1756-L83E CPU (x2)\n1756-RM2 Redundancy (x2)\n1756-EN2TR DLR Bridge (x2)", "ControlLogix Firmware v33+\nRedundancy Firmware Bundle\nEmbedded Safety Logic", "Bumpless Redundant Pair\nCross-Fiber Optical Sync\nMain PLC Cabinet"]
+        ["ControlLogix Controller", "2 Racks", "1756-A4 Chassis (x2)\n1756-L83E CPU (x2)\n1756-RM2 Redundancy (x2)\n1756-EN4TR DLR Bridge (x2)", "ControlLogix Firmware v33+\nRedundancy Firmware Bundle\nEmbedded Safety Logic", "Bumpless Redundant Pair\nCross-Fiber Optical Sync\nMain PLC Cabinet"]
     ]
 
     for r_idx, row in enumerate(table_data):
@@ -644,7 +644,7 @@ def render_architecture_png():
         "• Dual Allen-Bradley 1756-A4 Chassis in Main PLC Cabinet\n"
         "• Dual 1756-L83E GuardLogix 5580 Controller (10 MB Memory, 1 GHz Scan Engine)\n"
         "• 1756-RM2 Redundancy Modules: High-Speed Optical Cross-Chassis Synchronization\n"
-        "• 1756-EN2TR Dual-Port EtherNet/IP Bridge Modules for Device Level Ring (DLR)\n"
+        "• 1756-EN4TR Dual-Port EtherNet/IP Bridge Modules for Device Level Ring (DLR)\n"
         "• Dual 1756-PA75 Redundant Power Supply Bundles with Separate AC Feeders\n"
         "• Bumpless Failover Time: < 20 ms (Zero Process Disruption)", font=f_body, fill=(203, 213, 225))
 

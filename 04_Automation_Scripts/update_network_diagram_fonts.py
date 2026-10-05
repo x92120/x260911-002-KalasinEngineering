@@ -183,7 +183,7 @@ def render_network_diagram_light():
     # Chassis A
     d.rectangle([60, 538, 490, 680], fill=(240, 253, 244), outline=(22, 163, 74), width=2)
     d.text((75, 548), "🎛️ CONTROLLER CHASSIS A (PRIMARY)", font=f_h2, fill=(22, 163, 74))
-    d.text((75, 570), "Slot 0: 1756-L83E GuardLogix 5580 CPU [IP: 192.168.20.11]\nSlot 1: 1756-RM2 High-Speed Optical Redundancy Module\nSlot 2: 1756-EN2TR Dual EtherNet/IP Bridge (DLR Supervisor A)\nSlot 3: 1756-EN2T Uplink to Server VLAN 10 [192.168.10.31]", font=f_body, fill=(15, 23, 42))
+    d.text((75, 570), "Slot 0: 1756-L83E GuardLogix 5580 CPU [IP: 192.168.20.11]\nSlot 1: 1756-RM2 High-Speed Optical Redundancy Module\nSlot 2: 1756-EN4TR Dual EtherNet/IP Bridge (DLR Supervisor A)\nSlot 3: 1756-EN2T Uplink to Server VLAN 10 [192.168.10.31]", font=f_body, fill=(15, 23, 42))
     d.text((75, 650), "Firmware: v33.011+ Redundant Bundle | Bumpless Transfer < 20 ms", font=f_small_bold, fill=(22, 163, 74))
 
     # Optical Redundancy Sync
@@ -193,7 +193,7 @@ def render_network_diagram_light():
     # Chassis B
     d.rectangle([660, 538, 1090, 680], fill=(254, 243, 199), outline=(217, 119, 6), width=2)
     d.text((675, 548), "🎛️ CONTROLLER CHASSIS B (SECONDARY)", font=f_h2, fill=(217, 119, 6))
-    d.text((675, 570), "Slot 0: 1756-L83E GuardLogix 5580 CPU [IP: 192.168.20.12]\nSlot 1: 1756-RM2 High-Speed Optical Redundancy Module\nSlot 2: 1756-EN2TR Dual EtherNet/IP Bridge (DLR Supervisor B)\nSlot 3: 1756-EN2T Uplink to Server VLAN 10 [192.168.10.32]", font=f_body, fill=(15, 23, 42))
+    d.text((675, 570), "Slot 0: 1756-L83E GuardLogix 5580 CPU [IP: 192.168.20.12]\nSlot 1: 1756-RM2 High-Speed Optical Redundancy Module\nSlot 2: 1756-EN4TR Dual EtherNet/IP Bridge (DLR Supervisor B)\nSlot 3: 1756-EN2T Uplink to Server VLAN 10 [192.168.10.32]", font=f_body, fill=(15, 23, 42))
     d.text((675, 650), "Hot Standby Synchronized Execution | Zero Process Perturbation", font=f_small_bold, fill=(217, 119, 6))
 
     # DLR Explanation Card
@@ -201,7 +201,7 @@ def render_network_diagram_light():
     d.text((1125, 548), "DEVICE LEVEL RING (DLR) ARCHITECTURE HIGHLIGHTS (VLAN 30):", font=f_h2, fill=(14, 76, 146))
     d.text((1125, 572), 
         "• Self-Healing Ring Topology: Embedded hardware switching enables < 3 ms recovery on cable break.\n"
-        "• Dual Ring Supervisors: 1756-EN2TR on Chassis A acts as Active Supervisor; Chassis B is Backup.\n"
+        "• Dual Ring Supervisors: 1756-EN4TR on Chassis A acts as Active Supervisor; Chassis B is Backup.\n"
         "• Zero Packet Loss: Remote I/O drops RIO-200, 400, 600 maintain continuous communication.\n"
         "• Direct Skid Integration: BMS Burner, Getabec Boiler, and IEP Systems interconnected seamlessly.", font=f_body, fill=(30, 41, 59))
 

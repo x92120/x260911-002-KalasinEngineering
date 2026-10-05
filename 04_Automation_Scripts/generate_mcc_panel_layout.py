@@ -474,7 +474,7 @@ def build_sheet_2(pdf):
             pdf.set_fill_color(50, 130, 80)
             pdf.rect(plate_x + vd_w + 20, r1_y + 2, 10, 15, "DF")
             pdf.set_font("Helvetica", "B", 3.2)
-            pdf.text(plate_x + vd_w + 20.5, r1_y + 10, "EN2TR ADPT")
+            pdf.text(plate_x + vd_w + 20.5, r1_y + 10, "EN4TR ADPT")
 
         # Row 2: ControlLogix Chassis C1..C4
         r2_y = plate_y + 42
@@ -690,7 +690,7 @@ def build_detailed_panel_sheet(pdf, sheet_no, panel_id, panel_title, chassis_id,
         pdf.set_fill_color(40, 130, 70)
         pdf.rect(rw_x + 27, r1_y + 3, 14, 25, "DF")
         pdf.set_font("Helvetica", "B", 4.5)
-        pdf.text(rw_x + 28, r1_y + 15, "1756-EN2TR")
+        pdf.text(rw_x + 28, r1_y + 15, "1756-EN4TR")
         pdf.text(rw_x + 28, r1_y + 19, "ETHERNET")
 
     # Row 2: ControlLogix 1756-A13 Rack
@@ -980,7 +980,7 @@ def build_sheet_7(pdf):
         ("2", "1756-A13", "Rockwell Automation", "ControlLogix 13-Slot Chassis", "M1, M2, M3, M4", "4", "-", "Standard backplane, horizontal mounting", "Chassis C1, C2, C3, C4"),
         ("3", "1756-PA72", "Rockwell Automation", "ControlLogix Power Supply", "M1, M2, M3, M4", "4", "1", "85-265V AC, 72W output @ 60 deg C", "One supply per chassis"),
         ("4", "1756-L950TPSXT", "Rockwell Automation", "ControlLogix 5580 Controller", "Panel M1 (C1S01)", "1", "1", "Extreme environment, 50MB memory, 1Gbps ETH", "Master Plant Controller"),
-        ("5", "1756-EN2TR", "Rockwell Automation", "EtherNet/IP Dual-Port DLR Comm Module", "M2, M3, M4", "3", "1", "10/100 Mbps, 128 TCP connections, DLR ring", "I/O Remote Adapter modules"),
+        ("5", "1756-EN4TR", "Rockwell Automation", "EtherNet/IP Dual-Port DLR Comm Module", "M2, M3, M4", "3", "1", "10/100 Mbps, 128 TCP connections, DLR ring", "I/O Remote Adapter modules"),
         ("6", "1756-IB32", "Rockwell Automation", "32-Point 24VDC Digital Input Module", "M1, M2, M3, M4", "14", "2", "24VDC Sink/Source, 10-31.2VDC, Isolated groups", "544 total DI channels available"),
         ("7", "1756-OB32", "Rockwell Automation", "32-Point 24VDC Digital Output Module", "M1, M2, M3, M4", "7", "1", "24VDC Source, 10-31.2VDC, 0.5A per point", "224 total DO channels available"),
         ("8", "1756-IF16", "Rockwell Automation", "16-Point Analog Input Module", "M1, M2, M3, M4", "11", "1", "Current / Voltage (4-20mA, 0-10V), 16-bit resolution", "176 total AI channels available"),
@@ -1036,7 +1036,7 @@ def generate_all_drawings():
     
     slot_data_m1 = {
         1: {"model": "1756-L950TPSXT", "desc": "ControlLogix 5580 Controller (50MB Memory)", "type": "CPU", "ch": "1", "tb": "ETH1/2", "serves": "Plant Master Controller / SCADA", "status": "ACTIVE (MASTER)", "color": (20, 100, 180)},
-        2: {"model": "Reserve", "desc": "Reserved for 1756-EN2TR / Redundancy", "type": "RES", "ch": "-", "tb": "-", "serves": "Reserved for Controller Redundancy", "status": "SPARE (RESERVE)", "color": (120, 125, 135)},
+        2: {"model": "Reserve", "desc": "Reserved for 1756-EN4TR / Redundancy", "type": "RES", "ch": "-", "tb": "-", "serves": "Reserved for Controller Redundancy", "status": "SPARE (RESERVE)", "color": (120, 125, 135)},
         3: {"model": "1756-IB32", "desc": "32-Point 24VDC Sink/Source Digital Input", "type": "DI", "ch": "32", "tb": "C1S03-X1,X2", "serves": "JB-401 Field Signals & Spares", "status": "ACTIVE", "color": (40, 140, 70)},
         4: {"model": "1756-IB32", "desc": "32-Point 24VDC Sink/Source Digital Input", "type": "DI", "ch": "32", "tb": "C1S04-X1,X2", "serves": "JB-401 Field Signals", "status": "ACTIVE", "color": (40, 140, 70)},
         5: {"model": "1756-IB32", "desc": "32-Point 24VDC Sink/Source Digital Input", "type": "DI", "ch": "32", "tb": "C1S05-X1,X2", "serves": "JB-601 Field Signals", "status": "ACTIVE", "color": (40, 140, 70)},

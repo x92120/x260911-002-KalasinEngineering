@@ -408,9 +408,9 @@ class CADExporter:
                 # DC Distribution Fuse/CB
                 self.add_rect(hd_x + 20, r1_din_y - 25, 180, 85, layer="POWER_SUPPLY")
                 self.add_text("DC FUSE / CB UNIT", hd_x + 110, r1_din_y + 17, height=18, layer="TEXT_LABELS", align=TextEntityAlignment.MIDDLE_CENTER)
-                # Ethernet Adapter (1756-EN2TR)
+                # Ethernet Adapter (1756-EN4TR)
                 self.add_rect(hd_x + 230, r1_din_y - 35, 120, 105, layer="COMM_SWITCH")
-                self.add_text("1756-EN2TR", hd_x + 290, r1_din_y + 17, height=18, layer="TEXT_LABELS", align=TextEntityAlignment.MIDDLE_CENTER)
+                self.add_text("1756-EN4TR", hd_x + 290, r1_din_y + 17, height=18, layer="TEXT_LABELS", align=TextEntityAlignment.MIDDLE_CENTER)
 
             # ROW 2: ControlLogix 1756-A13 Chassis
             chassis_w = hd_w - 20

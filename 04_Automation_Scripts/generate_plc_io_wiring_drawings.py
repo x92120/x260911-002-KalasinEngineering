@@ -548,7 +548,7 @@ def render_system_configuration_diagram(pdf):
         ("S8", "1756-OB32", "32DO 24VDC"),
         ("S9", "1756-IF16", "16AI Diff"),
         ("S10", "1756-IF16", "16AI Diff"),
-        ("S11", "1756-EN2TR", "EtherNet/IP DLR"),
+        ("S11", "1756-EN4TR", "EtherNet/IP DLR"),
         ("S12", "1756-N2", "Slot Filler"),
         ("S13", "1756-N2", "Slot Filler")
     ]

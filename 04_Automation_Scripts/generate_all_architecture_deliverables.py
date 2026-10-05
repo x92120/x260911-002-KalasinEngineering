@@ -208,13 +208,13 @@ def render_network_diagram_light():
     # Chassis A
     d.rectangle([60, 540, 490, 680], fill=(240, 253, 244), outline=(22, 163, 74), width=2)
     d.text((75, 550), "🎛️ CONTROLLER CHASSIS A (PRIMARY)", font=f_h2, fill=(22, 163, 74))
-    d.text((75, 572), "1756-EN2TR DLR Bridge: IP 192.168.30.1 (Ring Supervisor)", font=f_tag, fill=(22, 163, 74))
+    d.text((75, 572), "1756-EN4TR DLR Bridge: IP 192.168.30.1 (Ring Supervisor)", font=f_tag, fill=(22, 163, 74))
     d.line([75, 588, 475, 588], fill=(187, 247, 208), width=1)
     d.text((75, 594), "REQUIRED FIRMWARE & LOGIC:", font=f_tag, fill=(15, 23, 42))
     d.text((75, 610), 
         "• 1756-L83E GuardLogix 5580 Controller Firmware: v33.011+ (Redundant)\n"
         "• 1756-RM2 Enhanced Optical Redundancy Firmware Bundle\n"
-        "• 1756-EN2TR EtherNet/IP DLR Embedded Ring Supervisor Firmware\n"
+        "• 1756-EN4TR EtherNet/IP DLR Embedded Ring Supervisor Firmware\n"
         "• PlantPAx 5.0 Process Object Library (Process Library v5.00.00)", font=f_small, fill=(15, 23, 42))
 
     # Fiber Cross-Sync Link
@@ -224,13 +224,13 @@ def render_network_diagram_light():
     # Chassis B
     d.rectangle([650, 540, 1080, 680], fill=(254, 243, 199), outline=(217, 119, 6), width=2)
     d.text((665, 550), "🎛️ CONTROLLER CHASSIS B (STANDBY)", font=f_h2, fill=(217, 119, 6))
-    d.text((665, 572), "1756-EN2TR DLR Bridge: IP 192.168.30.2 (Backup Supervisor)", font=f_tag, fill=(217, 119, 6))
+    d.text((665, 572), "1756-EN4TR DLR Bridge: IP 192.168.30.2 (Backup Supervisor)", font=f_tag, fill=(217, 119, 6))
     d.line([665, 588, 1065, 588], fill=(254, 215, 170), width=1)
     d.text((665, 594), "REQUIRED FIRMWARE & LOGIC:", font=f_tag, fill=(15, 23, 42))
     d.text((665, 610), 
         "• 1756-L83E GuardLogix 5580 Controller Firmware: v33.011+ (Identical)\n"
         "• 1756-RM2 Enhanced Optical Redundancy Firmware Bundle\n"
-        "• 1756-EN2TR EtherNet/IP DLR Embedded Ring Backup Firmware\n"
+        "• 1756-EN4TR EtherNet/IP DLR Embedded Ring Backup Firmware\n"
         "• Continuous Real-Time State & Memory Synchronization", font=f_small, fill=(15, 23, 42))
 
     # Stratix Switch AOP box (Right of controllers)
