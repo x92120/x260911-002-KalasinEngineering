@@ -15,3 +15,10 @@
 ~$*
 .~lock.*
 *.tmp
+
+# Large ePlan, CAD databases, archives, and heavy export files (>50MB)
+x900-eDrawing/
+*.zw1
+*.edb/
+*.zip
+02_Electrical_and_eDrawing/02_ePlan_Exports/Layout.dxf

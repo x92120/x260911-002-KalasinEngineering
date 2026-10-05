@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="31.797998mm"
+   height="10.540443mm"
+   viewBox="0 0 31.797998 10.540445"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="xDev_Logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="32.53453"
+     inkscape:cx="61.242624"
+     inkscape:cy="34.102229"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g4232" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-93.133331,-79.374999)">
+    <g
+       id="g4232"
+       transform="matrix(0.28222223,0,0,0.28222223,26.143379,65.875625)"
+       style="stroke:none">
+      <rect
+         y="47.832428"
+         x="237.36597"
+         height="37.348026"
+         width="112.67007"
+         id="rect3424"
+         style="fill:#ffc000;fill-opacity:1;stroke:none;stroke-width:0.715761" />
+      <text
+         id="text3340"
+         y="73.171211"
+         x="245.22444"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:0%;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#790000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="73.171211"
+           x="245.22444"
+           id="tspan3342"
+           sodipodi:role="line"
+           style="font-size:40px;line-height:1.1;stroke:none">xDev</tspan></text>
+      <text
+         id="text3340-8"
+         y="83.304558"
+         x="298.26892"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5px;line-height:0%;font-family:'Courier New';-inkscape-font-specification:'Courier New, Bold';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#790000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           y="83.304558"
+           x="298.26892"
+           id="tspan3342-2"
+           sodipodi:role="line"
+           style="font-size:5px;line-height:1.1;stroke:none">WeAre...,WeCan!!!</tspan></text>
+      <path
+         style="fill:#800000;stroke:#800000;stroke-width:1.77165;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="M 237.36596,78.020764 H 350.03603"
+         id="path1" />
+    </g>
+  </g>
+</svg>
