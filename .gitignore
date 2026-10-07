@@ -21,5 +21,8 @@ x900-eDrawing/
 x9200-eDrawing_Layout/
 *.zw1
 *.edb/
-*.zip
 02_Electrical_and_eDrawing/02_ePlan_Exports/Layout.dxf
+
+# Files exceeding GitHub 100MB limit
+05-LoopTest/PANEL WIRING DIAGRAM.dxf
+
