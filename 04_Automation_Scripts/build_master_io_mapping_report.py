@@ -29,7 +29,8 @@ import openpyxl
 from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 from openpyxl.utils import get_column_letter
 
-BASE_DIR = "/Users/x92120/xApp-001/x260911-002-KalasinEngineering"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
 IO_DIR = os.path.join(BASE_DIR, "03-IO_List")
 INST_FILE = os.path.join(IO_DIR, "Instrument I-O List Rev.3.6a.xlsx")
 SLOT_FILE = os.path.join(IO_DIR, "IO_List-By_SlotConfig_rev02.xlsx")

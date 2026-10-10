@@ -25,4 +25,12 @@ x9200-eDrawing_Layout/
 
 # Files exceeding GitHub 100MB limit
 05-LoopTest/PANEL WIRING DIAGRAM.dxf
+*.tar
+x9100-eDrawing/BAK*
+x9100-eDrawing/BAK/
+
+# Temporary caches and scratch
+scratch/
+__pycache__/
+*.pyc
 
