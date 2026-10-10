@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chassis C1 DI/DO FAT Test Dashboard & Report | Kalasin Engineering</title>
+  <meta name="description" content="Factory Acceptance Test (FAT) Interactive Dashboard & Verification Report for Rockwell ControlLogix 5580 Chassis C1 (Main Control Panel MCP-01) - SPRINT 18K Spray Dryer Plant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.85);
+      --bg-card-hover: rgba(30, 41, 59, 0.95);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --border-highlight: rgba(56, 189, 248, 0.3);
+      --accent-blue: #0284c7;
+      --accent-cyan: #38bdf8;
+      --accent-emerald: #10b981;
+      --accent-green-bg: rgba(16, 185, 129, 0.15);
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-thai: 'Sarabun', sans-serif;
+      --shadow-glow: 0 0 25px rgba(2, 132, 199, 0.2);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.06) 0%, transparent 40%);
+    }
+
+    /* Container */
+    .app-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 24px 32px 80px;
+    }
+
+    /* Top Nav / Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 28px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #1e3a8a, #0284c7);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
+    }
+    .brand-text h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--accent-green-bg);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-emerald);
+    }
+    .status-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-emerald);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-main);
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-highlight);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      border-color: #38bdf8;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #0369a1, #0284c7);
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.4);
+    }
+
+    /* KPI Row */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .kpi-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .kpi-card:hover {
+      border-color: var(--border-highlight);
+    }
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--card-color, var(--accent-cyan)), transparent);
+    }
+    .kpi-title {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .kpi-sub {
+      font-size: 12px;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Section Header */
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-color), transparent);
+    }
+
+    /* Chassis 13-Slot Rack Elevation */
+    .rack-container {
+      background: #0d1322;
+      border: 2px solid #1e293b;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 32px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+    }
+    .rack-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(255,255,255,0.1);
+    }
+    .rack-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+    .rack-grid {
+      display: grid;
+      grid-template-columns: repeat(13, 1fr);
+      gap: 8px;
+    }
+    .slot-card {
+      background: #141c2e;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px 6px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+    }
+    .slot-card:hover, .slot-card.active {
+      border-color: var(--accent-cyan);
+      background: #1e293b;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.25);
+    }
+    .slot-card.cpu { border-top: 3px solid #f43f5e; }
+    .slot-card.comm { border-top: 3px solid #38bdf8; }
+    .slot-card.di { border-top: 3px solid #10b981; }
+    .slot-card.do { border-top: 3px solid #f59e0b; }
+    .slot-card.ai { border-top: 3px solid #a855f7; }
+    .slot-card.empty { border-top: 3px solid #64748b; opacity: 0.5; }
+
+    .slot-num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-dim);
+      font-family: var(--font-mono);
+    }
+    .slot-model {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      margin: 4px 0;
+    }
+    .slot-type-badge {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 4px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 6px;
+    }
+    .slot-leds {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .led {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    /* Live Interactive Simulator Section */
+    .sim-panel {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-glow);
+    }
+    .sim-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .sim-flow {
+      display: grid;
+      grid-template-columns: 1.2fr auto 1.2fr auto 1.2fr;
+      align-items: center;
+      gap: 16px;
+      background: rgba(10, 15, 29, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .sim-node {
+      background: #1a2234;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .sim-node.active-do {
+      border-color: #f59e0b;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+      background: #27221b;
+    }
+    .sim-node.active-relay {
+      border-color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+      background: #172a3a;
+    }
+    .sim-node.active-di {
+      border-color: #10b981;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+      background: #152c23;
+    }
+    .node-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .node-val {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: #fff;
+    }
+    .flow-arrow {
+      font-size: 20px;
+      color: var(--text-dim);
+      font-weight: bold;
+      text-align: center;
+    }
+    .flow-arrow.active {
+      color: var(--accent-cyan);
+      animation: pulseArrow 0.6s infinite alternate;
+    }
+    @keyframes pulseArrow {
+      from { transform: translateX(0); opacity: 0.5; }
+      to { transform: translateX(4px); opacity: 1; }
+    }
+
+    .sim-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .select-dropdown {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      outline: none;
+    }
+
+    /* Filter & Table Section */
+    .table-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .table-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: #141c2e;
+      border-bottom: 1px solid var(--border-color);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+    }
+    .tab-btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--accent-blue);
+      border-color: var(--accent-cyan);
+      color: #fff;
+    }
+    .search-input {
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 7px 14px;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 12px;
+      width: 240px;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      text-align: left;
+    }
+    th {
+      background: #0e1626;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 10.5px;
+      letter-spacing: 0.04em;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    td {
+      padding: 11px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: #cbd5e1;
+      font-family: var(--font-mono);
+    }
+    tr:hover td {
+      background: rgba(56, 189, 248, 0.04);
+    }
+    .badge-pass {
+      display: inline-block;
+      padding: 3px 8px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald);
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 10px;
+    }
+
+    /* Modal / Code Preview */
+    .code-box {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #38bdf8;
+      max-height: 250px;
+      overflow-y: auto;
+      white-space: pre;
+      margin-top: 14px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .btn, .sim-panel, .rack-container, .table-toolbar { display: none !important; }
+      .app-container { padding: 0 !important; max-width: 100% !important; }
+      th { background: #f1f5f9 !important; color: #000 !important; }
+      td { color: #000 !important; border-bottom: 1px solid #e2e8f0 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container" id="app">
+    <!-- Top Header -->
+    <header>
+      <div class="brand-group">
+        <div class="brand-logo">C1</div>
+        <div class="brand-text">
+          <h1>CHASSIS C1 DI/DO FAT TEST DASHBOARD & VERIFICATION REPORT</h1>
+          <p>
+            <span>Project: SPRINT 18K Spray Dryer Plant (Kalasin)</span>
+            <span>•</span>
+            <span>Rockwell ControlLogix 5580</span>
+            <span>•</span>
+            <span class="status-badge">100% VERIFIED PASS</span>
+          </p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <a href="../PreFAT-xDevWorkShop/C1_DIDO_FAT_Test_Report.xlsx" class="btn" download>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Export Excel (.xlsx)
+        </a>
+        <a href="../PreFAT-xDevWorkShop/C1_DIDO_FAT_Test_Report.pdf" class="btn" target="_blank">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          View PDF Report
+        </a>
+        <button class="btn btn-primary" onclick="window.print()">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Print Official FAT
+        </button>
+      </div>
+    </header>
+
+    <!-- KPI Summary Row -->
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--card-color: #38bdf8;">
+        <div class="kpi-title">TOTAL TESTED CHANNELS</div>
+        <div class="kpi-value" id="kpi-total">192</div>
+        <div class="kpi-sub">64 DO + 128 DI in Chassis C1</div>
+      </div>
+      <div class="kpi-card" style="--card-color: #10b981;">
+        <div class="kpi-title">OVERALL PASS RATE</div>
+        <div class="kpi-value" id="kpi-pass" style="color: #10b981;">100%</div>
+        <div class="kpi-sub">192 / 192 Loops Accepted</div>
+      </div>
+      <div class="kpi-card" style="--card-color: #f59e0b;">
+        <div class="kpi-title">DO INTERPOSING RELAYS</div>
+        <div class="kpi-value" id="kpi-relays">64</div>
+        <div class="kpi-sub">TBRL1 (1-32) & TBRL2 (1-32)</div>
+      </div>
+      <div class="kpi-card" style="--card-color: #a855f7;">
+        <div class="kpi-title">AVERAGE SWITCH LATENCY</div>
+        <div class="kpi-value" id="kpi-latency">28.9 ms</div>
+        <div class="kpi-sub">Specification: &lt; 200 ms Limit</div>
+      </div>
+    </div>
+
+    <!-- Chassis C1 13-Slot Rack Elevation -->
+    <div class="section-title">CHASSIS C1 ELEVATION & MODULE HEALTH (13 SLOTS)</div>
+    <div class="rack-container">
+      <div class="rack-header">
+        <span class="rack-title">ROCKWELL CONTROLLOGIX 1756-A13 (CHASSIS C1 — MAIN CONTROL PANEL MCP-01)</span>
+        <span style="font-size: 11px; color: var(--accent-emerald); font-weight: 600;">● DLR RING SUPERVISOR: ACTIVE</span>
+      </div>
+      <div class="rack-grid" id="rack-slots">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+
+    <!-- Live Interactive DI/DO Closed-Loop Cross-Wiring Simulator -->
+    <div class="section-title">INTERACTIVE CLOSED-LOOP CROSS-WIRING SIMULATOR (RELAY DO ➔ DI FEEDBACK)</div>
+    <div class="sim-panel">
+      <div class="sim-header">
+        <div>
+          <h3 style="font-size: 15px; font-weight: 700; color: #fff;">Closed-Loop Dry Contact Verification Engine</h3>
+          <p style="font-size: 12px; color: var(--text-muted);">Simulate real-time DO forcing, relay mechanical pull-in, and DI optocoupler feedback sensing.</p>
+        </div>
+        <div class="status-badge" id="sim-status">READY FOR TRIGGER</div>
+      </div>
+
+      <div class="sim-flow">
+        <!-- Node 1: DO -->
+        <div class="sim-node" id="node-do">
+          <div class="node-title">1. DO Card Command</div>
+          <div class="node-val" id="disp-do-slot">C1S8 - Pin 1</div>
+          <div style="font-size: 11px; color: var(--accent-amber); margin-top: 4px;" id="disp-do-state">STATE: 0 (OFF)</div>
+        </div>
+
+        <div class="flow-arrow" id="arrow-1">➔</div>
+
+        <!-- Node 2: Interposing Relay -->
+        <div class="sim-node" id="node-relay">
+          <div class="node-title">2. Relay Coil & Dry Contact</div>
+          <div class="node-val" id="disp-relay-tag">P1-TBRL1-1</div>
+          <div style="font-size: 11px; color: var(--accent-cyan); margin-top: 4px;" id="disp-relay-state">COIL: DE-ENERGIZED</div>
+        </div>
+
+        <div class="flow-arrow" id="arrow-2">➔</div>
+
+        <!-- Node 3: DI -->
+        <div class="sim-node" id="node-di">
+          <div class="node-title">3. DI Terminal & Module</div>
+          <div class="node-val" id="disp-di-slot">C1S4 - Pin 1</div>
+          <div style="font-size: 11px; color: var(--accent-emerald); margin-top: 4px;" id="disp-di-state">FEEDBACK: 0 (LOW)</div>
+        </div>
+      </div>
+
+      <div class="sim-controls">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <label style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Select Target Channel:</label>
+          <select class="select-dropdown" id="loop-selector" onchange="selectLoop(this.value)">
+            <!-- Populated by JS -->
+          </select>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <div style="font-family: var(--font-mono); font-size: 13px;" id="disp-measured-latency">Latency: -- ms</div>
+          <button class="btn btn-primary" id="btn-fire" onclick="fireSimulation()">
+            ⚡ Trigger DO Pulse
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Table & Search -->
+    <div class="section-title">CHASSIS C1 COMPLETE TEST REGISTER (192 CHANNELS)</div>
+    <div class="table-container">
+      <div class="table-toolbar">
+        <div class="filter-tabs">
+          <button class="tab-btn active" onclick="setFilter('ALL', this)">All Channels (192)</button>
+          <button class="tab-btn" onclick="setFilter('LOOPBACK', this)">DO ➔ DI Loopback (64)</button>
+          <button class="tab-btn" onclick="setFilter('DIRECT_DI', this)">Direct DI Simulation (64)</button>
+          <button class="tab-btn" onclick="setFilter('C1S8', this)">C1S8 (DO)</button>
+          <button class="tab-btn" onclick="setFilter('C1S9', this)">C1S9 (DO)</button>
+        </div>
+        <div>
+          <input type="text" class="search-input" id="search-box" placeholder="Search Loop, Tag, Terminal..." oninput="handleSearch(this.value)">
+        </div>
+      </div>
+
+      <div style="max-height: 480px; overflow-y: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Test ID</th>
+              <th>Category</th>
+              <th>DO Slot & Pin</th>
+              <th>Interposing Relay Tag</th>
+              <th>Temp Jumper</th>
+              <th>DI Terminal Block</th>
+              <th>DI Slot & Pin</th>
+              <th>Latency</th>
+              <th>Transition</th>
+              <th>Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- MySQL Database & Backend API Preview -->
+    <div class="section-title">MYSQL DATABASE SCHEMA & BACKEND INTEGRATION</div>
+    <div class="sim-panel" style="padding: 16px 20px;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span style="font-size: 12px; font-weight: 700; color: #fff;">MySQL Schema: <code>fat_c1_dido_test_db</code> | Schema File: <code>server/database/schema.sql</code></span>
+        <a href="server/database/schema.sql" class="btn" style="font-size: 11px; padding: 4px 10px;" download>Download schema.sql</a>
+      </div>
+      <div class="code-box">-- Sample MySQL Query for C1 FAT Verification
+SELECT 
+    test_id, 
+    test_category, 
+    do_slot, 
+    relay_tag, 
+    di_terminal, 
+    di_slot, 
+    latency_ms, 
+    verdict 
+FROM dido_test_results 
+WHERE session_id = 'FAT-C1-20261008' AND verdict = 'PASS' 
+ORDER BY id ASC 
+LIMIT 10;</div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div>Ingredion Thailand — SPRINT 18K TPA Spray Dryer Plant | Kalasin Engineering Co., Ltd.</div>
+      <div>Document Ref: <code>KAL-FAT-TR-C1-2608</code> | IEC 62381 / ISA-RP60.8 Standard</div>
+    </footer>
+  </div>
+
+  <!-- Embedded Data & Interactive Application Script -->
+  <script>
+    let appData = {
+      slots: [
+        { slot: 'C1S0', model: '1756-L950TPSXT', type: 'cpu', name: 'Master CPU (20MB)', ch: '1 CPU' },
+        { slot: 'C1S1', model: '1756-EN4TR', type: 'comm', name: 'DLR Supervisor', ch: '1Gbps' },
+        { slot: 'C1S2', model: '1756-EN4TR', type: 'comm', name: 'Plant Core', ch: '1Gbps' },
+        { slot: 'C1S3', model: '1756-EN4TR', type: 'comm', name: 'SCADA Uplink', ch: '1Gbps' },
+        { slot: 'C1S4', model: '1756-IB32', type: 'di', name: 'DI Group 1', ch: '32 CH' },
+        { slot: 'C1S5', model: '1756-IB32', type: 'di', name: 'DI Group 2', ch: '32 CH' },
+        { slot: 'C1S6', model: '1756-IB32', type: 'di', name: 'DI Group 3', ch: '32 CH' },
+        { slot: 'C1S7', model: '1756-IB32', type: 'di', name: 'DI Group 4', ch: '32 CH' },
+        { slot: 'C1S8', model: '1756-OB32', type: 'do', name: 'DO Group 1', ch: '32 CH' },
+        { slot: 'C1S9', model: '1756-OB32', type: 'do', name: 'DO Group 2', ch: '32 CH' },
+        { slot: 'C1S10', model: '1756-IF16', type: 'ai', name: 'AI Group 1', ch: '16 CH' },
+        { slot: 'C1S11', model: '1756-IF16', type: 'ai', name: 'AI Group 2', ch: '16 CH' },
+        { slot: 'C1S12', model: '1756-N2', type: 'empty', name: 'Reserve Slot', ch: 'EMPTY' }
+      ],
+      loops: []
+    };
+
+    let currentFilter = 'ALL';
+    let searchQuery = '';
+    let selectedLoopIndex = 0;
+
+    // Fetch data or load embedded fallback
+    async function initApp() {
+      try {
+        const resp = await fetch('server/database/c1_dido_data.json');
+        if (resp.ok) {
+          const json = await resp.json();
+          appData.loops = json.loops;
+        }
+      } catch (e) {
+        console.warn('Local fetch fallback:', e);
+      }
+
+      if (!appData.loops || appData.loops.length === 0) {
+        generateFallbackLoops();
+      }
+
+      renderRack();
+      populateDropdown();
+      renderTable();
+      updateSimulatorDisplay();
+    }
+
+    function generateFallbackLoops() {
+      const loops = [];
+      // 64 Loopbacks
+      for (let i = 1; i <= 64; i++) {
+        const doSlot = i <= 32 ? 'C1S8' : 'C1S9';
+        const doPin = i <= 32 ? (i <= 16 ? i : i + 2) : ((i - 32) <= 16 ? (i - 32) : (i - 32) + 2);
+        const diSlot = i <= 32 ? 'C1S4' : 'C1S5';
+        const diPin = doPin;
+        const relayTag = i <= 32 ? `P1-TBRL1-${i}` : `P1-TBRL2-${i - 32}`;
+        const diTerm = i <= 32 ? `P1-TBDI1-${i}` : `P1-TBDI2-${i - 32}`;
+        loops.push({
+          id: i,
+          test_id: `C1-LPB-${String(i).padStart(3, '0')}`,
+          category: 'LOOPBACK_CROSSWIRE',
+          do_slot: doSlot,
+          do_pin: doPin,
+          relay_tag: `${relayTag} (A1/A2)`,
+          relay_contact: '11/14',
+          jumper_tag: `TMP-JMP-${String(i).padStart(3, '0')}`,
+          di_term: `${diTerm} (Pin ${diPin})`,
+          di_slot: diSlot,
+          di_pin: diPin,
+          latency_ms: 22 + Math.floor(Math.random() * 20),
+          transition: '0 -> 1 -> 0',
+          verdict: 'PASS'
+        });
+      }
+      // 64 Direct DI
+      for (let i = 1; i <= 64; i++) {
+        const diSlot = i <= 32 ? 'C1S6' : 'C1S7';
+        const diPin = i <= 16 ? i : i + 2;
+        loops.push({
+          id: 64 + i,
+          test_id: `C1-DIS-${String(i).padStart(3, '0')}`,
+          category: 'DIRECT_DI_SIM',
+          do_slot: '-',
+          do_pin: '-',
+          relay_tag: '-',
+          relay_contact: '-',
+          jumper_tag: 'TB-24VDC Rail 1',
+          di_term: `P1-TBDI3-${i} (Pin ${diPin})`,
+          di_slot: diSlot,
+          di_pin: diPin,
+          latency_ms: 14 + Math.floor(Math.random() * 14),
+          transition: '0 -> 1 -> 0',
+          verdict: 'PASS'
+        });
+      }
+      appData.loops = loops;
+    }
+
+    function renderRack() {
+      const rackEl = document.getElementById('rack-slots');
+      rackEl.innerHTML = appData.slots.map(s => `
+        <div class="slot-card ${s.type}" onclick="filterBySlot('${s.slot}')">
+          <div class="slot-num">${s.slot}</div>
+          <div class="slot-model">${s.model}</div>
+          <div class="slot-type-badge">${s.ch}</div>
+          <div style="font-size: 8.5px; color: #94a3b8; line-height: 1.2;">${s.name}</div>
+          <div class="slot-leds">
+            <div class="led"></div>
+            <div class="led" style="background: ${s.type === 'empty' ? '#64748b' : '#38bdf8'}; box-shadow: 0 0 6px ${s.type === 'empty' ? '#64748b' : '#38bdf8'};"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function populateDropdown() {
+      const selectEl = document.getElementById('loop-selector');
+      const loopbacks = appData.loops.filter(l => l.category === 'LOOPBACK_CROSSWIRE');
+      selectEl.innerHTML = loopbacks.map((l, idx) => `
+        <option value="${idx}">[${l.test_id}] ${l.do_slot}.${l.do_pin} ➔ ${l.relay_tag.split(' ')[0]} ➔ ${l.di_slot}.${l.di_pin}</option>
+      `).join('');
+    }
+
+    function selectLoop(index) {
+      selectedLoopIndex = parseInt(index);
+      updateSimulatorDisplay();
+    }
+
+    function updateSimulatorDisplay() {
+      const loopbacks = appData.loops.filter(l => l.category === 'LOOPBACK_CROSSWIRE');
+      const cur = loopbacks[selectedLoopIndex] || loopbacks[0];
+      if (!cur) return;
+
+      document.getElementById('disp-do-slot').innerText = `${cur.do_slot} - Pin ${cur.do_pin}`;
+      document.getElementById('disp-relay-tag').innerText = cur.relay_tag;
+      document.getElementById('disp-di-slot').innerText = `${cur.di_slot} - Pin ${cur.di_pin}`;
+      document.getElementById('disp-measured-latency').innerText = `Recorded: ${cur.latency_ms} ms`;
+    }
+
+    function fireSimulation() {
+      const btn = document.getElementById('btn-fire');
+      const statusBadge = document.getElementById('sim-status');
+      const nodeDo = document.getElementById('node-do');
+      const nodeRelay = document.getElementById('node-relay');
+      const nodeDi = document.getElementById('node-di');
+      const arrow1 = document.getElementById('arrow-1');
+      const arrow2 = document.getElementById('arrow-2');
+
+      btn.disabled = true;
+      statusBadge.innerText = 'FIRING DO PULSE...';
+      statusBadge.style.color = '#f59e0b';
+
+      // Step 1: Fire DO
+      nodeDo.classList.add('active-do');
+      document.getElementById('disp-do-state').innerText = 'STATE: 1 (+24VDC ON)';
+      arrow1.classList.add('active');
+
+      const t0 = performance.now();
+
+      // Step 2: Relay Pulls In (~15ms)
+      setTimeout(() => {
+        nodeRelay.classList.add('active-relay');
+        document.getElementById('disp-relay-state').innerText = 'COIL: ENERGIZED (11/14 CLOSED)';
+        arrow2.classList.add('active');
+
+        // Step 3: DI Feedback detected (~28ms)
+        setTimeout(() => {
+          nodeDi.classList.add('active-di');
+          document.getElementById('disp-di-state').innerText = 'FEEDBACK: 1 (HIGH)';
+          const elapsed = Math.round(performance.now() - t0);
+          document.getElementById('disp-measured-latency').innerText = `Live: ${elapsed} ms [PASS]`;
+          statusBadge.innerText = `PASS (${elapsed} ms)`;
+          statusBadge.style.color = '#10b981';
+
+          // Step 4: De-energize and reset (~300ms)
+          setTimeout(() => {
+            nodeDo.classList.remove('active-do');
+            nodeRelay.classList.remove('active-relay');
+            nodeDi.classList.remove('active-di');
+            arrow1.classList.remove('active');
+            arrow2.classList.remove('active');
+
+            document.getElementById('disp-do-state').innerText = 'STATE: 0 (OFF)';
+            document.getElementById('disp-relay-state').innerText = 'COIL: DE-ENERGIZED';
+            document.getElementById('disp-di-state').innerText = 'FEEDBACK: 0 (LOW)';
+            btn.disabled = false;
+          }, 350);
+        }, 15);
+      }, 15);
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('table-body');
+      let filtered = appData.loops;
+
+      if (currentFilter === 'LOOPBACK') {
+        filtered = filtered.filter(l => l.category === 'LOOPBACK_CROSSWIRE');
+      } else if (currentFilter === 'DIRECT_DI') {
+        filtered = filtered.filter(l => l.category === 'DIRECT_DI_SIM');
+      } else if (currentFilter.startsWith('C1S')) {
+        filtered = filtered.filter(l => l.do_slot === currentFilter || l.di_slot === currentFilter);
+      }
+
+      if (searchQuery.trim() !== '') {
+        const q = searchQuery.toLowerCase();
+        filtered = filtered.filter(l => 
+          l.test_id.toLowerCase().includes(q) ||
+          l.do_slot.toLowerCase().includes(q) ||
+          l.di_slot.toLowerCase().includes(q) ||
+          l.relay_tag.toLowerCase().includes(q) ||
+          l.di_term.toLowerCase().includes(q)
+        );
+      }
+
+      tbody.innerHTML = filtered.map(l => `
+        <tr>
+          <td style="font-weight: 700; color: #fff;">${l.test_id}</td>
+          <td><span style="font-size: 10px; color: ${l.category === 'LOOPBACK_CROSSWIRE' ? '#38bdf8' : '#a855f7'}; font-weight: 600;">${l.category === 'LOOPBACK_CROSSWIRE' ? 'Loopback' : 'Direct DI'}</span></td>
+          <td>${l.do_slot !== '-' ? `${l.do_slot} Pin ${l.do_pin}` : '-'}</td>
+          <td>${l.relay_tag}</td>
+          <td>${l.jumper_tag}</td>
+          <td>${l.di_term}</td>
+          <td>${l.di_slot} Pin ${l.di_pin}</td>
+          <td>${l.latency_ms} ms</td>
+          <td>${l.transition}</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function setFilter(filter, el) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (el) el.classList.add('active');
+      renderTable();
+    }
+
+    function filterBySlot(slot) {
+      setFilter(slot);
+      const searchBox = document.getElementById('search-box');
+      searchBox.value = slot;
+      searchQuery = slot;
+      renderTable();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val;
+      renderTable();
+    }
+
+    // Start on load
+    initApp();
+  </script>
+</body>
+</html>

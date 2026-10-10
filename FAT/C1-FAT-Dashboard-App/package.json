@@ -1,0 +1,28 @@
+{
+  "name": "c1-fat-dashboard-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Interactive Web Dashboard & MySQL Reporting App for Rockwell ControlLogix Chassis C1 DI/DO FAT Test - SPRINT 18K Spray Dryer Plant",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "serve": "npx -y serve . -l 3000",
+    "server": "node server/api.js"
+  },
+  "dependencies": {
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "fat",
+    "rockwell",
+    "controllogix",
+    "dido-loopback",
+    "dashboard",
+    "mysql"
+  ],
+  "author": "Kalasin Engineering Co., Ltd."
+}
